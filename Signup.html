@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+ <title>Sign up page</title> 
+<link rel="stylesheet" href="signupstyle.css">
+</head>
+<body>
+
+  <div class="header">
+    
+    <a href="#" style="margin-left: 5px;">App logo</a>
+    <a id="signinbutton" href="#">Sign in</a>
+    <span class="haveanaccount" style="float: right;">Already have an account? &nbsp; &nbsp; &nbsp;</span>
+  
+  </div>
+
+<div class="row">
+  <div class="column" style="background-color:white;">
+
+    <div class="login-page">
+      <div class="form">
+        
+        <form class="register-form">
+          <a id="createaccountbutton" href="#"> Create an account</a>
+          <hr class="new1">
+          <input type="text" placeholder="user name" />
+          <input type="text" placeholder="email id" />
+          <input type="text" placeholder="password" />
+          <input type="text" placeholder="confirm password" />
+          <button>Submit</button>
+    
+          <p class="message" style="text-align: center;">
+            Already registered? &nbsp; <a href="#">Login</a>
+          </p>
+        </form>
+
+        <form class="login-form">
+          <a id="createaccountbutton" href="#">Sign in</a>
+          <hr class="new1">
+          <input type="text" placeholder="email id" />
+          <input type="text" placeholder="password" />
+          <button>Login</button>
+          <p class="message" style="text-align: center;">
+            Not registered? <a href="#">Register</a>
+          </p>
+
+        </form>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+
+    <script>
+      $('.message a').click(function(){
+        $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+      });
+    </script>
+
+  </div>
+
+
+  <div class="column">
+    <p style="margin-bottom: 25px;"></p>
+    <img class="appimage" src="C:\Users\PRATEEK AGARWAL\OneDrive\Pictures\Saved Pictures\gmailhomepageimage.png" height="100%" width="95%"/>
+  </div>
+</div>
+
+
+</body>
+</html>
