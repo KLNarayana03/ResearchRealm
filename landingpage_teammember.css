@@ -1,0 +1,169 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  /* Style the header */
+.header {
+      background-color: #1f497d;
+      padding: 20px;
+      color:white;
+      font-size: 30px;
+      position: -webkit-sticky; /* Safari */
+      position: sticky;
+      top:0;
+      border-radius:2px ;
+}
+  
+.header a{
+    color:white;
+}
+
+#usertype {
+    
+    float: right;
+    color: white;
+    margin-right: 3%;
+}
+
+#logout {
+    float: right;
+    color: white;
+    margin-right: 1%;
+}
+
+.sidenav{
+    float: left;
+    width: 18%;
+    padding: 10px;
+    height: auto; 
+    background: #4472C4;
+ }
+
+.main{
+    background-color:white;
+    float: left;
+    width: 81.05%;
+    padding: 10px;
+    height: left; /* Should be removed. Only for demonstration */
+} 
+
+.sidenav input {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    display: block;
+    border: none;
+    line-height: 2;
+    background: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+  }
+  
+.dropdown-btn {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    display: block;
+    border: none;
+    line-height: 2.5;
+    background: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+}
+
+  /* On mouse-over */
+  .sidenav input:hover, .dropdown-btn:hover {
+    font-weight: bold;
+  }
+  
+  
+  /* Add an active class to the active dropdown button */
+  .active {
+    color: #002060;
+  }
+  
+  /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+  .dropdown-container {
+    display: none;
+    
+    width: 267px;
+    
+    padding-left: 25px;
+  }
+  
+  .dropdown-container input {
+    color: lightgray;
+  }
+
+
+  /* Optional: Style the caret down icon */
+.fa-caret-down {
+    float: right;
+    margin-top: 12.5px;
+    padding-right: 8px;
+}
+
+  
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+  
+.footer {
+    background-color: #f1f1f1;
+    padding: 10px;
+    height: 90px;
+  }  
+.copyright {
+    margin-left:2.5%;
+}
+
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media (max-width: 600px) {
+    .main {
+      width: 100%;
+    }
+    .sidenav {
+        width: 100%;
+    }
+}
+
+@media (min-width: 601px) and (max-width:767px) {
+    .main {
+        width: 100%;
+      }
+    .sidenav {
+        width: 100%;
+    }  
+  
+     
+}
+
+@media (min-width: 768px) and (max-width:991px) {
+    .main {
+        width: 100%;
+      }
+    .sidenav {
+        width: 100%;
+    }  
+ 
+}
+
+  /* Some media queries for responsiveness */
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
