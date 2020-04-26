@@ -1,0 +1,240 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  /* Style the header */
+.header {
+      background-color: #1f497d;
+      padding: 20px;
+      color:white;
+      font-size: 30px;
+      position: -webkit-sticky; /* Safari */
+      position: sticky;
+      top:0;
+      border-radius:2px ;
+}
+  
+.header a{
+    color:white;
+}
+
+#usertype {
+    
+    float: right;
+    color: white;
+    margin-right: 3%;
+}
+
+#logout {
+    float: right;
+    color: white;
+    margin-right: 1%;
+}
+
+.sidenav{
+    float: left;
+    width: 18%;
+    padding: 10px;
+    height: auto; 
+    background: #4472C4;
+ }
+
+.main{
+    background-color:white;
+    float: left;
+    width: 81.05%;
+    padding: 10px;
+    height: left; /* Should be removed. Only for demonstration */
+} 
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    display: block;
+    border: none;
+    line-height: 2;
+    background: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+  }
+  
+.dropdown-btn {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    display: block;
+    border: none;
+    line-height: 2.5;
+    background: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+}
+
+  /* On mouse-over */
+  .sidenav a:hover, .dropdown-btn:hover {
+    font-weight: bold;
+  }
+  
+  
+  /* Add an active class to the active dropdown button */
+  .active {
+    color: #002060;
+  }
+  
+  /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+  .dropdown-container {
+    display: none;
+    
+    width: 267px;
+    
+    padding-left: 15px;
+  }
+  
+  .dropdown-container a {
+    color: darkblue;
+  }
+
+  /* Optional: Style the caret down icon */
+.fa-caret-down {
+    float: right;
+    margin-top: 12.5px;
+    padding-right: 8px;
+}
+
+  
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+  
+.footer {
+    background-color: lightgrey;
+    padding: 10px;
+    height: 90px;
+  }  
+.copyright {
+    margin-left:2.5%;
+}
+
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media (max-width: 600px) {
+    .main {
+      width: 100%;
+    }
+    .sidenav {
+        width: 100%;
+    }
+}
+
+@media (min-width: 601px) and (max-width:767px) {
+    .main {
+        width: 100%;
+      }
+    .sidenav {
+        width: 100%;
+    }  
+  
+     
+}
+
+@media (min-width: 768px) and (max-width:991px) {
+    .main {
+        width: 100%;
+      }
+    .sidenav {
+        width: 100%;
+    }  
+ 
+}
+
+  /* Some media queries for responsiveness */
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+
+
+
+/* Display Button */
+
+/* Button used to open the contact form - fixed at the bottom of the page */
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  width: 280px;
+  position: absolute;
+  top: 15vh;
+  left: 45.5vw;
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+  position: absolute;
+  top: 15vh;
+  left: 45vw;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
