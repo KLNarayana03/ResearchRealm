@@ -59,17 +59,15 @@ $result->execute();
         <!-- <i class="fa fa-caret-down"></i> -->
     </button>
       <div class="dropdown-container">
-      <button class="open-button" onclick="openForm()">Open Form</button>
+      <button class="open-button" onclick="openForm()">Create new Project</button>
 
 <div class="form-popup" id="myForm">
   <form action="createproject.php" class="form-container" method="post">
-    <h1>Project</h1>
+    
+    <hr class="new1">
 
-    <label for="projectname"><b>Project Name</b></label>
-    <input type="text" placeholder="Enter Project Name" name="projectname" required>
-
-    <label for="projecttype">Project Type:</label>
-    <select id="projecttype" name="projecttype">
+    <input for="projectname" type="text" placeholder="Enter Project Name" name="projectname" required>
+    <select for="projecttype" id="projecttype" name="projecttype">
     <option value="btp">B.Tech Project</option>
     <option value="mtp">M.Tech Project</option>
     <option value="phd">PhD Project</option>
@@ -77,9 +75,7 @@ $result->execute();
     <option value="internship">Internship Project</option>
     <option value="misc">Miscellaneous Project</option>
     </select>
-
-    <label for="projectdesc"><b>Project Description</b></label>
-    <input type="text" placeholder="Enter Project Description" name="projectdesc">
+    <textarea for="projectdesc" class="projectdescription" name="projectdesc" placeholder="Enter Project Description" style="height:200px"></textarea>
 
     <!-- <button type="submit" class="btn" name="projectup-btn">Submit</button> -->
     <input type="submit" name="projectup-btn" class="btn" value="Submit">
@@ -107,7 +103,35 @@ function closeForm() {
         <i class="fa fa-caret-down"></i>
       </button>
       <div class="dropdown-container">
-        <a href="#">Project Deliverables</a>
+        <a href="#">Project Tasks</a>
+        <button class="open-button" onclick="openForm2()">Create new Task</button>
+        <div class="form-popup" id="myForm">
+  <form action="createtask.php" class="form-container" method="post">
+    
+    <hr class="new1">
+
+    <input for="taskname" type="text" placeholder="Enter Task Name" name="taskname" required>
+    <textarea for="taskdesc" class="projectdescription" name="taskdesc" placeholder="Enter Task Description" style="height:200px"></textarea>
+
+    <input type="submit" name="projectup-btn" class="btn" value="Submit">
+    <button type="button" class="btn cancel" onclick="closeForm2()">Close</button>
+  </form>
+</div>
+
+<script>
+function openForm2() {
+  document.getElementById("myForm2").style.display = "block";
+}
+
+function closeForm2() {
+  document.getElementById("myForm2").style.display = "none";
+}
+</script>
+        
+        
+        
+        
+        
         <a href="#">Others</a>
       </div>
 
@@ -252,7 +276,35 @@ function closeForm() {
   </div>
 
 <div class="main">
-  
+<?php if(!isset($_SESSION['username'])): header("location: logout.php");?>
+
+    <?php else: ?>
+
+    <?php endif ?>
+
+    <!-- <?php echo "<h1> Welcome ".$_SESSION['username']." To Dashboard </h1>" ?> -->
+<table align="center" style="width:600px; line-height:40px; border: 1px solid #ddd;">
+      <tr>
+        <th colspan="3" style="text-align:center;"><h3>Ongoing Projects</h3></th>  
+      </tr>
+      <tr>
+        <th style="padding:5px; border: 1px solid #ddd;">Project Name</th>
+        <th style="padding:5px; border: 1px solid #ddd;">Project Type</th>
+        <th style="padding:5px; border: 1px solid #ddd;">Project Date</th>
+      </tr>
+      <?php
+        while($rows=$result->fetch(PDO::FETCH_ASSOC)){
+      ?>
+        <tr>
+          <td style="padding:5px; border: 1px solid #ddd;"><?php echo $rows['projectname']; ?></td>
+          <td style="padding:5px; border: 1px solid #ddd;"><?php echo $rows['projecttype']; ?></td>
+          <td style="padding:5px; border: 1px solid #ddd;"><?php echo $rows['projectdate']; ?></td>
+        </tr>
+          <?php
+        }
+          ?>
+      
+ </table>     
 </div>  
 
 
@@ -280,36 +332,9 @@ function closeForm() {
 <div class="footer">
     <p class="copyright">Copyright © App Name. All Rights Reserved.</p>
 </div>
-<?php if(!isset($_SESSION['username'])): header("location: logout.php");?>
 
-    <?php else: ?>
-
-    <?php endif ?>
-
-    <!-- <?php echo "<h1> Welcome ".$_SESSION['username']." To Dashboard </h1>" ?> -->
    
- <table align="center" border="2px" style="width:600px; line-height:40px;">
-      <tr>
-        <th colspan="3"><h2>Ongoing Projects</h2></th>  
-      </tr>
-      <t>
-        <th>Project Name</th>
-        <th>Project Type</th>
-        <th>Project Date</th>
-      </t>
-      <?php
-        while($rows=$result->fetch(PDO::FETCH_ASSOC)){
-      ?>
-        <tr>
-          <td><?php echo $rows['projectname']; ?></td>
-          <td><?php echo $rows['projecttype']; ?></td>
-          <td><?php echo $rows['projectdate']; ?></td>
-        </tr>
-          <?php
-        }
-          ?>
-      
- </table>     
+ 
 
 </body>
 </html>
