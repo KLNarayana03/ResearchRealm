@@ -3,7 +3,6 @@
 include_once 'source/db_connect.php';
 include_once 'source/session.php';
 $id = $_SESSION['id'];
-  
 $query = "select * from projects where userid = $id";
 $result =$conn->prepare($query);
 $result->execute();
@@ -100,23 +99,26 @@ function closeForm() {
       </div>
 
       <button class="dropdown-btn">Tasks 
-        <i class="fa fa-caret-down"></i>
+      <!-- <i class="fa fa-caret-down"></i> -->
       </button>
       <div class="dropdown-container">
-        <a href="#">Project Tasks</a>
         <button class="open-button" onclick="openForm2()">Create new Task</button>
-        <div class="form-popup" id="myForm">
-  <form action="createtask.php" class="form-container" method="post">
+        <div class="form-popup" id="myForm2">
+  <form action="createtasks.php" class="form-container" method="post">
     
     <hr class="new1">
-
     <input for="taskname" type="text" placeholder="Enter Task Name" name="taskname" required>
-    <textarea for="taskdesc" class="projectdescription" name="taskdesc" placeholder="Enter Task Description" style="height:200px"></textarea>
-
+    <select for="tasktype" id="projecttype" name="tasktype" style="margin-bottom:20px;">
+    <option value="projectrelatedtask">Project Related Task</option>
+    <option value="othertask">Other Task</option>
+    </select>
+    <label style="font-size:15.5px;">Task Deadline: &nbsp &nbsp </label>
+    <input for="tasklastdate" type="date" name="tasklastdate" required>
+    <textarea for="taskdesc" class="projectdescription" name="taskdesc" placeholder="Enter Task Description" style="height:200px"></textarea> 
     <input type="submit" name="projectup-btn" class="btn" value="Submit">
     <button type="button" class="btn cancel" onclick="closeForm2()">Close</button>
   </form>
-</div>
+  </div>
 
 <script>
 function openForm2() {
@@ -127,40 +129,40 @@ function closeForm2() {
   document.getElementById("myForm2").style.display = "none";
 }
 </script>
-        
-        
-        
-        
-        
-        <a href="#">Others</a>
       </div>
-
-      <button class="dropdown-btn">Inventory 
-        <i class="fa fa-caret-down"></i>
-      </button>
-      <div class="dropdown-container">
-        <a href="#">Equipments</a>
-        <a href="#">Consumables</a>
-      </div>
-
-     <button class="dropdown-btn">Resources
-    <i class="fa fa-caret-down"></i>
-  </button>
-  <div class="dropdown-container">
-    <a href="#">Documents</a>
-    <a href="#">Softwares</a>
-    <a href="#">Files</a>
-    <a href="#">Images</a>
-    <a href="#">Videos</a>
-  </div>
 
   <button class="dropdown-btn">Calendar Entries 
-    <i class="fa fa-caret-down"></i>
+   <!-- <i class="fa fa-caret-down"></i>-->
   </button>
   <div class="dropdown-container">
-    <a href="#">Meetings</a>
-    <a href="#">Reminders</a>
-    <a href="#">Deadlines</a>
+  <button class="open-button" onclick="openForm3()">Create new Calendar Entry</button>
+        <div class="form-popup" id="myForm3">
+  <form action="createcalendarentry.php" class="form-container" method="post">
+    
+    <hr class="new1">
+    <input for="calendarentryname" type="text" placeholder="Title" name="calendarentryname" required>
+    <select for="calendarentrytype" id="projecttype" name="calendarentrytype" style="margin-bottom:20px;">
+    <option value="meetings">Meetings</option>
+    <option value="deadlines">Deadlines</option>
+    <option value="reminders">Reminders</option>
+    </select>
+    <label for="calendarentrydate" style="font-size:15.5px;">Date: &nbsp &nbsp </label>
+    <input for="calendarentrydate" type="date" name="calendarentrydate" required>
+    <textarea for="calendarentrydesc" class="projectdescription" name="calendarentrydesc" placeholder="Description" style="height:200px"></textarea> 
+    <input type="submit" name="projectup-btn" class="btn" value="Submit">
+    <button type="button" class="btn cancel" onclick="closeForm3()">Close</button>
+  </form>
+  </div>
+
+<script>
+function openForm3() {
+  document.getElementById("myForm3").style.display = "block";
+}
+
+function closeForm3() {
+  document.getElementById("myForm3").style.display = "none";
+}
+</script>
   </div>
 
   </div>
@@ -187,6 +189,14 @@ function closeForm2() {
         <a href="#">Project Deliverables</a>
         <a href="#">Others</a>
       </div>
+
+      <button class="dropdown-btn">Inventory 
+        <!--<i class="fa fa-caret-down"></i> -->
+      </button>
+      <div class="dropdown-container">
+        
+      </div>
+
   </div>
 
   
@@ -304,7 +314,34 @@ function closeForm2() {
         }
           ?>
       
+ </table>
+  <br>
+   <br>      
+ <table align="center" style="width:600px; line-height:40px; border: 1px solid #ddd;">
+      <tr>
+        <th colspan="3" style="text-align:center;"><h3>Present Tasks</h3></th>  
+      </tr>
+      <tr>
+        <th style="padding:5px; border: 1px solid #ddd;">Task Name</th>
+        <th style="padding:5px; border: 1px solid #ddd;">Task Type</th>
+        <th style="padding:5px; border: 1px solid #ddd;">Task Last Date</th>
+        <th style="padding:5px; border: 1px solid #ddd;">Task Creation Date</th>
+      </tr>
+      <?php
+        while($rows=$result->fetch(PDO::FETCH_ASSOC)){
+      ?>
+        <tr>
+          <td style="padding:5px; border: 1px solid #ddd;"><?php echo $rows['taskname']; ?></td>
+          <td style="padding:5px; border: 1px solid #ddd;"><?php echo $rows['tasktype']; ?></td>
+          <td style="padding:5px; border: 1px solid #ddd;"><?php echo $rows['tasklastdate']; ?></td>
+          <td style="padding:5px; border: 1px solid #ddd;"><?php echo $rows['taskdate']; ?></td>
+        </tr>
+          <?php
+        }
+          ?>
+      
  </table>     
+
 </div>  
 
 
