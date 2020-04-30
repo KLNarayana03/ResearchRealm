@@ -3,9 +3,18 @@
 include_once 'source/db_connect.php';
 include_once 'source/session.php';
 $id = $_SESSION['id'];
+//query for displaying create->project table
 $query = "select * from projects where userid = $id";
-$result =$conn->prepare($query);
-$result->execute();
+$result_project =$conn->prepare($query);
+$result_project->execute();
+//query for displaying create->tasks table
+$query = "select * from createtasks where userid = $id";
+$result_task =$conn->prepare($query);
+$result_task->execute();
+//query for displaying create->calendar enteries table
+$query = "select * from createcalendarentries where userid = $id";
+$result_calendar =$conn->prepare($query);
+$result_calendar->execute();
 ?>
 
 
@@ -293,7 +302,7 @@ function closeForm3() {
     <?php endif ?>
 
     <!-- <?php echo "<h1> Welcome ".$_SESSION['username']." To Dashboard </h1>" ?> -->
-<table align="center" style="width:600px; line-height:40px; border: 1px solid #ddd;">
+<table align="center" style="width:800px; line-height:40px; border: 1px solid #ddd;">
       <tr>
         <th colspan="3" style="text-align:center;"><h3>Ongoing Projects</h3></th>  
       </tr>
@@ -303,7 +312,7 @@ function closeForm3() {
         <th style="padding:5px; border: 1px solid #ddd;">Project Date</th>
       </tr>
       <?php
-        while($rows=$result->fetch(PDO::FETCH_ASSOC)){
+        while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
       ?>
         <tr>
           <td style="padding:5px; border: 1px solid #ddd;"><?php echo $rows['projectname']; ?></td>
@@ -317,7 +326,7 @@ function closeForm3() {
  </table>
   <br>
    <br>      
- <table align="center" style="width:600px; line-height:40px; border: 1px solid #ddd;">
+ <table align="center" style="width:800px; line-height:40px; border: 1px solid #ddd;">
       <tr>
         <th colspan="4" style="text-align:center;"><h3>Present Tasks</h3></th>  
       </tr>
@@ -328,7 +337,7 @@ function closeForm3() {
         <th style="padding:5px; border: 1px solid #ddd;">Task Creation Date</th>
       </tr>
       <?php
-        while($rows=$result->fetch(PDO::FETCH_ASSOC)){
+        while($rows=$result_task->fetch(PDO::FETCH_ASSOC)){
       ?>
         <tr>
           <td style="padding:5px; border: 1px solid #ddd;"><?php echo $rows['taskname']; ?></td>
@@ -343,7 +352,7 @@ function closeForm3() {
  </table>     
  <br>
    <br>      
- <table align="center" style="width:600px; line-height:40px; border: 1px solid #ddd;">
+ <table align="center" style="width:800px; line-height:40px; border: 1px solid #ddd;">
       <tr>
         <th colspan="4" style="text-align:center;"><h3>Calendar Entries</h3></th>  
       </tr>
@@ -354,7 +363,7 @@ function closeForm3() {
         <th style="padding:5px; border: 1px solid #ddd;">Creation Date</th>
       </tr>
       <?php
-        while($rows=$result->fetch(PDO::FETCH_ASSOC)){
+        while($rows=$result_calendar->fetch(PDO::FETCH_ASSOC)){
       ?>
         <tr>
           <td style="padding:5px; border: 1px solid #ddd;"><?php echo $rows['calendarentryname']; ?></td>
