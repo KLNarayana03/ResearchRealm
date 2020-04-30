@@ -47,7 +47,7 @@ $result_calendar->execute();
 
 <div class="row">
 
-  <div class="sidenav">
+  <div class="sidenav" id="sidenav">
     
   <button class="dropdown-btn"><i class="fas fa-tasks" style="margin-right: 15px;"></i>Current Status
     <i class="fa fa-caret-down"></i>
@@ -294,7 +294,7 @@ function closeForm3() {
 
   </div>
 
-<div class="main">
+<div class="main" id="main">
 <?php if(!isset($_SESSION['username'])): header("location: logout.php");?>
 
     <?php else: ?>
@@ -376,12 +376,10 @@ function closeForm3() {
           ?>
       
  </table>     
-
 </div>  
 
 
-
-  <script>
+<script>
     /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
     var dropdown = document.getElementsByClassName("dropdown-btn");
     var i;
@@ -397,7 +395,22 @@ function closeForm3() {
       }
       });
     }
-    </script>
+</script>
+
+<script type="text/javascript">
+    window.onload = function() {
+        var left=document.getElementById('sidenav').clientHeight;
+        var right=document.getElementById('main').clientHeight;
+        if(left>right) {
+            console.log(document.getElementById('sidenav').style.height=auto+"px");
+            document.getElementById('main').style.height=left+"px";
+        }
+        if(left<right) {
+            document.getElementById('sidenav').style.height=right+"px";
+        }
+    };
+</script>
+
 
 </div>
 
