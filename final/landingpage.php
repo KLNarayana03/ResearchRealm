@@ -137,7 +137,7 @@ function closeForm2() {
   <div class="dropdown-container">
   <button class="open-button" onclick="openForm3()">Create new Calendar Entry</button>
         <div class="form-popup" id="myForm3">
-  <form action="createcalendarentry.php" class="form-container" method="post">
+  <form action="createcalendarentries.php" class="form-container" method="post">
     
     <hr class="new1">
     <input for="calendarentryname" type="text" placeholder="Title" name="calendarentryname" required>
@@ -146,8 +146,8 @@ function closeForm2() {
     <option value="deadlines">Deadlines</option>
     <option value="reminders">Reminders</option>
     </select>
-    <label for="calendarentrydate" style="font-size:15.5px;">Date: &nbsp &nbsp </label>
-    <input for="calendarentrydate" type="date" name="calendarentrydate" required>
+    <label style="font-size:15.5px;">Date: &nbsp &nbsp </label>
+    <input for="calendarentrylastdate" type="date" name="calendarentrylastdate" required>
     <textarea for="calendarentrydesc" class="projectdescription" name="calendarentrydesc" placeholder="Description" style="height:200px"></textarea> 
     <input type="submit" name="projectup-btn" class="btn" value="Submit">
     <button type="button" class="btn cancel" onclick="closeForm3()">Close</button>
@@ -319,7 +319,7 @@ function closeForm3() {
    <br>      
  <table align="center" style="width:600px; line-height:40px; border: 1px solid #ddd;">
       <tr>
-        <th colspan="3" style="text-align:center;"><h3>Present Tasks</h3></th>  
+        <th colspan="4" style="text-align:center;"><h3>Present Tasks</h3></th>  
       </tr>
       <tr>
         <th style="padding:5px; border: 1px solid #ddd;">Task Name</th>
@@ -335,6 +335,32 @@ function closeForm3() {
           <td style="padding:5px; border: 1px solid #ddd;"><?php echo $rows['tasktype']; ?></td>
           <td style="padding:5px; border: 1px solid #ddd;"><?php echo $rows['tasklastdate']; ?></td>
           <td style="padding:5px; border: 1px solid #ddd;"><?php echo $rows['taskdate']; ?></td>
+        </tr>
+          <?php
+        }
+          ?>
+      
+ </table>     
+ <br>
+   <br>      
+ <table align="center" style="width:600px; line-height:40px; border: 1px solid #ddd;">
+      <tr>
+        <th colspan="4" style="text-align:center;"><h3>Calendar Entries</h3></th>  
+      </tr>
+      <tr>
+        <th style="padding:5px; border: 1px solid #ddd;">Title</th>
+        <th style="padding:5px; border: 1px solid #ddd;">Type</th>
+        <th style="padding:5px; border: 1px solid #ddd;">Last Date</th>
+        <th style="padding:5px; border: 1px solid #ddd;">Creation Date</th>
+      </tr>
+      <?php
+        while($rows=$result->fetch(PDO::FETCH_ASSOC)){
+      ?>
+        <tr>
+          <td style="padding:5px; border: 1px solid #ddd;"><?php echo $rows['calendarentryname']; ?></td>
+          <td style="padding:5px; border: 1px solid #ddd;"><?php echo $rows['calendarentrytype']; ?></td>
+          <td style="padding:5px; border: 1px solid #ddd;"><?php echo $rows['calendarentrylastdate']; ?></td>
+          <td style="padding:5px; border: 1px solid #ddd;"><?php echo $rows['calendarentrydate']; ?></td>
         </tr>
           <?php
         }
