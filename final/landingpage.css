@@ -44,12 +44,18 @@ body {
 }
 
 .main{
-  background-color:white;
+  background-color: white;
   float: left;
   width: 81.05%;
   padding: 10px;
-  height: left; /* Should be removed. Only for demonstration */
+  height: auto; /* Should be removed. Only for demonstration */
 } 
+
+.maincontent {
+  width: 50%;
+  margin-left: 20%;
+  line-height: 2;
+}
 
 .sidenav a {
   padding: 6px 8px 6px 16px;
@@ -195,6 +201,15 @@ margin-bottom: 18px;
   margin-top: 18px;
 }
 
+.details-projectdescription {
+  width: 95px;
+  height:auto;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 18px;
+}
+
 /* Button used to open the contact form - fixed at the bottom of the page */
 .open-button {
 background-color: #43A047;
@@ -208,6 +223,18 @@ position: fixed;
 top: 15vh;
 left: 38.5vw;
 }
+
+.topbutton {
+  background-color: #43A047;
+  color: white;
+  padding: 12px;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  width: auto;
+  margin-bottom: 5px;
+}
+
 
 /* The popup form - hidden by default */
 .form-popup {
