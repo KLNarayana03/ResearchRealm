@@ -60,7 +60,7 @@ $result_calendar->execute();
 
   <div class="header">
 
-    <a href="#" style="margin-left: 5px;">App logo</a>
+    <a href="landingpage.php" style="margin-left: 5px;">App logo</a>
     
     <div id="logout">Logout<a href="logout.php"><i class="fas fa-sign-out-alt" style="margin-left: 15px;"></i></a></div>
     
@@ -89,13 +89,12 @@ $result_calendar->execute();
         <!-- <i class="fa fa-caret-down"></i> -->
     </button>
       <div class="dropdown-container">
-      <button class="open-button" onclick="openForm()">Create new Project</button>
-
+      <button class="open-formbutton" onclick="openForm()">Create new Project</button>
 <div class="form-popup" id="myForm">
   <form action="createproject.php" class="form-container" method="post">
-    
-    <hr class="new1">
 
+    <button class="open-button">Create new Project</button>  
+    <hr class="new1">
     <input for="projectname" type="text" placeholder="Enter Project Name" name="projectname" required>
     <select for="projecttype" id="projecttype" name="projecttype">
     <option value="btp">B.Tech Project</option>
@@ -116,10 +115,12 @@ $result_calendar->execute();
 <script>
 function openForm() {
   document.getElementById("myForm").style.display = "block";
+  document.getElementById("main").style.display = "none";
 }
 
 function closeForm() {
   document.getElementById("myForm").style.display = "none";
+  document.getElementById("main").style.display = "block";
 }
 </script>
         <!-- <a href="#">B.Tech Project</a>
@@ -133,10 +134,10 @@ function closeForm() {
       <!-- <i class="fa fa-caret-down"></i> -->
       </button>
       <div class="dropdown-container">
-        <button class="open-button" onclick="openForm2()">Create new Task</button>
+        <button class="open-formbutton" onclick="openForm2()">Create new Task</button>
         <div class="form-popup" id="myForm2">
   <form action="createtasks.php" class="form-container" method="post">
-    
+    <button class="open-button">Create new Task</button>  
     <hr class="new1">
     <input for="taskname" type="text" placeholder="Enter Task Name" name="taskname" required>
     <select for="tasktype" id="projecttype" name="tasktype" style="margin-bottom:20px;">
@@ -154,10 +155,12 @@ function closeForm() {
 <script>
 function openForm2() {
   document.getElementById("myForm2").style.display = "block";
+  document.getElementById("main").style.display = "none";
 }
 
 function closeForm2() {
   document.getElementById("myForm2").style.display = "none";
+  document.getElementById("main").style.display = "block";
 }
 </script>
       </div>
@@ -166,10 +169,11 @@ function closeForm2() {
    <!-- <i class="fa fa-caret-down"></i>-->
   </button>
   <div class="dropdown-container">
-  <button class="open-button" onclick="openForm3()">Create new Calendar Entry</button>
+  <button class="open-formbutton" onclick="openForm3()">New Calendar Entry</button>
         <div class="form-popup" id="myForm3">
   <form action="createcalendarentries.php" class="form-container" method="post">
     
+  <button class="open-button">Create new Calendar Entry</button>  
     <hr class="new1">
     <input for="calendarentryname" type="text" placeholder="Title" name="calendarentryname" required>
     <select for="calendarentrytype" id="projecttype" name="calendarentrytype" style="margin-bottom:20px;">
@@ -188,10 +192,12 @@ function closeForm2() {
 <script>
 function openForm3() {
   document.getElementById("myForm3").style.display = "block";
+  document.getElementById("main").style.display = "none";
 }
 
 function closeForm3() {
   document.getElementById("myForm3").style.display = "none";
+  document.getElementById("main").style.display = "block";
 }
 </script>
   </div>
