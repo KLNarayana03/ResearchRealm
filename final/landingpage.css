@@ -224,6 +224,28 @@ top: 15vh;
 left: 38.5vw;
 }
 
+.open-formbutton {
+  background-color: #4472C4;
+  margin-left: 15px;
+  color: #002060;
+  padding: 12px;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  width: auto;
+  }
+
+.open-formbutton:hover {
+    background-color: #4472C4;
+    margin-left: 15px;
+    color: rgba(41, 59, 82, 0.8);
+    padding: 12px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    width: auto;
+  }
+
 .topbutton {
   background-color: #43A047;
   color: white;
@@ -287,7 +309,7 @@ font-size: 17px;
 padding: 10px;
 border: none;
 cursor: pointer;
-width: 10%;
+width: 100px;
 margin-bottom: 4%;
 margin-left: 2px;
 }
