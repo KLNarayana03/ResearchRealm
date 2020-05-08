@@ -51,7 +51,7 @@ $result_calendar->execute();
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   
- <title>Details Page</title> 
+ <title>Assign Project</title> 
 <link rel="stylesheet" href="landingpage.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="font-awesome.css">
@@ -208,16 +208,9 @@ function closeForm3() {
     <i class="fa fa-caret-down"></i>
   </button>
   <div class="dropdown-container">
-    <button class="dropdown-btn">Project 
-        <i class="fa fa-caret-down"></i>
-      </button>
-      <div class="dropdown-container">
-        <a href="#">B.Tech Project</a>
-        <a href="#">M.Tech Project</a>
-        <a href="#">PhD Project</a>
-        <a href="#">Sponsored Project</a>
-        <a href="#">Intern Project</a>
-      </div>
+  <a href="assignproject.php" style="color:white;">Project 
+     <!-- <i class="fa fa-caret-down"></i> -->
+      </a>
 
       <button class="dropdown-btn">Tasks 
         <i class="fa fa-caret-down"></i>
@@ -256,33 +249,57 @@ function closeForm3() {
     <i class="fa fa-caret-down"></i>
   </button>
   <div class="dropdown-container">
-    <button class="dropdown-btn">Resources
-        <i class="fa fa-caret-down"></i>
-      </button>
-      <div class="dropdown-container">
-        <a href="#">Documents</a>
-        <a href="#">Softwares</a>
-        <a href="#">Files</a>
-        <a href="#">Images</a>
-        <a href="#">Videos</a>
-      </div>
-  </div>
+    <button class="open-formbutton" onclick="openshareform()">Resources</button>
+ <div class="form-popup" id="shareform">
+  <form action="shareresources.php" class="form-container" method="post" enctype="multipart/form-data">
+    <button class="open-button">Share Resources</button>  
+    <hr class="new1">
+
+  <!-- code for selecting project in which we want to share resource-->
+  <!-- I am writing a sample code-->
+  <select for="project name" id="projecttype" name="projectname" style="margin-bottom:20px;">
+    <?php
+      $query = "select * from projects where userid = $id";
+      $result_resource =$conn->prepare($query);
+      $result_resource->execute();
+      while($rows=$result_resource->fetch(PDO::FETCH_ASSOC)){
+        $projectname = $rows['projectname'];
+        echo "<option>$projectname</option>";
+      }
+    ?> 
+  </select>
+  
+    
+    <input  type="file" name="fileToUpload">
+    <br>
+    <textarea for="resourcedesc" class="projectdescription" name="resourcedesc" placeholder="Enter Resource Description (optional)" style="height:200px"></textarea>
+
+    <!-- <button type="submit" class="btn" name="projectup-btn">Submit</button> -->
+    <input type="submit" name="projectup-btn" class="btn" value="Share">
+    <button type="button" class="btn cancel" onclick="closeshareform()">Close</button>
+  </form>
+ </div>
+  <script>
+  function openshareform() {
+    document.getElementById("shareform").style.display = "block";
+    document.getElementById("main").style.display = "none";
+  }
+
+  function closeshareform() {
+    document.getElementById("shareform").style.display = "none";
+    document.getElementById("main").style.display = "block";
+  }
+  </script>
+</div>
 
 
   <button class="dropdown-btn"><i class="far fa-trash-alt" style="margin-right: 20px;"></i>End 
     <i class="fa fa-caret-down"></i>
   </button>
   <div class="dropdown-container">
-    <button class="dropdown-btn">Project 
-        <i class="fa fa-caret-down"></i>
-      </button>
-      <div class="dropdown-container">
-        <a href="#">B.Tech Project</a>
-        <a href="#">M.Tech Project</a>
-        <a href="#">PhD Project</a>
-        <a href="#">Sponsored Project</a>
-        <a href="#">Intern Project</a>
-      </div>
+  <a href="assignproject.php" style="color:white;">Project 
+     <!-- <i class="fa fa-caret-down"></i> -->
+      </a>
 
       <button class="dropdown-btn">Tasks 
         <i class="fa fa-caret-down"></i>
