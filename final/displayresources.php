@@ -3,7 +3,9 @@
 include_once 'source/db_connect.php';
 include_once 'source/session.php';
 
-$query = "select * from resources where userid = $_SESSION[id]";
+$projectid= $_GET['projectid'];
+
+$query = "select * from resources where projectid = $projectid";
 $result_resources_display =$conn->prepare($query);
 $result_resources_display->execute();
 ?>
