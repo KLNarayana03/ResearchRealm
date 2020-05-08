@@ -71,5 +71,6 @@ if(isset($_POST['projectup-btn'])){
     $query = "INSERT INTO resources(projectname,resources,resourcedesc,path,projectid) VALUES ('$projectname','$resource','$resourcedesc','$target','$rows[id]')";
     $result_resource_insert =$conn->prepare($query);
     $result_resource_insert->execute();
+    echo $result_resource_insert->rowCount() . " Resource SHARED successfully to the project";
 }
 ?>
