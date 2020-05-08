@@ -398,7 +398,7 @@ function closeForm3() {
             $result_project->execute();
             while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
                 echo "
-                <a href = 'displayresources.php?userid=$userid'>Show Resources</a>
+                <a href = 'displayresources.php?projectid=$projectid'>Show Resources</a>
                 ";
                 
               }
