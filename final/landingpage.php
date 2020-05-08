@@ -42,7 +42,7 @@ $result_calendar->execute();
 
   <div class="header">
 
-    <a href="#" style="margin-left: 5px;">App logo</a>
+    <a href="landingpage.php" style="margin-left: 5px;">App logo</a>
     
     <div id="logout">Logout<a href="logout.php"><i class="fas fa-sign-out-alt" style="margin-left: 15px;"></i></a></div>
     
@@ -51,7 +51,7 @@ $result_calendar->execute();
 
 <div class="row">
 
-  <div class="sidenav">
+  <div class="sidenav" id="sidenav">
     
   <button class="dropdown-btn"><i class="fas fa-tasks" style="margin-right: 15px;"></i>Current Status
     <i class="fa fa-caret-down"></i>
@@ -71,13 +71,12 @@ $result_calendar->execute();
         <!-- <i class="fa fa-caret-down"></i> -->
     </button>
       <div class="dropdown-container">
-      <button class="open-button" onclick="openForm()">Create new Project</button>
-
+      <button class="open-formbutton" onclick="openForm()">Create new Project</button>
 <div class="form-popup" id="myForm">
   <form action="createproject.php" class="form-container" method="post">
-    
-    <hr class="new1">
 
+    <button class="open-button">Create new Project</button>  
+    <hr class="new1">
     <input for="projectname" type="text" placeholder="Enter Project Name" name="projectname" required>
     <select for="projecttype" id="projecttype" name="projecttype">
     <option value="btp">B.Tech Project</option>
@@ -98,10 +97,12 @@ $result_calendar->execute();
 <script>
 function openForm() {
   document.getElementById("myForm").style.display = "block";
+  document.getElementById("main").style.display = "none";
 }
 
 function closeForm() {
   document.getElementById("myForm").style.display = "none";
+  document.getElementById("main").style.display = "block";
 }
 </script>
         <!-- <a href="#">B.Tech Project</a>
@@ -115,10 +116,10 @@ function closeForm() {
       <!-- <i class="fa fa-caret-down"></i> -->
       </button>
       <div class="dropdown-container">
-        <button class="open-button" onclick="openForm2()">Create new Task</button>
+        <button class="open-formbutton" onclick="openForm2()">Create new Task</button>
         <div class="form-popup" id="myForm2">
   <form action="createtasks.php" class="form-container" method="post">
-    
+    <button class="open-button">Create new Task</button>  
     <hr class="new1">
     <input for="taskname" type="text" placeholder="Enter Task Name" name="taskname" required>
     <select for="tasktype" id="projecttype" name="tasktype" style="margin-bottom:20px;">
@@ -136,10 +137,12 @@ function closeForm() {
 <script>
 function openForm2() {
   document.getElementById("myForm2").style.display = "block";
+  document.getElementById("main").style.display = "none";
 }
 
 function closeForm2() {
   document.getElementById("myForm2").style.display = "none";
+  document.getElementById("main").style.display = "block";
 }
 </script>
       </div>
@@ -148,10 +151,11 @@ function closeForm2() {
    <!-- <i class="fa fa-caret-down"></i>-->
   </button>
   <div class="dropdown-container">
-  <button class="open-button" onclick="openForm3()">Create new Calendar Entry</button>
+  <button class="open-formbutton" onclick="openForm3()">New Calendar Entry</button>
         <div class="form-popup" id="myForm3">
   <form action="createcalendarentries.php" class="form-container" method="post">
     
+  <button class="open-button">Create new Calendar Entry</button>  
     <hr class="new1">
     <input for="calendarentryname" type="text" placeholder="Title" name="calendarentryname" required>
     <select for="calendarentrytype" id="projecttype" name="calendarentrytype" style="margin-bottom:20px;">
@@ -170,10 +174,12 @@ function closeForm2() {
 <script>
 function openForm3() {
   document.getElementById("myForm3").style.display = "block";
+  document.getElementById("main").style.display = "none";
 }
 
 function closeForm3() {
   document.getElementById("myForm3").style.display = "none";
+  document.getElementById("main").style.display = "block";
 }
 </script>
   </div>
@@ -184,16 +190,10 @@ function closeForm3() {
     <i class="fa fa-caret-down"></i>
   </button>
   <div class="dropdown-container">
-    <button class="dropdown-btn">Project 
-        <i class="fa fa-caret-down"></i>
-      </button>
-      <div class="dropdown-container">
-        <a href="#">B.Tech Project</a>
-        <a href="#">M.Tech Project</a>
-        <a href="#">PhD Project</a>
-        <a href="#">Sponsored Project</a>
-        <a href="#">Intern Project</a>
-      </div>
+    <a href="assignproject.php" style="color:white;">Project 
+     <!-- <i class="fa fa-caret-down"></i> -->
+      </a>
+     
 
       <button class="dropdown-btn">Tasks 
         <i class="fa fa-caret-down"></i>
@@ -231,12 +231,11 @@ function closeForm3() {
   <button class="dropdown-btn"><i class="fas fa-share-alt" style="margin-right: 20px;"></i>Share 
     <i class="fa fa-caret-down"></i>
   </button>
-
   <div class="dropdown-container">
-    <button class="open-button" onclick="openshareform()">Resources</button>
+    <button class="open-formbutton" onclick="openshareform()">Resources</button>
  <div class="form-popup" id="shareform">
   <form action="shareresources.php" class="form-container" method="post" enctype="multipart/form-data">
-    
+    <button class="open-button">Share Resources</button>  
     <hr class="new1">
 
   <!-- code for selecting project in which we want to share resource-->
@@ -266,10 +265,12 @@ function closeForm3() {
   <script>
   function openshareform() {
     document.getElementById("shareform").style.display = "block";
+    document.getElementById("main").style.display = "none";
   }
 
   function closeshareform() {
     document.getElementById("shareform").style.display = "none";
+    document.getElementById("main").style.display = "block";
   }
   </script>
 </div>
@@ -278,18 +279,10 @@ function closeForm3() {
   <button class="dropdown-btn"><i class="far fa-trash-alt" style="margin-right: 20px;"></i>End 
     <i class="fa fa-caret-down"></i>
   </button>
-
   <div class="dropdown-container">
-    <button class="dropdown-btn">Project 
-        <i class="fa fa-caret-down"></i>
-      </button>
-      <div class="dropdown-container">
-        <a href="#">B.Tech Project</a>
-        <a href="#">M.Tech Project</a>
-        <a href="#">PhD Project</a>
-        <a href="#">Sponsored Project</a>
-        <a href="#">Intern Project</a>
-      </div>
+  <a href="assignproject.php" style="color:white;">Project 
+     <!-- <i class="fa fa-caret-down"></i> -->
+      </a>
 
       <button class="dropdown-btn">Tasks 
         <i class="fa fa-caret-down"></i>
@@ -329,7 +322,7 @@ function closeForm3() {
 
   </div>
 
-<div class="main">
+<div class="main" id="main">
 <?php if(!isset($_SESSION['username'])): header("location: logout.php");?>
 
     <?php else: ?>
@@ -337,58 +330,49 @@ function closeForm3() {
     <?php endif ?>
 
     <!-- <?php echo "<h1> Welcome ".$_SESSION['username']." To Dashboard </h1>" ?> -->
-<table align="center" style="width:800px; line-height:40px; border: 1px solid #ddd;">
+<table align="center" style="width:650px; line-height:40px; border: 1px solid #ddd;">
       <tr>
-        <th colspan="5" style="text-align:center;"><h3>Ongoing Projects</h3></th>  
+        <th colspan="5" style="background-color:lightgreen; text-align:center;"><h3>Ongoing Projects</h3></th>  
       </tr>
       <tr>
-        <th style="padding:5px; border: 1px solid #ddd;">Project Name</th>
-        <th style="padding:5px; border: 1px solid #ddd;">Project Type</th>
-        <th style="padding:5px; border: 1px solid #ddd;">Project Date</th>
-        <th style="padding:5px; border: 1px solid #ddd;">Members</th>
-        <th style="padding:5px; border: 1px solid #ddd;">Project Details</th>
+        <th style="padding:12px; border: 1px solid #ddd;">Project Name</th>
+        <th style="padding:12px; border: 1px solid #ddd;">Project Type</th>
+        <th style="padding:12px; border: 1px solid #ddd;">Project Date</th>
+        <th style="padding:12px; border: 1px solid #ddd;">Project Details</th>
       </tr>
       <?php
         while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
             echo "
             <tr>
-            <td style=\"padding:5px; border: 1px solid #ddd;\">".$rows['projectname']."</td>
-            <td style=\"padding:5px; border: 1px solid #ddd;\">".$rows['projecttype']."</td>
-            <td style=\"padding:5px; border: 1px solid #ddd;\">".$rows['projectdate']."</td>
-            <td style=\"padding:5px; border: 1px solid #ddd;\"><button onclick=\"myFunction()\">Members</button></td>
-            <td style=\"padding:5px; border: 1px solid #ddd;\"><a href = 'details.php?rn=$rows[id]'>Details</td>
+            <td style=\"padding:12px; border: 1px solid #ddd;\">".$rows['projectname']."</td>
+            <td style=\"padding:12px; border: 1px solid #ddd;\">".$rows['projecttype']."</td>
+            <td style=\"padding:12px; border: 1px solid #ddd;\">".$rows['projectdate']."</td>
+            <td style=\"padding:12px; border: 1px solid #ddd;\"><a href = 'details.php?rn=$rows[id]'>Details</td>
             </tr>
             ";
         }
         ?>      
  </table>
-            <p id="demo"></p>
-
-            <script>
-              function myFunction() {
-              document.getElementById("demo").innerHTML = "Hello World";
-              }
-            </script>
   
    <br>      
- <table align="center" style="width:600px; line-height:40px; border: 1px solid #ddd;">
+ <table align="center" style="width:650px; line-height:40px; border: 1px solid #ddd;">
       <tr>
-        <th colspan="4" style="text-align:center;"><h3>Present Tasks</h3></th>  
+        <th colspan="4" style="background-color:lightblue; text-align:center;"><h3>Present Tasks</h3></th>  
       </tr>
       <tr>
-        <th style="padding:5px; border: 1px solid #ddd;">Task Name</th>
-        <th style="padding:5px; border: 1px solid #ddd;">Task Type</th>
-        <th style="padding:5px; border: 1px solid #ddd;">Task Last Date</th>
-        <th style="padding:5px; border: 1px solid #ddd;">Task Creation Date</th>
+        <th style="padding:12px; border: 1px solid #ddd;">Task Name</th>
+        <th style="padding:12px; border: 1px solid #ddd;">Task Type</th>
+        <th style="padding:12px; border: 1px solid #ddd;">Task Last Date</th>
+        <th style="padding:12px; border: 1px solid #ddd;">Task Creation Date</th>
       </tr>
       <?php
         while($rows=$result_task->fetch(PDO::FETCH_ASSOC)){
       ?>
         <tr>
-          <td style="padding:5px; border: 1px solid #ddd;"><?php echo $rows['taskname']; ?></td>
-          <td style="padding:5px; border: 1px solid #ddd;"><?php echo $rows['tasktype']; ?></td>
-          <td style="padding:5px; border: 1px solid #ddd;"><?php echo $rows['tasklastdate']; ?></td>
-          <td style="padding:5px; border: 1px solid #ddd;"><?php echo $rows['taskdate']; ?></td>
+          <td style="padding:12px; border: 1px solid #ddd;"><?php echo $rows['taskname']; ?></td>
+          <td style="padding:12px; border: 1px solid #ddd;"><?php echo $rows['tasktype']; ?></td>
+          <td style="padding:12px; border: 1px solid #ddd;"><?php echo $rows['tasklastdate']; ?></td>
+          <td style="padding:12px; border: 1px solid #ddd;"><?php echo $rows['taskdate']; ?></td>
         </tr>
           <?php
         }
@@ -397,24 +381,24 @@ function closeForm3() {
  </table>     
  <br>
    <br>      
- <table align="center" style="width:600px; line-height:40px; border: 1px solid #ddd;">
+ <table align="center" style="width:650px; line-height:40px; border: 1px solid #ddd;">
       <tr>
-        <th colspan="4" style="text-align:center;"><h3>Calendar Entries</h3></th>  
+        <th colspan="4" style="background-color:rgba(255, 0, 0, 0.4); text-align:center;"><h3>Calendar Entries</h3></th>  
       </tr>
       <tr>
-        <th style="padding:5px; border: 1px solid #ddd;">Title</th>
-        <th style="padding:5px; border: 1px solid #ddd;">Type</th>
-        <th style="padding:5px; border: 1px solid #ddd;">Last Date</th>
-        <th style="padding:5px; border: 1px solid #ddd;">Creation Date</th>
+        <th style="padding:12px; border: 1px solid #ddd;">Title</th>
+        <th style="padding:12px; border: 1px solid #ddd;">Type</th>
+        <th style="padding:12px; border: 1px solid #ddd;">Last Date</th>
+        <th style="padding:12px; border: 1px solid #ddd;">Creation Date</th>
       </tr>
       <?php
         while($rows=$result_calendar->fetch(PDO::FETCH_ASSOC)){
       ?>
         <tr>
-          <td style="padding:5px; border: 1px solid #ddd;"><?php echo $rows['calendarentryname']; ?></td>
-          <td style="padding:5px; border: 1px solid #ddd;"><?php echo $rows['calendarentrytype']; ?></td>
-          <td style="padding:5px; border: 1px solid #ddd;"><?php echo $rows['calendarentrylastdate']; ?></td>
-          <td style="padding:5px; border: 1px solid #ddd;"><?php echo $rows['calendarentrydate']; ?></td>
+          <td style="padding:12px; border: 1px solid #ddd;"><?php echo $rows['calendarentryname']; ?></td>
+          <td style="padding:12px; border: 1px solid #ddd;"><?php echo $rows['calendarentrytype']; ?></td>
+          <td style="padding:12px; border: 1px solid #ddd;"><?php echo $rows['calendarentrylastdate']; ?></td>
+          <td style="padding:12px; border: 1px solid #ddd;"><?php echo $rows['calendarentrydate']; ?></td>
         </tr>
           <?php
         }
@@ -443,12 +427,11 @@ function closeForm3() {
       });
     }
     </script>
-    <script type="text/javascript">
+<script type="text/javascript">
     window.onload = function() {
         var left=document.getElementById('sidenav').clientHeight;
         var right=document.getElementById('main').clientHeight;
         if(left>right) {
-            console.log(document.getElementById('sidenav').style.height=auto+"px");
             document.getElementById('main').style.height=left+"px";
         }
         if(left<right) {
