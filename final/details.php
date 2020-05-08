@@ -51,7 +51,7 @@ $result_calendar->execute();
 
   <div class="header">
 
-    <a href="#" style="margin-left: 5px;">App logo</a>
+    <a href="landingpage.php" style="margin-left: 5px;">App logo</a>
     
     <div id="logout">Logout<a href="logout.php"><i class="fas fa-sign-out-alt" style="margin-left: 15px;"></i></a></div>
     
@@ -80,13 +80,12 @@ $result_calendar->execute();
         <!-- <i class="fa fa-caret-down"></i> -->
     </button>
       <div class="dropdown-container">
-      <button class="open-button" onclick="openForm()">Create new Project</button>
-
+      <button class="open-formbutton" onclick="openForm()">Create new Project</button>
 <div class="form-popup" id="myForm">
   <form action="createproject.php" class="form-container" method="post">
-    
-    <hr class="new1">
 
+    <button class="open-button">Create new Project</button>  
+    <hr class="new1">
     <input for="projectname" type="text" placeholder="Enter Project Name" name="projectname" required>
     <select for="projecttype" id="projecttype" name="projecttype">
     <option value="btp">B.Tech Project</option>
@@ -107,10 +106,12 @@ $result_calendar->execute();
 <script>
 function openForm() {
   document.getElementById("myForm").style.display = "block";
+  document.getElementById("main").style.display = "none";
 }
 
 function closeForm() {
   document.getElementById("myForm").style.display = "none";
+  document.getElementById("main").style.display = "block";
 }
 </script>
         <!-- <a href="#">B.Tech Project</a>
@@ -124,10 +125,10 @@ function closeForm() {
       <!-- <i class="fa fa-caret-down"></i> -->
       </button>
       <div class="dropdown-container">
-        <button class="open-button" onclick="openForm2()">Create new Task</button>
+        <button class="open-formbutton" onclick="openForm2()">Create new Task</button>
         <div class="form-popup" id="myForm2">
   <form action="createtasks.php" class="form-container" method="post">
-    
+    <button class="open-button">Create new Task</button>  
     <hr class="new1">
     <input for="taskname" type="text" placeholder="Enter Task Name" name="taskname" required>
     <select for="tasktype" id="projecttype" name="tasktype" style="margin-bottom:20px;">
@@ -145,10 +146,12 @@ function closeForm() {
 <script>
 function openForm2() {
   document.getElementById("myForm2").style.display = "block";
+  document.getElementById("main").style.display = "none";
 }
 
 function closeForm2() {
   document.getElementById("myForm2").style.display = "none";
+  document.getElementById("main").style.display = "block";
 }
 </script>
       </div>
@@ -157,10 +160,11 @@ function closeForm2() {
    <!-- <i class="fa fa-caret-down"></i>-->
   </button>
   <div class="dropdown-container">
-  <button class="open-button" onclick="openForm3()">Create new Calendar Entry</button>
+  <button class="open-formbutton" onclick="openForm3()">New Calendar Entry</button>
         <div class="form-popup" id="myForm3">
   <form action="createcalendarentries.php" class="form-container" method="post">
     
+  <button class="open-button">Create new Calendar Entry</button>  
     <hr class="new1">
     <input for="calendarentryname" type="text" placeholder="Title" name="calendarentryname" required>
     <select for="calendarentrytype" id="projecttype" name="calendarentrytype" style="margin-bottom:20px;">
@@ -179,10 +183,12 @@ function closeForm2() {
 <script>
 function openForm3() {
   document.getElementById("myForm3").style.display = "block";
+  document.getElementById("main").style.display = "none";
 }
 
 function closeForm3() {
   document.getElementById("myForm3").style.display = "none";
+  document.getElementById("main").style.display = "block";
 }
 </script>
   </div>
@@ -193,16 +199,9 @@ function closeForm3() {
     <i class="fa fa-caret-down"></i>
   </button>
   <div class="dropdown-container">
-    <button class="dropdown-btn">Project 
-        <i class="fa fa-caret-down"></i>
-      </button>
-      <div class="dropdown-container">
-        <a href="#">B.Tech Project</a>
-        <a href="#">M.Tech Project</a>
-        <a href="#">PhD Project</a>
-        <a href="#">Sponsored Project</a>
-        <a href="#">Intern Project</a>
-      </div>
+  <a href="assignproject.php" style="color:white;">Project 
+     <!-- <i class="fa fa-caret-down"></i> -->
+      </a>
 
       <button class="dropdown-btn">Tasks 
         <i class="fa fa-caret-down"></i>
@@ -241,34 +240,57 @@ function closeForm3() {
     <i class="fa fa-caret-down"></i>
   </button>
   <div class="dropdown-container">
-    <button class="dropdown-btn">Resources
-        <i class="fa fa-caret-down"></i>
-      </button>
-      <div class="dropdown-container">
-        <a href="#">Documents</a>
-        <a href="#">Softwares</a>
-        <a href="#">Files</a>
-        <a href="#">Images</a>
-        <a href="#">Videos</a>
-      </div>
-  </div>
+    <button class="open-formbutton" onclick="openshareform()">Resources</button>
+ <div class="form-popup" id="shareform">
+  <form action="shareresources.php" class="form-container" method="post" enctype="multipart/form-data">
+    <button class="open-button">Share Resources</button>  
+    <hr class="new1">
+
+  <!-- code for selecting project in which we want to share resource-->
+  <!-- I am writing a sample code-->
+  <select for="project name" id="projecttype" name="projectname" style="margin-bottom:20px;">
+    <?php
+      $query = "select * from projects where userid = $id";
+      $result_resource =$conn->prepare($query);
+      $result_resource->execute();
+      while($rows=$result_resource->fetch(PDO::FETCH_ASSOC)){
+        $projectname = $rows['projectname'];
+        echo "<option>$projectname</option>";
+      }
+    ?> 
+  </select>
+  
+    
+    <input  type="file" name="fileToUpload">
+    <br>
+    <textarea for="resourcedesc" class="projectdescription" name="resourcedesc" placeholder="Enter Resource Description (optional)" style="height:200px"></textarea>
+
+    <!-- <button type="submit" class="btn" name="projectup-btn">Submit</button> -->
+    <input type="submit" name="projectup-btn" class="btn" value="Share">
+    <button type="button" class="btn cancel" onclick="closeshareform()">Close</button>
+  </form>
+ </div>
+  <script>
+  function openshareform() {
+    document.getElementById("shareform").style.display = "block";
+    document.getElementById("main").style.display = "none";
+  }
+
+  function closeshareform() {
+    document.getElementById("shareform").style.display = "none";
+    document.getElementById("main").style.display = "block";
+  }
+  </script>
+</div>
 
 
   <button class="dropdown-btn"><i class="far fa-trash-alt" style="margin-right: 20px;"></i>End 
     <i class="fa fa-caret-down"></i>
   </button>
   <div class="dropdown-container">
-    <button class="dropdown-btn">Project 
-        <i class="fa fa-caret-down"></i>
-      </button>
-      <div class="dropdown-container">
-        <a href="#">B.Tech Project</a>
-        <a href="#">M.Tech Project</a>
-        <a href="#">PhD Project</a>
-        <a href="#">Sponsored Project</a>
-        <a href="#">Intern Project</a>
-      </div>
-
+  <a href="assignproject.php" style="color:white;">Project 
+     <!-- <i class="fa fa-caret-down"></i> -->
+      </a>
       <button class="dropdown-btn">Tasks 
         <i class="fa fa-caret-down"></i>
       </button>
@@ -453,9 +475,9 @@ function closeForm3() {
         while($rows=$result_invite->fetch(PDO::FETCH_ASSOC)){
             echo "
             <tr>
-            <td style=\"padding:5px; border: 1px solid #ddd;\">".$sno."</td>
-            <td style=\"padding:5px; border: 1px solid #ddd;\">".$rows['username']."</td>
-            <td style=\"padding:5px; border: 1px solid #ddd;\">".$rows['post']."</td>
+            <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$sno."</td>
+            <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['username']."</td>
+            <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['post']."</td>
             </tr>
             ";
             $sno++;
