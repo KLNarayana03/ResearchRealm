@@ -5,8 +5,7 @@ require_once 'source/db_connect.php';
 
 $userid = $_SESSION['id'];
 
-
-
+$dbh = new PDO("mysql:host=localhost;dbname=www","root","");
 
 if(isset($_POST['projectup-btn'])){
 //     $target = "uploads/" . basename($_FILES["fileToUpload"]["name"]);
@@ -56,9 +55,20 @@ if(isset($_POST['projectup-btn'])){
     $resourcedesc = $_POST["resourcedesc"];
     $projectname = $_POST["projectname"];
 
+    // $query1 = "select * from projects where projectname = $projectname";
+    // $result_resources_projectid =$conn->prepare($query1);
+    // $result_resources_projectid->execute();
+
+    // $rows=$result_resources_projectid->fetch(PDO::FETCH_ASSOC);
+
+    $query1 = $dbh->prepare("select * from projects where projectname=?");
+    $query1->bindParam(1,$projectname);
+    $query1->execute();
+    $rows = $query1->fetch();
+
     $target = "./uploads/".$resource;
     move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target);
-    $query = "INSERT INTO resources(projectname,resources,resourcedesc,path,userid) VALUES ('$projectname','$resource','$resourcedesc','$target','$userid')";
+    $query = "INSERT INTO resources(projectname,resources,resourcedesc,path,projectid) VALUES ('$projectname','$resource','$resourcedesc','$target','$rows[id]')";
     $result_resource_insert =$conn->prepare($query);
     $result_resource_insert->execute();
 }
