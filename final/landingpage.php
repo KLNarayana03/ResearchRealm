@@ -195,13 +195,9 @@ function closeForm3() {
       </a>
      
 
-      <button class="dropdown-btn">Tasks 
-        <i class="fa fa-caret-down"></i>
-      </button>
-      <div class="dropdown-container">
-        <a href="#">Project Deliverables</a>
-        <a href="#">Others</a>
-      </div>
+      <a href="assigntasktable.php" style="color:white;">Task
+     <!-- <i class="fa fa-caret-down"></i> -->
+      </a>
 
       <button class="dropdown-btn">Inventory 
         <!--<i class="fa fa-caret-down"></i> -->
@@ -363,7 +359,7 @@ function closeForm3() {
         <th style="padding:12px; border: 1px solid #ddd;">Task Name</th>
         <th style="padding:12px; border: 1px solid #ddd;">Task Type</th>
         <th style="padding:12px; border: 1px solid #ddd;">Task Last Date</th>
-        <th style="padding:12px; border: 1px solid #ddd;">Task Creation Date</th>
+        <th style="padding:12px; border: 1px solid #ddd;">Task Details</th>
       </tr>
       <?php
         while($rows=$result_task->fetch(PDO::FETCH_ASSOC)){
@@ -372,7 +368,7 @@ function closeForm3() {
           <td style="padding:12px; border: 1px solid #ddd;"><?php echo $rows['taskname']; ?></td>
           <td style="padding:12px; border: 1px solid #ddd;"><?php echo $rows['tasktype']; ?></td>
           <td style="padding:12px; border: 1px solid #ddd;"><?php echo $rows['tasklastdate']; ?></td>
-          <td style="padding:12px; border: 1px solid #ddd;"><?php echo $rows['taskdate']; ?></td>
+          <td style="padding:12px; border: 1px solid #ddd;"><a href = 'taskdetails.php?rn=$rows[id]'>Details</td>
         </tr>
           <?php
         }
