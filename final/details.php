@@ -203,14 +203,9 @@ function closeForm3() {
      <!-- <i class="fa fa-caret-down"></i> -->
       </a>
 
-      <button class="dropdown-btn">Tasks 
-        <i class="fa fa-caret-down"></i>
-      </button>
-      <div class="dropdown-container">
-        <a href="#">Project Deliverables</a>
-        <a href="#">Others</a>
-      </div>
-
+      <a href="assignproject.php" style="color:white;">Task
+     <!-- <i class="fa fa-caret-down"></i> -->
+      </a>
       <button class="dropdown-btn">Inventory 
         <!--<i class="fa fa-caret-down"></i> -->
       </button>
@@ -438,6 +433,22 @@ function closeForm3() {
             while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
                 echo "
                 <a href = 'assign.php?rn=$projectid'>Assign</a>
+                ";
+                
+              }
+    ?>
+    <!-- php code for assigning project -->
+    </div><br>
+
+    <div style="font-size:18px;">
+    Assign Task: &nbsp
+    <?php   
+            $query = "select * from projects where userid = $userid and id = $projectid";
+            $result_project =$conn->prepare($query);
+            $result_project->execute();
+            while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
+                echo "
+                <a href = 'assigntask.php?rn=$projectid'>Assign</a>
                 ";
                 
               }
