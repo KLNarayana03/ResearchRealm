@@ -212,13 +212,9 @@ function closeForm3() {
      <!-- <i class="fa fa-caret-down"></i> -->
       </a>
 
-      <button class="dropdown-btn">Tasks 
-        <i class="fa fa-caret-down"></i>
-      </button>
-      <div class="dropdown-container">
-        <a href="#">Project Deliverables</a>
-        <a href="#">Others</a>
-      </div>
+      <a href="assignproject.php" style="color:white;">Task 
+     <!-- <i class="fa fa-caret-down"></i> -->
+      </a>
 
       <button class="dropdown-btn">Inventory 
         <!--<i class="fa fa-caret-down"></i> -->
@@ -380,7 +376,7 @@ function closeForm3() {
     <div>  
     <form action="" method="POST">
     <label style="font-size:17.5px; font-weight:100;">Select Name: &nbsp  </label>
-    <select for="assignname" id="assignname" name="assignname">
+    <select for="assignname" id="assignname" name="assignname" required>
         <?php 
             while($rows=$result_assign->fetch(PDO::FETCH_ASSOC))
             {
@@ -394,7 +390,7 @@ function closeForm3() {
     <div>
     <label style="font-size:17.5px; font-weight:100;">Assign Role: &nbsp </label>
     <select for="assignrole" id="assignrole" name="assignrole" style="margin-bottom:20px;">
-      <option value="lab">Lab Incharge</option>
+      <option value="lab incharge">Lab Incharge</option>
       <option value="mentor">Mentor</option>
     </select>
     </div><br>
