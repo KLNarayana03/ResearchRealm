@@ -363,14 +363,15 @@ function closeForm3() {
       </tr>
       <?php
         while($rows=$result_task->fetch(PDO::FETCH_ASSOC)){
-      ?>
-        <tr>
-          <td style="padding:12px; border: 1px solid #ddd;"><?php echo $rows['taskname']; ?></td>
-          <td style="padding:12px; border: 1px solid #ddd;"><?php echo $rows['tasktype']; ?></td>
-          <td style="padding:12px; border: 1px solid #ddd;"><?php echo $rows['tasklastdate']; ?></td>
-          <td style="padding:12px; border: 1px solid #ddd;"><a href = 'taskdetails.php?rn=$rows[id]'>Details</td>
+          echo "
+          <tr>
+          <td style=\"padding:12px; border: 1px solid #ddd;\">".$rows['taskname']."</td>
+          <td style=\"padding:12px; border: 1px solid #ddd;\">".$rows['tasktype']."</td>
+          <td style=\"padding:12px; border: 1px solid #ddd;\">".$rows['tasklastdate']."</td>
+          <td style=\"padding:12px; border: 1px solid #ddd;\"><a href = 'taskdetails.php?rn=$rows[id]'>Details</td>
         </tr>
-          <?php
+          ";
+        
         }
           ?>
       
