@@ -6,10 +6,10 @@ include_once 'source/session.php';
 $projectid = $_GET['rn'];
 $userid = $_SESSION['id'];
 $sno = 1;
-//Query for displaying members
-$query = "select * from assign where projectid = $projectid";
-$result_invite =$conn->prepare($query);
-$result_invite->execute();
+//Query for displaying assigned tasks
+$query = "select * from assigntask where projectid = $projectid";
+$result_display_assigned_task =$conn->prepare($query);
+$result_display_assigned_task->execute();
 
 
 $projectid = $_GET['rn'];
@@ -344,7 +344,7 @@ function closeForm3() {
 
     <!-- <?php echo "<h1> Welcome ".$_SESSION['username']." To Dashboard </h1>" ?> -->
   <div class="maincontent">
-    <button class="topbutton">Assign Project</button>
+    <button class="topbutton">Assign Task</button>
     <hr class="new1">
     <div style="font-size:17.5px;">
     <b style="font-size:17.5px; font-weight:100;">Project Name : &nbsp</b> 
@@ -386,6 +386,11 @@ function closeForm3() {
         ?>
     </select>
     </div> <br>
+
+    <div>
+    <label style="font-size:17.5px; font-weight:100;">Task Name: &nbsp </label>
+    <input for="assigntaskname" type="text" placeholder="Enter Task Name" name="assigntaskname" required>
+    </div><br>
     
     <div>
     <label style="font-size:17.5px; font-weight:100;">Task Type: &nbsp </label>
@@ -406,20 +411,20 @@ function closeForm3() {
     <div>
     <table style="width:95%; border: 1px solid #ddd;">
       <tr style="background-color:lightblue;">
-        <th colspan="3" style="text-align:center;"><h3>Project Members</h3></th>  
+        <th colspan="3" style="text-align:center;"><h3>Assigned Tasks</h3></th>  
       </tr>
       <tr>
         <th style="padding:5px; border: 1px solid #ddd; text-align:center;">S.No</th>
         <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Name</th>
-        <th style="padding:5px; border: 1px solid #ddd; text-align:center;">User Type</th> <!-- faculty,mentor,etc -->
+        <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Task Name</th> <!-- faculty,mentor,etc -->
       </tr>
       <?php
-        while($rows=$result_invite->fetch(PDO::FETCH_ASSOC)){
+        while($rows=$result_display_assigned_task->fetch(PDO::FETCH_ASSOC)){
             echo "
             <tr>
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$sno."</td>
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['username']."</td>
-            <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['post']."</td>
+            <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['assigntaskname']."</td>
             </tr>
             ";
             $sno++;
@@ -484,17 +489,18 @@ function closeForm3() {
 <?php
         if(isset($_POST['projectup-btn'])) {
             $projectid = $_GET['rn'];
+            $assigntaskname = $_POST['assigntaskname'];
             $assigntasktype = $_POST['assigntasktype'];
             $assigntaskdesc = $_POST['assigntaskdesc'];
             $assigntaskmember = $_POST['assigntaskmember'];
             
           try {
             if($projectid!=""){
-              $SQLInsert = "INSERT into assigntask(projectid, assigntasktype , assigntaskdesc, username) VALUES ('$projectid','$assigntasktype','$assigntaskdesc','$assigntaskmember')";
+              $SQLInsert = "INSERT into assigntask(projectid, assigntaskname , assigntasktype , assigntaskdesc, username) VALUES ('$projectid','$assigntaskname','$assigntasktype','$assigntaskdesc','$assigntaskmember')";
 
             $statement = $conn->prepare($SQLInsert);
             $statement->execute();
-            echo $statement->rowCount() . " task assigned successfully";
+            echo $statement->rowCount() . "<div style = \" text-align: center; position: absolute; top: 50%; left: 50%;\"> task assigned successfully </div>";
             }
           }
           catch(PDOException $e)
