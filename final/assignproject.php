@@ -195,13 +195,9 @@ function closeForm3() {
       </a>
      
 
-      <button class="dropdown-btn">Tasks 
-        <i class="fa fa-caret-down"></i>
-      </button>
-      <div class="dropdown-container">
-        <a href="#">Project Deliverables</a>
-        <a href="#">Others</a>
-      </div>
+      <a href="assignproject.php" style="color:white;">Task
+     <!-- <i class="fa fa-caret-down"></i> -->
+      </a>
 
       <button class="dropdown-btn">Inventory 
         <!--<i class="fa fa-caret-down"></i> -->
