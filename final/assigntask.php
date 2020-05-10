@@ -376,7 +376,6 @@ function closeForm3() {
     <div>  
     <form action="" method="POST">
     <label style="font-size:17.5px; font-weight:100;">Select Member : &nbsp &nbsp &nbsp  </label>
-
     <select style="width: 25%; padding: 15px; margin: 5px 0 22px 0; border: none; background: #f1f1f1;" for="assigntaskmember" id="assigntaskmember" name="assigntaskmember">
         <?php 
             while($rows=$result_assign->fetch(PDO::FETCH_ASSOC))
