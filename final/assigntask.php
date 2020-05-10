@@ -375,8 +375,9 @@ function closeForm3() {
 
     <div>  
     <form action="" method="POST">
-    <label style="font-size:17.5px; font-weight:100;">Select Member: &nbsp  </label>
-    <select for="assigntaskmember" id="assigntaskmember" name="assigntaskmember">
+    <label style="font-size:17.5px; font-weight:100;">Select Member : &nbsp &nbsp &nbsp  </label>
+
+    <select style="width: 25%; padding: 15px; margin: 5px 0 22px 0; border: none; background: #f1f1f1;" for="assigntaskmember" id="assigntaskmember" name="assigntaskmember">
         <?php 
             while($rows=$result_assign->fetch(PDO::FETCH_ASSOC))
             {
@@ -388,13 +389,13 @@ function closeForm3() {
     </div> <br>
 
     <div>
-    <label style="font-size:17.5px; font-weight:100;">Task Name: &nbsp </label>
-    <input for="assigntaskname" type="text" placeholder="Enter Task Name" name="assigntaskname" required>
+    <label style="font-size:17.5px; font-weight:100;">Enter Task Name : &nbsp </label>
+    <input style="width: 25%; padding: 15px; margin: 5px 0 22px 0; border: none; background: #f1f1f1;" for="assigntaskname" type="text" placeholder="Enter Task Name" name="assigntaskname" required>
     </div><br>
     
     <div>
-    <label style="font-size:17.5px; font-weight:100;">Task Type: &nbsp </label>
-    <select for="assigntasktype" id="assigntasktype" name="assigntasktype">
+    <label style="font-size:17.5px; font-weight:100;">Select Task Type : &nbsp  </label>
+    <select style="width: 25%; padding: 15px; margin: 5px 0 22px 0; border: none; background: #f1f1f1;" for="assigntasktype" id="assigntasktype" name="assigntasktype">
       <option value="projectrelatedtask">Project Related Task</option>
       <option value="others">Others</option>
     </select>
