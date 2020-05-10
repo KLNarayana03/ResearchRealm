@@ -391,23 +391,6 @@ function closeForm3() {
     </div><br>
 
     <div style="font-size:18px;">
-    End Project: &nbsp  
-    <?php   
-            $query = "select * from projects where userid = $userid and id = $projectid";
-            $result_project =$conn->prepare($query);
-            $result_project->execute();
-            while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
-                echo "
-                <a href = 'delete.php?rn=$rows[id]' onclick=\"return confirm('Are you sure?')\">Delete</a>
-                ";
-                
-              }
-        ?>
-    
-    <!--php code for ending the project <a href = 'delete.php?rn=$rows[id]' onclick=\"return confirm('Are you sure?')\">Delete</a> -->
-    </div><br>
-
-    <div style="font-size:18px;">
     Resources: &nbsp  
     <?php   
             $query = "select * from projects where userid = $userid and id = $projectid";
@@ -423,6 +406,42 @@ function closeForm3() {
     
     <!--php code for ending the project <a href = 'delete.php?rn=$rows[id]' onclick=\"return confirm('Are you sure?')\">Delete</a> -->
     </div><br>
+    
+    <div style="font-size:18px;">
+    Add Inventory: &nbsp  
+    <?php   
+            $query = "select * from projects where userid = $userid and id = $projectid";
+            $result_project =$conn->prepare($query);
+            $result_project->execute();
+            while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
+                echo "
+                <a href = 'addinventory.php?rn=$projectid'>Add</a>
+                ";
+                
+              }
+    ?>
+    
+    <!--php code for ending the project <a href = 'delete.php?rn=$rows[id]' onclick=\"return confirm('Are you sure?')\">Delete</a> -->
+    </div><br> 
+    
+    <div style="font-size:18px;">
+    Assign Inventory: &nbsp  
+    <?php   
+            $query = "select * from projects where userid = $userid and id = $projectid";
+            $result_project =$conn->prepare($query);
+            $result_project->execute();
+            while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
+                echo "
+                <a href = 'assigninventory.php?rn=$projectid'>Assign</a>
+                ";
+                
+              }
+    ?>
+    
+    <!--php code for ending the project <a href = 'delete.php?rn=$rows[id]' onclick=\"return confirm('Are you sure?')\">Delete</a> -->
+    </div><br> 
+
+
 
     <div style="font-size:18px;">
     Assign Project: &nbsp
@@ -470,6 +489,23 @@ function closeForm3() {
               }
         ?>
     <!-- php code for assigning project -->
+    </div><br>
+
+    <div style="font-size:18px;">
+    End Project: &nbsp  
+    <?php   
+            $query = "select * from projects where userid = $userid and id = $projectid";
+            $result_project =$conn->prepare($query);
+            $result_project->execute();
+            while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
+                echo "
+                <a href = 'delete.php?rn=$rows[id]' onclick=\"return confirm('Are you sure?')\">End</a>
+                ";
+                
+              }
+        ?>
+    
+    <!--php code for ending the project <a href = 'delete.php?rn=$rows[id]' onclick=\"return confirm('Are you sure?')\">Delete</a> -->
     </div><br>
 
     <div>
