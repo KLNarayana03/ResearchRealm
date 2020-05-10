@@ -344,6 +344,8 @@ while($rows=$result_resources_display->fetch(PDO::FETCH_ASSOC)){
     echo "<li><a target ='_blank' href='view.php?id=".$rows['id']."'>".$rows['path']."</a></li>";
     echo "Resource Description: <b id=".$rows['id']."'>".$rows['resourcedesc']."</b>";
     echo "<br>";
+    echo "<a href = 'deleteresource.php?rn=$rows[id]' onclick=\"return confirm('Are you sure?')\">Delete</a>";
+    echo "<br>";
     echo "<br>";
 
 }
