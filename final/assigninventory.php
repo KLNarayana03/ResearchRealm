@@ -6,11 +6,15 @@ include_once 'source/session.php';
 $projectid = $_GET['rn'];
 $userid = $_SESSION['id'];
 $sno = 1;
-//Query for displaying assigned tasks
+//Query for displaying available inventories
 $query = "select * from addinventory where projectid = $projectid";
-$result_assigninventory =$conn->prepare($query);
-$result_assigninventory->execute();
+$result_inventory =$conn->prepare($query);
+$result_inventory->execute();
 
+//Query for displating assigned inventories
+$query = "select * from assigninventory where projectid = $projectid";
+$result_display_assigninventory =$conn->prepare($query);
+$result_display_assigninventory->execute();
 
 $projectid = $_GET['rn'];
 $userid = $_SESSION['id'];
@@ -377,7 +381,7 @@ function closeForm3() {
     <form action="" method="POST">
     <label style="font-size:17.5px; font-weight:100;">Select Member : &nbsp &nbsp &nbsp  </label>
 
-    <select style="width: 25%; padding: 15px; margin: 5px 0 22px 0; border: none; background: #f1f1f1;" for="assigninventorymember" id="assigninventorymember" name="assigninventorymember">
+    <select style="width: 25%; padding: 15px; margin: 5px 0 22px 0; border: none; background: #f1f1f1;" for="assignusername" id="assignusername" name="assignusername">
         <?php 
             while($rows=$result_assign->fetch(PDO::FETCH_ASSOC))
             {
@@ -390,9 +394,9 @@ function closeForm3() {
 
     <label style="font-size:17.5px; font-weight:100;">Select Inventory : &nbsp &nbsp &nbsp  </label>
 
-    <select style="width: 25%; padding: 15px; margin: 5px 0 22px 0; border: none; background: #f1f1f1;" for="assigninventory" id="assigninventory" name="assigninventory">
+    <select style="width: 25%; padding: 15px; margin: 5px 0 22px 0; border: none; background: #f1f1f1;" for="assigninventoryname" id="assigninventoryname" name="assigninventoryname">
         <?php 
-            while($rows=$result_assigninventory->fetch(PDO::FETCH_ASSOC))
+            while($rows=$result_inventory->fetch(PDO::FETCH_ASSOC))
             {
               $inventoryname = $rows['inventoryname'];
               echo "<option>$inventoryname</option>";
@@ -407,20 +411,22 @@ function closeForm3() {
     <div>
     <table style="width:80%; margin-left:40px; border: 1px solid #ddd;">
       <tr style="background-color:lightblue;">
-        <th colspan="3" style="text-align:center;"><h3>Assigned Inventory</h3></th>  
+        <th colspan="4" style="text-align:center;"><h3>Assigned Inventory</h3></th>  
       </tr>
       <tr>
         <th style="padding:5px; border: 1px solid #ddd; text-align:center;">S.No</th>
         <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Name</th>
         <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Inventory Name</th> <!-- faculty,mentor,etc -->
+        <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Delete</th>
       </tr>
       <?php
-        while($rows=$result_assigninventory->fetch(PDO::FETCH_ASSOC)){
+        while($rows=$result_display_assigninventory->fetch(PDO::FETCH_ASSOC)){
             echo "
             <tr>
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$sno."</td>
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['username']."</td>
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['inventoryname']."</td>
+            <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\"><a href = 'deleteassigninventory.php?rn=$rows[id]' onclick=\"return confirm('Are you sure?')\">Delete</a></td>
             </tr>
             ";
             $sno++;
@@ -486,8 +492,8 @@ function closeForm3() {
 <?php
         if(isset($_POST['projectup-btn'])) {
             $projectid = $_GET['rn'];
-            $inventoryname = $_POST['inventoryname'];
-            $username = $_POST['username'];
+            $inventoryname = $_POST['assigninventoryname'];
+            $username = $_POST['assignusername'];
             
           try {
             if($projectid!=""){
@@ -495,7 +501,7 @@ function closeForm3() {
 
             $statement = $conn->prepare($SQLInsert);
             $statement->execute();
-            echo $statement->rowCount() . " inventory assigned successfully";
+            echo $statement->rowCount() . "<div style = \" text-align: center; position: absolute; top: 50%; left: 50%;\"> inventory assigned successfully </div>";
             }
           }
           catch(PDOException $e)
