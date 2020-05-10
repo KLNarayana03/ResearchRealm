@@ -12,8 +12,6 @@ $result_display_allinventory =$conn->prepare($query);
 $result_display_allinventory->execute();
 
 
-$projectid = $_GET['rn'];
-$userid = $_SESSION['id'];
 //Query for displaying in invites
 $query = "select * from users where id != $userid";
 $result_assign = $conn->prepare($query);
@@ -410,7 +408,7 @@ function closeForm3() {
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$sno."</td>
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['inventorytype']."</td>
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['inventoryname']."</td>
-            <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\"><a>Delete</a></td>
+            <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\"><a href = 'deleteinventory.php?rn=$rows[id]' onclick=\"return confirm('Are you sure?')\">Delete</a></td>
             </tr>
             ";
             $sno++;
@@ -487,7 +485,7 @@ function closeForm3() {
 
             $statement = $conn->prepare($SQLInsert);
             $statement->execute();
-            echo $statement->rowCount() . " Inventory added successfully";
+            echo $statement->rowCount() . "<div style = \" text-align: center; position: absolute; top: 50%; left: 50%;\"> Inventory added successfully </div>";
             }
           }
           catch(PDOException $e)
