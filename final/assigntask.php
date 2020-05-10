@@ -411,12 +411,13 @@ function closeForm3() {
     <div>
     <table style="width:95%; border: 1px solid #ddd;">
       <tr style="background-color:lightblue;">
-        <th colspan="3" style="text-align:center;"><h3>Assigned Tasks</h3></th>  
+        <th colspan="4" style="text-align:center;"><h3>Assigned Tasks</h3></th>  
       </tr>
       <tr>
         <th style="padding:5px; border: 1px solid #ddd; text-align:center;">S.No</th>
         <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Name</th>
         <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Task Name</th> <!-- faculty,mentor,etc -->
+        <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Delete</th>
       </tr>
       <?php
         while($rows=$result_display_assigned_task->fetch(PDO::FETCH_ASSOC)){
@@ -425,6 +426,7 @@ function closeForm3() {
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$sno."</td>
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['username']."</td>
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['assigntaskname']."</td>
+            <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\"><a href = 'deletetask.php?rn=$rows[id]' onclick=\"return confirm('Are you sure?')\">Delete</a></td>
             </tr>
             ";
             $sno++;
