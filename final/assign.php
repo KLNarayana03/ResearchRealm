@@ -212,13 +212,9 @@ function closeForm3() {
      <!-- <i class="fa fa-caret-down"></i> -->
       </a>
 
-      <button class="dropdown-btn">Tasks 
-        <i class="fa fa-caret-down"></i>
-      </button>
-      <div class="dropdown-container">
-        <a href="#">Project Deliverables</a>
-        <a href="#">Others</a>
-      </div>
+      <a href="assigntasktable.php" style="color:white;">Task 
+     <!-- <i class="fa fa-caret-down"></i> -->
+      </a>
 
       <button class="dropdown-btn">Inventory 
         <!--<i class="fa fa-caret-down"></i> -->
@@ -380,7 +376,7 @@ function closeForm3() {
     <div>  
     <form action="" method="POST">
     <label style="font-size:17.5px; font-weight:100;">Select Name: &nbsp  </label>
-    <select for="assignname" id="assignname" name="assignname">
+    <select style="width: 20%; padding: 15px; margin: 5px 0 22px 0; border: none; background: #f1f1f1;" for="assignname" id="assignname" name="assignname" required>
         <?php 
             while($rows=$result_assign->fetch(PDO::FETCH_ASSOC))
             {
@@ -393,10 +389,9 @@ function closeForm3() {
     
     <div>
     <label style="font-size:17.5px; font-weight:100;">Assign Role: &nbsp </label>
-    <select for="assignrole" id="assignrole" name="assignrole" style="margin-bottom:20px;">
-      <option value="Collaborator">Collaborator</option>
-      <option value="Lab-Incharge">Lab-Incharge</option>
-      <option value="Mentor">Mentor</option>
+    <select style="width: 20.9%; padding: 15px; margin: 5px 0 22px 0; border: none; background: #f1f1f1;" for="assignrole" id="assignrole" name="assignrole" style="margin-bottom:20px;">
+      <option value="lab incharge">Lab Incharge</option>
+      <option value="mentor">Mentor</option>
     </select>
     </div><br>
 
@@ -486,33 +481,19 @@ function closeForm3() {
             $projectid = $_GET['rn'];
             $assignrole = $_POST['assignrole'];
             $assignname = $_POST['assignname'];
-            
-            // $result_check_repetition = $conn->prepare("select count(*) as num from `assign` where projectid = $projectid and username = $assignname");
-            // $result_check_repetition->execute();
-            // $row = $result_check_repetition->fetch(PDO::FETCH_ASSOC);
 
-            $result_check_repetition = $conn->prepare("SELECT * FROM assign WHERE username = :assignname AND projectid = :projectid");
-            $result_check_repetition->bindParam(':assignname', $assignname);
-            $result_check_repetition->bindParam(':projectid', $projectid);
-            $result_check_repetition->execute();
-          if($result_check_repetition->rowCount()>0){
-              echo "<div style = \" text-align: center; position: absolute; top: 50%; left: 50%;\">$assignname is already assigned the task</div>";
-          }
-          else{
-            try {
-              if($projectid!=""){
-                $SQLInsert = "INSERT into assign(projectid, post ,username) VALUES ('$projectid','$assignrole','$assignname')";
-  
-              $statement = $conn->prepare($SQLInsert);
-              $statement->execute();
-              echo $statement->rowCount() . "<div style = \" text-align: center; position: absolute; top: 50%; left: 50%;\"> records UPDATED successfully</div>";
-              }
+          try {
+            if($projectid!=""){
+              $SQLInsert = "INSERT into assign(projectid, post ,username) VALUES ('$projectid','$assignrole','$assignname')";
+
+            $statement = $conn->prepare($SQLInsert);
+            $statement->execute();
+            echo $statement->rowCount() . " records UPDATED successfully";
             }
-            catch(PDOException $e)
-              {
-              echo $SQLInsert . "<br>" . $e->getMessage();
-              }
           }
-
+          catch(PDOException $e)
+            {
+            echo $SQLInsert . "<br>" . $e->getMessage();
+            }
         }
         ?>
