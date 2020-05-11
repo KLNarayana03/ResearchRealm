@@ -212,24 +212,13 @@ function closeForm3() {
      <!-- <i class="fa fa-caret-down"></i> -->
       </a>
 
-      <button class="dropdown-btn">Tasks 
-        <i class="fa fa-caret-down"></i>
-      </button>
-      <div class="dropdown-container">
-        <a href="#">Project Deliverables</a>
-        <a href="#">Others</a>
-      </div>
-
       <a href="assigntasktable.php" style="color:white;">Task 
      <!-- <i class="fa fa-caret-down"></i> -->
       </a>
 
-      <button class="dropdown-btn">Inventory 
-        <!--<i class="fa fa-caret-down"></i> -->
-      </button>
-      <div class="dropdown-container">
-        
-      </div>
+      <a href="assignproject.php" style="color:white;">Inventory 
+     <!-- <i class="fa fa-caret-down"></i> -->
+      </a>
 
   </div>
 
@@ -238,14 +227,9 @@ function closeForm3() {
     <i class="fa fa-caret-down"></i>
   </button>
   <div class="dropdown-container">
-    <button class="dropdown-btn">Calendar Entries 
-        <i class="fa fa-caret-down"></i>
-      </button>
-      <div class="dropdown-container">
-        <a href="#">Meetings</a>
-        <a href="#">Reminders</a>
-        <a href="#">Deadlines</a>
-      </div>
+  <a href="assignproject.php" style="color:white;">Meeting
+     <!-- <i class="fa fa-caret-down"></i> -->
+      </a>
   </div>
 
   
@@ -305,13 +289,9 @@ function closeForm3() {
      <!-- <i class="fa fa-caret-down"></i> -->
       </a>
 
-      <button class="dropdown-btn">Tasks 
-        <i class="fa fa-caret-down"></i>
-      </button>
-      <div class="dropdown-container">
-        <a href="#">Project Deliverables</a>
-        <a href="#">Others</a>
-      </div>
+      <a href="assignproject.php" style="color:white;">Assigned Tasks 
+     <!-- <i class="fa fa-caret-down"></i> -->
+      </a>
   </div>
 
   
@@ -401,6 +381,7 @@ function closeForm3() {
       <option value="Collaborator">Collaborator</option>
       <option value="Lab-Incharge">Lab-Incharge</option>
       <option value="Mentor">Mentor</option>
+      <option value="Team-Member">Team Member</option>
     </select>
     </div><br>
 
@@ -511,7 +492,7 @@ function closeForm3() {
   
               $statement = $conn->prepare($SQLInsert);
               $statement->execute();
-              echo $statement->rowCount() . "<div style = \" text-align: center; position: absolute; top: 50%; left: 50%;\"> records UPDATED successfully</div>";
+              echo '<script>alert("Assigned Successfully. Press Back to see it in table")</script>';
               }
             }
             catch(PDOException $e)

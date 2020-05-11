@@ -190,21 +190,17 @@ function closeForm3() {
     <i class="fa fa-caret-down"></i>
   </button>
   <div class="dropdown-container">
-    <a href="assignproject.php" style="color:white;">Project 
-     <!-- <i class="fa fa-caret-down"></i> -->
-      </a>
-     
-
-      <a href="assigntasktable.php" style="color:white;">Task
+  <a href="assignproject.php" style="color:white;">Project 
      <!-- <i class="fa fa-caret-down"></i> -->
       </a>
 
-      <button class="dropdown-btn">Inventory 
-        <!--<i class="fa fa-caret-down"></i> -->
-      </button>
-      <div class="dropdown-container">
-        
-      </div>
+      <a href="assigntasktable.php" style="color:white;">Task 
+     <!-- <i class="fa fa-caret-down"></i> -->
+      </a>
+
+      <a href="assignproject.php" style="color:white;">Inventory 
+     <!-- <i class="fa fa-caret-down"></i> -->
+      </a>
 
   </div>
 
@@ -213,14 +209,9 @@ function closeForm3() {
     <i class="fa fa-caret-down"></i>
   </button>
   <div class="dropdown-container">
-    <button class="dropdown-btn">Calendar Entries 
-        <i class="fa fa-caret-down"></i>
-      </button>
-      <div class="dropdown-container">
-        <a href="#">Meetings</a>
-        <a href="#">Reminders</a>
-        <a href="#">Deadlines</a>
-      </div>
+  <a href="assignproject.php" style="color:white;">Meeting
+     <!-- <i class="fa fa-caret-down"></i> -->
+      </a>
   </div>
 
   
@@ -280,13 +271,9 @@ function closeForm3() {
      <!-- <i class="fa fa-caret-down"></i> -->
       </a>
 
-      <button class="dropdown-btn">Tasks 
-        <i class="fa fa-caret-down"></i>
-      </button>
-      <div class="dropdown-container">
-        <a href="#">Project Deliverables</a>
-        <a href="#">Others</a>
-      </div>
+      <a href="assignproject.php" style="color:white;">Assigned Tasks 
+     <!-- <i class="fa fa-caret-down"></i> -->
+      </a>
   </div>
 
   
