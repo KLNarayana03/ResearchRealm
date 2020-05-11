@@ -3,7 +3,7 @@
    include_once 'source/session.php';
 
    $id = $_GET['rn'];
-   $query = "DELETE FROM assigntask WHERE id = $id";
+   $query = "DELETE FROM createtasks WHERE id = $id";
    $result_delete =$conn->prepare($query);
    $result_delete->execute();
 
