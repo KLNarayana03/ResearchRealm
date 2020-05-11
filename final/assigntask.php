@@ -388,6 +388,9 @@ function closeForm3() {
     </select>
     </div><br>
 
+    <label style="font-size:17.5px; font-weight:100;">Task Deadline: &nbsp &nbsp </label>
+    <input for="assigntasklastdate" type="date" name="assigntasklastdate" required>
+
     <div> 
    <textarea for="assigntaskdesc" name="assigntaskdesc" id="assigntaskdesc" class="projectdescription" placeholder="Enter Task Description" style="height:200px" required></textarea>
     </textarea>
@@ -414,7 +417,7 @@ function closeForm3() {
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$sno."</td>
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['username']."</td>
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['assigntaskname']."</td>
-            <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\"><a href = 'deletetask.php?rn=$rows[id]' onclick=\"return confirm('Are you sure?')\">Delete</a></td>
+            <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\"><a href = 'deleteassigntask.php?rn=$rows[id]' onclick=\"return confirm('Are you sure?')\">Delete</a></td>
             </tr>
             ";
             $sno++;
@@ -483,10 +486,11 @@ function closeForm3() {
             $assigntasktype = $_POST['assigntasktype'];
             $assigntaskdesc = $_POST['assigntaskdesc'];
             $assigntaskmember = $_POST['assigntaskmember'];
+            $assigntasklastdate = $_POST['assigntasklastdate'];
             
           try {
             if($projectid!=""){
-              $SQLInsert = "INSERT into assigntask(projectid, assigntaskname , assigntasktype , assigntaskdesc, username) VALUES ('$projectid','$assigntaskname','$assigntasktype','$assigntaskdesc','$assigntaskmember')";
+              $SQLInsert = "INSERT into assigntask(projectid, assigntaskname , assigntasktype ,assigntasklastdate, assigntaskdesc, username) VALUES ('$projectid','$assigntaskname','$assigntasktype','$assigntasklastdate','$assigntaskdesc','$assigntaskmember')";
 
             $statement = $conn->prepare($SQLInsert);
             $statement->execute();
