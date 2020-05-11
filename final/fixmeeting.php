@@ -6,7 +6,7 @@ include_once 'source/session.php';
 $projectid = $_GET['rn'];
 $userid = $_SESSION['id'];
 $sno = 1;
-//Query for displaying assigned tasks
+//Query for displaying fixedmeetingdetails
 $query = "select * from fixmeeting where projectid = $projectid";
 $result_display_fixedmeeting =$conn->prepare($query);
 $result_display_fixedmeeting->execute();
@@ -15,7 +15,7 @@ $result_display_fixedmeeting->execute();
 $projectid = $_GET['rn'];
 $userid = $_SESSION['id'];
 //Query for displaying in invites
-$query = "select * from users where id != $userid";
+$query = "select * from assign where projectid = $projectid";
 $result_assign = $conn->prepare($query);
 $result_assign->execute();
 
@@ -212,16 +212,13 @@ function closeForm3() {
      <!-- <i class="fa fa-caret-down"></i> -->
       </a>
 
-      <a href="assigntasktable.php" style="color:white;">Task
+      <a href="assigntasktable.php" style="color:white;">Task 
      <!-- <i class="fa fa-caret-down"></i> -->
       </a>
 
-      <button class="dropdown-btn">Inventory 
-        <!--<i class="fa fa-caret-down"></i> -->
-      </button>
-      <div class="dropdown-container">
-        
-      </div>
+      <a href="assignproject.php" style="color:white;">Inventory 
+     <!-- <i class="fa fa-caret-down"></i> -->
+      </a>
 
   </div>
 
@@ -230,14 +227,9 @@ function closeForm3() {
     <i class="fa fa-caret-down"></i>
   </button>
   <div class="dropdown-container">
-    <button class="dropdown-btn">Calendar Entries 
-        <i class="fa fa-caret-down"></i>
-      </button>
-      <div class="dropdown-container">
-        <a href="#">Meetings</a>
-        <a href="#">Reminders</a>
-        <a href="#">Deadlines</a>
-      </div>
+  <a href="assignproject.php" style="color:white;">Meeting
+     <!-- <i class="fa fa-caret-down"></i> -->
+      </a>
   </div>
 
   
@@ -297,13 +289,9 @@ function closeForm3() {
      <!-- <i class="fa fa-caret-down"></i> -->
       </a>
 
-      <button class="dropdown-btn">Tasks 
-        <i class="fa fa-caret-down"></i>
-      </button>
-      <div class="dropdown-container">
-        <a href="#">Project Deliverables</a>
-        <a href="#">Others</a>
-      </div>
+      <a href="assignproject.php" style="color:white;">Assigned Tasks 
+     <!-- <i class="fa fa-caret-down"></i> -->
+      </a>
   </div>
 
   
@@ -322,7 +310,6 @@ function closeForm3() {
   <div class="dropdown-container">
     <a href="#">Calendar Entries</a>
   </div>
-
 
   <button class="dropdown-btn"><i class="fa fa-line-chart" style="margin-right: 20px; font-size: 24px;"></i>Progress 
     <i class="fa fa-caret-down"></i>
@@ -424,7 +411,7 @@ function closeForm3() {
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$sno."</td>
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['username']."</td>
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['meetingdatetime']."</td>
-            <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\"><a>deatils</a></td>
+            <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\"><a href = 'fixedmeetingdetails.php?rn=$rows[id]'>details</td>
             </tr>
             ";
             $sno++;
@@ -500,7 +487,7 @@ function closeForm3() {
 
             $statement = $conn->prepare($SQLInsert);
             $statement->execute();
-            echo $statement->rowCount() . " meeting fixed successfully";
+            echo '<script>alert("Meeting Fixed Successfully. Press Back to see it in table")</script>';
             }
           }
           catch(PDOException $e)

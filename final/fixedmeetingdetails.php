@@ -2,18 +2,20 @@
 
 include_once 'source/db_connect.php';
 include_once 'source/session.php';
+
+$projectid = $_GET['rn'];
+$userid = $_SESSION['id'];
+$sno = 1;
+//Query for displaying fixedmeetingdetails
+$query = "select * from fixmeeting where projectid = $projectid";
+$result_display_fixedmeeting =$conn->prepare($query);
+$result_display_fixedmeeting->execute();
+
 $id = $_SESSION['id'];
 //query for displaying members
 $query = "select * from assign";
 $result_member =$conn->prepare($query);
 $result_member->execute();
-
-//qeury for displaying shared resources
-$projectid= $_GET['projectid'];
-$query = "select * from resources where projectid = $projectid";
-$result_resources_display =$conn->prepare($query);
-$result_resources_display->execute();
-
 //query for displaying create->project table
 $query = "select * from projects where userid = $id";
 $result_project =$conn->prepare($query);
@@ -26,6 +28,7 @@ $result_task->execute();
 $query = "select * from createcalendarentries where userid = $id";
 $result_calendar =$conn->prepare($query);
 $result_calendar->execute();
+
 ?>
 
 
@@ -40,7 +43,7 @@ $result_calendar->execute();
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   
- <title>Resources</title> 
+ <title>Details Page</title> 
 <link rel="stylesheet" href="landingpage.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="font-awesome.css">
@@ -301,7 +304,6 @@ function closeForm3() {
   </div>
 
 
-
   <button class="dropdown-btn"><i class="fa fa-line-chart" style="margin-right: 20px; font-size: 24px;"></i>Progress 
     <i class="fa fa-caret-down"></i>
   </button>
@@ -321,25 +323,84 @@ function closeForm3() {
     <?php endif ?>
 
     <!-- <?php echo "<h1> Welcome ".$_SESSION['username']." To Dashboard </h1>" ?> -->
-<div class="maincontent">
-    <button class="topbutton">Shared Resources</button>
+  <div class="maincontent">
+    <button class="topbutton">Meeting Details</button>
     <hr class="new1">
 
-<ol>
-<?php
-while($rows=$result_resources_display->fetch(PDO::FETCH_ASSOC)){
-    // echo "<img src = 'uploads/".$rows['resource']."'>";
-    echo "<li><a target ='_blank' href='view.php?id=".$rows['id']."'>".$rows['path']."</a></li>";
-    echo "Resource Description: <b id=".$rows['id']."'>".$rows['resourcedesc']."</b>";
-    echo "<br>";
-    echo "<a href = 'deleteresource.php?rn=$rows[id]' onclick=\"return confirm('Are you sure?')\">Delete</a>";
-    echo "<br>";
-    echo "<br>";
+    <div style="font-size:18px;">
+    <b style="font-size:18px; font-weight:100;">Meeting With: &nbsp</b> 
+    <!-- php code for project name -->
+    <?php
+      $query = "select * from fixmeeting where id = $projectid";
+      $result_display_fixedmeeting =$conn->prepare($query);
+      $result_display_fixedmeeting->execute();
+      while($rows=$result_display_fixedmeeting->fetch(PDO::FETCH_ASSOC)){
+        echo $rows['username'];
+      }
+        
+    ?>
+    </div><br>
+    
+    <div style="font-size:18px;">
+    <b style="font-size:18px; font-weight:100;">Meeting Title : &nbsp </b>
+    <?php
+      $query = "select * from fixmeeting where id = $projectid";
+      $result_display_fixedmeeting =$conn->prepare($query);
+      $result_display_fixedmeeting->execute();
+      while($rows=$result_display_fixedmeeting->fetch(PDO::FETCH_ASSOC)){
+        echo $rows['meetingtitle'];
+      }
+        
+    ?>
+    </div><br>
 
-}
-?>
-</ol>    
+    <div style="font-size:18px;">
+    <b style="font-size:18px; font-weight:100;">Meeting Schedule : &nbsp </b> 
+    <!-- php code for project type -->
+    <?php
+      $query = "select * from fixmeeting where id = $projectid";
+      $result_display_fixedmeeting =$conn->prepare($query);
+      $result_display_fixedmeeting->execute();
+      while($rows=$result_display_fixedmeeting->fetch(PDO::FETCH_ASSOC)){
+        echo $rows['meetingdatetime'];
+      }
+        
+    ?>
+    </div><br>
 
+    <div style="font-size:18px;">
+    Meeting Description : &nbsp 
+    <b style="font-weight:100; font-size:16px;"> 
+    <?php
+      $query = "select * from fixmeeting where id = $projectid";
+      $result_display_fixedmeeting =$conn->prepare($query);
+      $result_display_fixedmeeting->execute();
+      while($rows=$result_display_fixedmeeting->fetch(PDO::FETCH_ASSOC)){
+        echo $rows['meetingdesc'];
+      }
+        
+    ?>
+    </b>
+    </div><br>
+
+    <div style="font-size:18px;">
+    Cancel Meeting: &nbsp  
+    <?php   
+            $query = "select * from fixmeeting where id = $projectid";
+            $result_display_fixedmeeting =$conn->prepare($query);
+            $result_display_fixedmeeting->execute();
+            while($rows=$result_display_fixedmeeting->fetch(PDO::FETCH_ASSOC)){
+                echo "
+                <a href = 'cancelmeeting.php?rn=$rows[id]' onclick=\"return confirm('Are you sure?')\">Cancel</a>
+                ";
+                
+              }
+        ?>
+    
+    <!--php code for ending the project <a href = 'delete.php?rn=$rows[id]' onclick=\"return confirm('Are you sure?')\">Delete</a> -->
+    </div><br>
+
+          
 </div>
 </div>  
 
@@ -361,12 +422,13 @@ while($rows=$result_resources_display->fetch(PDO::FETCH_ASSOC)){
       }
       });
     }
-    </script>
+  </script>
 <script type="text/javascript">
     window.onload = function() {
         var left=document.getElementById('sidenav').clientHeight;
         var right=document.getElementById('main').clientHeight;
         if(left>right) {
+           
             document.getElementById('main').style.height=left+"px";
         }
         if(left<right) {
