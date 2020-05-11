@@ -490,7 +490,7 @@ function closeForm3() {
         if(isset($_POST['projectup-btn'])) {
             $projectid = $_GET['rn'];
             $meetingtitle = $_POST['meetingtitle'];
-            $meetingdate = $_POST['meetingdatetime'];
+            $meetingdatetime = $_POST['meetingdatetime'];
             $meetingdesc = $_POST['meetingdesc'];
             $meetingmember = $_POST['meetingmember'];
             
