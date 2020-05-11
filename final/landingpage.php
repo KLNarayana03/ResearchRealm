@@ -46,7 +46,8 @@ $result_calendar->execute();
     
     <div id="logout">Logout<a href="logout.php"><i class="fas fa-sign-out-alt" style="margin-left: 15px;"></i></a></div>
     
-    <div id="usertype"><?php $_SESSION['username'] ?><a href="#"><i class="far fa-address-card" style="margin-left: 15px;"></i></a></div>
+    <div id="usertype"><?php echo $_SESSION['username']; ?><a href="#"><i class="far fa-address-card" style="margin-left: 15px;"></i></a></div>
+    
  </div>
 
 <div class="row">
@@ -190,21 +191,17 @@ function closeForm3() {
     <i class="fa fa-caret-down"></i>
   </button>
   <div class="dropdown-container">
-    <a href="assignproject.php" style="color:white;">Project 
-     <!-- <i class="fa fa-caret-down"></i> -->
-      </a>
-     
-
-      <a href="assigntasktable.php" style="color:white;">Task
+  <a href="assignproject.php" style="color:white;">Project 
      <!-- <i class="fa fa-caret-down"></i> -->
       </a>
 
-      <button class="dropdown-btn">Inventory 
-        <!--<i class="fa fa-caret-down"></i> -->
-      </button>
-      <div class="dropdown-container">
-        
-      </div>
+      <a href="assigntasktable.php" style="color:white;">Task 
+     <!-- <i class="fa fa-caret-down"></i> -->
+      </a>
+
+      <a href="assignproject.php" style="color:white;">Inventory 
+     <!-- <i class="fa fa-caret-down"></i> -->
+      </a>
 
   </div>
 
@@ -213,14 +210,9 @@ function closeForm3() {
     <i class="fa fa-caret-down"></i>
   </button>
   <div class="dropdown-container">
-    <button class="dropdown-btn">Calendar Entries 
-        <i class="fa fa-caret-down"></i>
-      </button>
-      <div class="dropdown-container">
-        <a href="#">Meetings</a>
-        <a href="#">Reminders</a>
-        <a href="#">Deadlines</a>
-      </div>
+  <a href="assignproject.php" style="color:white;">Meeting
+     <!-- <i class="fa fa-caret-down"></i> -->
+      </a>
   </div>
 
   
@@ -280,13 +272,9 @@ function closeForm3() {
      <!-- <i class="fa fa-caret-down"></i> -->
       </a>
 
-      <button class="dropdown-btn">Tasks 
-        <i class="fa fa-caret-down"></i>
-      </button>
-      <div class="dropdown-container">
-        <a href="#">Project Deliverables</a>
-        <a href="#">Others</a>
-      </div>
+      <a href="assignproject.php" style="color:white;">Assigned Tasks 
+     <!-- <i class="fa fa-caret-down"></i> -->
+      </a>
   </div>
 
   
@@ -305,7 +293,6 @@ function closeForm3() {
   <div class="dropdown-container">
     <a href="#">Calendar Entries</a>
   </div>
-
 
   <button class="dropdown-btn"><i class="fa fa-line-chart" style="margin-right: 20px; font-size: 24px;"></i>Progress 
     <i class="fa fa-caret-down"></i>
@@ -353,7 +340,7 @@ function closeForm3() {
    <br>      
  <table align="center" style="width:650px; line-height:40px; border: 1px solid #ddd;">
       <tr>
-        <th colspan="4" style="background-color:lightblue; text-align:center;"><h3>Present Tasks</h3></th>  
+        <th colspan="4" style="background-color:lightblue; text-align:center;"><h3>Present Self Tasks</h3></th>  
       </tr>
       <tr>
         <th style="padding:12px; border: 1px solid #ddd;">Task Name</th>
