@@ -15,7 +15,7 @@ $result_display_assigned_task->execute();
 $projectid = $_GET['rn'];
 $userid = $_SESSION['id'];
 //Query for displaying in invites
-$query = "select * from users where id != $userid";
+$query = "select * from assign where projectid = $projectid";
 $result_assign = $conn->prepare($query);
 $result_assign->execute();
 
