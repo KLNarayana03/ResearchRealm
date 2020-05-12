@@ -352,14 +352,14 @@ function closeForm3() {
     </div><br>
 
     <div style="font-size:18px;">
-    <b style="font-size:18px; font-weight:100;">Task Start Date : &nbsp </b> 
+    <b style="font-size:18px; font-weight:100;">Task Deadline : &nbsp </b> 
     <!-- php code for project type -->
     <?php
       $query = "select * from assigntask where id = $taskid" ;
       $result_task =$conn->prepare($query);
       $result_task->execute();
       while($rows=$result_task->fetch(PDO::FETCH_ASSOC)){
-        echo $rows['assigntaskdate'];
+        echo $rows['assigntasklastdate'];
       }  
     ?>
     </div><br>
