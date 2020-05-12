@@ -9,10 +9,10 @@
 
    if($result_delete)
    {
-       echo "Meeting Cancelled Successfully";
+       echo '<script>alert("Meeting Cancelled Successfully")</script>';
    }
    else
    {
-       echo "Failed to Cancel";
+        echo '<script>alert("Meeting failed to cancel")</script>';
    }
 ?>
