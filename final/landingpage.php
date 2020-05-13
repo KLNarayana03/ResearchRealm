@@ -5,6 +5,18 @@ include_once 'source/session.php';
 $id = $_SESSION['id'];
 $username = $_SESSION['username'];
 
+//query for displaying notification
+$query = "SELECT * FROM inviterequest, projects, users WHERE inviterequest.projectid = projects.id AND projects.userid = users.id AND receivername = :username AND curstatus=0";
+$result_display_notification = $conn->prepare($query);
+$result_display_notification->bindParam(':username', $username);
+$result_display_notification->execute();
+
+//query for displaying invited projects
+$query = "SELECT * FROM inviterequest, projects WHERE inviterequest.projectid = projects.id AND receivername = :username AND curstatus=1";
+$result_display_invited_projects = $conn->prepare($query);
+$result_display_invited_projects->bindParam(':username', $username);
+$result_display_invited_projects->execute();
+
 //query for displaying assigned tasks
 $query = "select * from assigntask where username = '$username'";
 $result_display_assigned_task =$conn->prepare($query);
@@ -196,11 +208,12 @@ function closeForm3() {
     <i class="fa fa-caret-down"></i>
   </button>
   <div class="dropdown-container">
-  <a href="assignproject.php" style="color:white;">Project 
+    <a href="assignproject.php" style="color:white;">Project 
      <!-- <i class="fa fa-caret-down"></i> -->
       </a>
+     
 
-      <a href="assigntasktable.php" style="color:white;">Task 
+      <a href="assigntasktable.php" style="color:white;">Task
      <!-- <i class="fa fa-caret-down"></i> -->
       </a>
 
@@ -300,7 +313,6 @@ function closeForm3() {
   </div>
 
 
-
   <button class="dropdown-btn"><i class="fa fa-line-chart" style="margin-right: 20px; font-size: 24px;"></i>Progress 
     <i class="fa fa-caret-down"></i>
   </button>
@@ -343,11 +355,34 @@ function closeForm3() {
         }
         ?>      
  </table>
-  
+  <br>
+  <table align="center" style="width:650px; line-height:40px; border: 1px solid #ddd;">
+      <tr>
+        <th colspan="5" style="background-color:lightgreen; text-align:center;"><h3>Invited Projects</h3></th>  
+      </tr>
+      <tr>
+        <th style="padding:12px; border: 1px solid #ddd;">Project Name</th>
+        <th style="padding:12px; border: 1px solid #ddd;">Project Type</th>
+        <th style="padding:12px; border: 1px solid #ddd;">Project Date</th>
+        <th style="padding:12px; border: 1px solid #ddd;">Project Details</th>
+      </tr>
+      <?php
+        while($rows=$result_display_invited_projects->fetch(PDO::FETCH_ASSOC)){
+            echo "
+            <tr>
+            <td style=\"padding:12px; border: 1px solid #ddd;\">".$rows['projectname']."</td>
+            <td style=\"padding:12px; border: 1px solid #ddd;\">".$rows['projecttype']."</td>
+            <td style=\"padding:12px; border: 1px solid #ddd;\">".$rows['projectdate']."</td>
+            <td style=\"padding:12px; border: 1px solid #ddd;\"><a href = 'invitedprojectdetails.php?rn=$rows[id]'>Details</td>
+            </tr>
+            ";
+        }
+        ?>      
+ </table>
    <br>      
  <table align="center" style="width:650px; line-height:40px; border: 1px solid #ddd;">
       <tr>
-        <th colspan="4" style="background-color:lightblue; text-align:center;"><h3>Present Tasks</h3></th>  
+        <th colspan="4" style="background-color:rgba(255, 255, 0, 0.45); text-align:center;"><h3>Present Tasks</h3></th>  
       </tr>
       <tr>
         <th style="padding:12px; border: 1px solid #ddd;">Task Name</th>
@@ -373,7 +408,7 @@ function closeForm3() {
  <br>
  <table align="center" style="width:650px; line-height:40px; border: 1px solid #ddd;">
       <tr>
-        <th colspan="4" style="background-color:rgba(255, 255, 0, 0.45); text-align:center;"><h3>Assigned Tasks</h3></th>  
+        <th colspan="4" style="background-color:lightblue; text-align:center;"><h3>Assigned Tasks</h3></th>  
       </tr>
       <tr>
         <th style="padding:12px; border: 1px solid #ddd;">Task Name</th>
@@ -389,6 +424,32 @@ function closeForm3() {
           <td style=\"padding:12px; border: 1px solid #ddd;\">".$rows['assigntasktype']."</td>
           <td style=\"padding:12px; border: 1px solid #ddd;\">".$rows['assigntasklastdate']."</td>
           <td style=\"padding:12px; border: 1px solid #ddd;\"><a href = 'assigntaskdetails.php?rn=$rows[id]'>Details</td>
+        </tr>
+          ";
+        
+        }
+          ?>
+      
+ </table>     
+ <br>
+ <table align="center" style="width:650px; line-height:40px; border: 1px solid #ddd;">
+      <tr>
+        <th colspan="4" style="background-color:lightblue; text-align:center;"><h3>Pending Requests</h3></th>  
+      </tr>
+      <tr>
+        <th style="padding:12px; border: 1px solid #ddd;">Project Name</th>
+        <th style="padding:12px; border: 1px solid #ddd;">Invited By</th>
+        <th style="padding:12px; border: 1px solid #ddd;">Accept</th>
+        <th style="padding:12px; border: 1px solid #ddd;">Decline</th>
+      </tr>
+      <?php
+        while($rows=$result_display_notification->fetch(PDO::FETCH_ASSOC)){
+          echo "
+          <tr>
+          <td style=\"padding:12px; border: 1px solid #ddd;\">".$rows['projectname']."</td>
+          <td style=\"padding:12px; border: 1px solid #ddd;\">".$rows['username']."</td>
+          <td style=\"padding:12px; border: 1px solid #ddd;\"><a href = 'acceptrequest.php?rn=$rows[id]'>Accept</td>
+          <td style=\"padding:12px; border: 1px solid #ddd;\"><a href = 'deleterequest.php?rn=$rows[id]' onclick=\"return confirm('Are you sure?')\">Delete</a></td>
         </tr>
           ";
         
