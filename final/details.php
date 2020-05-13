@@ -483,6 +483,22 @@ function closeForm3() {
     </div><br>
 
     <div style="font-size:18px;">
+    Add Project Expenses: &nbsp
+    <?php   
+            $query = "select * from projects where userid = $userid and id = $projectid";
+            $result_project =$conn->prepare($query);
+            $result_project->execute();
+            while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
+                echo "
+                <a href = 'addprojectexpenses.php?rn=$projectid'>Add</a>
+                ";
+                
+              }
+    ?>
+    <!-- php code for assigning project -->
+    </div><br>
+
+    <div style="font-size:18px;">
     Invite: &nbsp 
     <?php   
             $query = "select * from projects where userid = $userid and id = $projectid";
