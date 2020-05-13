@@ -506,7 +506,7 @@ function closeForm3() {
             $result_project->execute();
             while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
                 echo "
-                <a href = invite.php?rn=$projectid'>Invite</a>
+                <a href ='invite.php?rn=$projectid'>Invite</a>
                 ";
                 
               }
