@@ -10,10 +10,6 @@ $query = "select * from users where id != $userid";
 $result_assign = $conn->prepare($query);
 $result_assign->execute();
 
-//Query for checking that names are not repeated
-$query = "select * from invites_request";
-$result_check_repetition = $conn->prepare($query);
-$result_check_repetition->execute();
 ?>
 <html>
     <style>
@@ -116,13 +112,8 @@ opacity: 0.9;
         <?php 
             while($rows=$result_assign->fetch(PDO::FETCH_ASSOC))
             {
-                while($rows1=$result_check_repetition->fetch(PDO::FETCH_ASSOC)){
-                    if($rows['username'] != $rows1['receivername']){
                     $invitename = $rows['username'];
-                    echo "<option>$invitename</option>";
-                    }
-                }
-              
+                    echo "<option>$invitename</option>";  
             }
         ?>
         </select>
@@ -132,23 +123,29 @@ opacity: 0.9;
 </html>
 <?php
 if(isset($_POST['projectup-btn'])) {
-    $projectid = $_GET['rn'];
     $receivername = $_POST['receivername'];
+    $sno = 0;
+    //Query for checking that names are not repeated
+    $result_check_repetition = $conn->prepare("SELECT * FROM inviterequest WHERE receivername = :receivername AND projectid = :projectid");
+    $result_check_repetition->bindParam(':receivername', $receivername);
+    $result_check_repetition->bindParam(':projectid', $projectid);
+    $result_check_repetition->execute();
 
-  try {
-    if($projectid!=""){
-      $SQLInsert = "INSERT into invites_request(projectid, receivername ,status) VALUES ('$projectid','$receivername','0')";
-
-    $statement = $conn->prepare($SQLInsert);
-    $statement->execute();
-    echo $statement->rowCount() . " Invite Request Sent";
+    if($result_check_repetition->rowCount()>0){
+      echo "<div style = \" text-align: center; position: absolute; top: 50%; left: 50%;\">$receivername is already invited for this project</div>";
     }
-  }
-  catch(PDOException $e)
-    {
-    echo $SQLInsert . "<br>" . $e->getMessage();
+    else{
+      try {
+          $SQLInsert = "INSERT INTO inviterequest(projectid, receivername ,curstatus, userid) VALUES ($projectid,'$receivername',$sno,$userid)";    
+        $statement = $conn->prepare($SQLInsert);
+        $statement->execute();
+        echo '<script>alert("Invited Successfully. Press Back to see it in table")</script>';
+      }
+      catch(PDOException $e)
+        {
+        echo $SQLInsert . "<br>" . $e->getMessage();
+        }
     }
-
 }
 
 ?>
