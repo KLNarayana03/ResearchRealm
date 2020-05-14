@@ -5,13 +5,13 @@ require_once 'source/db_connect.php';
 
 if(isset($_POST['login-btn'])) {
 
-    $user = $_POST['user-name'];
+    $email = $_POST['email'];
     $password = $_POST['user-pass'];
 
     try {
-      $SQLQuery = "SELECT * FROM users WHERE username = :username";
+      $SQLQuery = "SELECT * FROM users WHERE email = :email";
       $statement = $conn->prepare($SQLQuery);
-      $statement->execute(array(':username' => $user));
+      $statement->execute(array(':email' => $email));
 
       while($row = $statement->fetch()) {
         $id = $row['id'];

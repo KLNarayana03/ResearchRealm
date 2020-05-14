@@ -15,7 +15,7 @@ $result_invite->execute();
 $projectid = $_GET['rn'];
 $userid = $_SESSION['id'];
 //Query for displaying in invites
-$query = "select * from users where id != $userid";
+$query = "select * from inviterequest where userid = $userid and curstatus = 1 and projectid = $projectid";
 $result_assign = $conn->prepare($query);
 $result_assign->execute();
 
@@ -368,7 +368,7 @@ function closeForm3() {
         <?php 
             while($rows=$result_assign->fetch(PDO::FETCH_ASSOC))
             {
-              $invitename = $rows['username'];
+              $invitename = $rows['receivername'];
               echo "<option>$invitename</option>";
             }
         ?>
