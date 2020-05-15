@@ -358,7 +358,7 @@ function closeForm3() {
   <br>
   <table align="center" style="width:650px; line-height:40px; border: 1px solid #ddd;">
       <tr>
-        <th colspan="5" style="background-color:lightgreen; text-align:center;"><h3>Invited Projects</h3></th>  
+        <th colspan="5" style="background-color:#81d8d0; text-align:center;"><h3>Invited Projects</h3></th>  
       </tr>
       <tr>
         <th style="padding:12px; border: 1px solid #ddd;">Project Name</th>
@@ -379,10 +379,38 @@ function closeForm3() {
         }
         ?>      
  </table>
-   <br>      
+   <br> 
+
+   <table align="center" style="width:650px; line-height:40px; border: 1px solid #ddd;">
+      <tr>
+        <th colspan="4" style="background-color:rgba(255, 0, 0, 0.4); text-align:center;"><h3>Pending Requests</h3></th>  
+      </tr>
+      <tr>
+        <th style="padding:12px; border: 1px solid #ddd;">Project Name</th>
+        <th style="padding:12px; border: 1px solid #ddd;">Invited By</th>
+        <th style="padding:12px; border: 1px solid #ddd;">Accept</th>
+        <th style="padding:12px; border: 1px solid #ddd;">Decline</th>
+      </tr>
+      <?php
+        while($rows=$result_display_notification->fetch(PDO::FETCH_ASSOC)){
+          echo "
+          <tr>
+          <td style=\"padding:12px; border: 1px solid #ddd;\">".$rows['projectname']."</td>
+          <td style=\"padding:12px; border: 1px solid #ddd;\">".$rows['username']."</td>
+          <td style=\"padding:12px; border: 1px solid #ddd;\"><a href = 'acceptrequest.php?rn=$rows[id]'>Accept</td>
+          <td style=\"padding:12px; border: 1px solid #ddd;\"><a href = 'deleterequest.php?rn=$rows[id]' onclick=\"return confirm('Are you sure?')\">Delete</a></td>
+        </tr>
+          ";
+        
+        }
+          ?>
+      
+ </table>     
+ <br>
+
  <table align="center" style="width:650px; line-height:40px; border: 1px solid #ddd;">
       <tr>
-        <th colspan="4" style="background-color:rgba(255, 255, 0, 0.45); text-align:center;"><h3>Present Tasks</h3></th>  
+        <th colspan="4" style="background-color: lightgreen; text-align:center;"><h3>Present Tasks</h3></th>  
       </tr>
       <tr>
         <th style="padding:12px; border: 1px solid #ddd;">Task Name</th>
@@ -432,36 +460,11 @@ function closeForm3() {
       
  </table>     
  <br>
- <table align="center" style="width:650px; line-height:40px; border: 1px solid #ddd;">
-      <tr>
-        <th colspan="4" style="background-color:lightblue; text-align:center;"><h3>Pending Requests</h3></th>  
-      </tr>
-      <tr>
-        <th style="padding:12px; border: 1px solid #ddd;">Project Name</th>
-        <th style="padding:12px; border: 1px solid #ddd;">Invited By</th>
-        <th style="padding:12px; border: 1px solid #ddd;">Accept</th>
-        <th style="padding:12px; border: 1px solid #ddd;">Decline</th>
-      </tr>
-      <?php
-        while($rows=$result_display_notification->fetch(PDO::FETCH_ASSOC)){
-          echo "
-          <tr>
-          <td style=\"padding:12px; border: 1px solid #ddd;\">".$rows['projectname']."</td>
-          <td style=\"padding:12px; border: 1px solid #ddd;\">".$rows['username']."</td>
-          <td style=\"padding:12px; border: 1px solid #ddd;\"><a href = 'acceptrequest.php?rn=$rows[id]'>Accept</td>
-          <td style=\"padding:12px; border: 1px solid #ddd;\"><a href = 'deleterequest.php?rn=$rows[id]' onclick=\"return confirm('Are you sure?')\">Delete</a></td>
-        </tr>
-          ";
-        
-        }
-          ?>
-      
- </table>     
- <br>
+ 
    <br>      
  <table align="center" style="width:650px; line-height:40px; border: 1px solid #ddd;">
       <tr>
-        <th colspan="4" style="background-color:rgba(255, 0, 0, 0.4); text-align:center;"><h3>Calendar Entries</h3></th>  
+        <th colspan="4" style="background-color: whitesmoke; text-align:center;"><h3>Calendar Entries</h3></th>  
       </tr>
       <tr>
         <th style="padding:12px; border: 1px solid #ddd;">Title</th>

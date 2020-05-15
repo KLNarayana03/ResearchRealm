@@ -68,7 +68,7 @@ $result_calendar->execute();
     
     <div id="logout">Logout<a href="logout.php"><i class="fas fa-sign-out-alt" style="margin-left: 15px;"></i></a></div>
     
-    <div id="usertype">Faculty<a href="#"><i class="far fa-address-card" style="margin-left: 15px;"></i></a></div>
+    <div id="usertype"><?php echo $_SESSION['username'] ?><a href="#"><i class="far fa-address-card" style="margin-left: 15px;"></i></a></div>
  </div>
 
 <div class="row">
