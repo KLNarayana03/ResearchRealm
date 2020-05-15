@@ -378,7 +378,7 @@ function closeForm3() {
       $result_display_projectexpenses->execute();
       while($rows=$result_display_projectexpenses->fetch(PDO::FETCH_ASSOC)){
           //code for bill image/pdf
-       // echo "<a target ='_blank' href='view.php?id=".$rows['id']."'>".$rows['path']."</a>";
+        echo "<a target ='_blank' href='viewbill.php?id=".$rows['id']."'>".$rows['path']."</a>";
         
       }
         

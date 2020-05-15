@@ -3,6 +3,8 @@
 include_once 'source/db_connect.php';
 include_once 'source/session.php';
 
+$dbh = new PDO("mysql:host=localhost;dbname=www","root","");
+
 $projectid = $_GET['rn'];
 $userid = $_SESSION['id'];
 $sno = 1;
@@ -361,7 +363,7 @@ function closeForm3() {
     </div><br>
 
 
-    <form action="" method="POST">
+    <form action="" method="POST" enctype="multipart/form-data">
 
     <div>
     <label style="font-size:17.5px; font-weight:100;">Expense Type: &nbsp </label>
@@ -384,7 +386,7 @@ function closeForm3() {
     </div><br>
 
     <label style="font-size:17.5px; font-weight:100;">Attach Bill: &nbsp </label>
-    <input type="file" name="fileToUpload">
+    <input type="file" name="billToUpload">
     <br>
 
     <input type="submit" name="projectup-btn" class="btn" value="Submit">
@@ -467,27 +469,16 @@ function closeForm3() {
 
 <?php
         if(isset($_POST['projectup-btn'])) {
-            $projectid = $_GET['rn'];
+            $bill = $_FILES['billToUpload']['name'];
             $expensetype = $_POST['expensetype'];
             $purchasedate = $_POST['purchasedate'];
             $billamount = $_POST['billamount'];
-            $resource = $_POST["fileToUpload"];
-            
-
-            try {
-                if($projectid!=""){
-                  $SQLInsert = "INSERT into projectexpenses(projectid, expensetype, purchasedate, billamount, resources) VALUES ('$projectid','$expensetype','$purchasedate','$billamount','$resource')";
-    
+            $target = "./uploads/".$bill;
+            move_uploaded_file($_FILES['billToUpload']['tmp_name'], $target);
+                $SQLInsert = "INSERT into projectexpenses(projectid, expensetype, purchasedate, billamount, resources, path) VALUES ('$projectid','$expensetype','$purchasedate','$billamount','$bill', '$target')";
                 $statement = $conn->prepare($SQLInsert);
                 $statement->execute();
                 echo '<script>alert("Inventory added Successfully. Press Back to see it in table")</script>';
-                }
-              }
-              catch(PDOException $e)
-                {
-                echo $SQLInsert . "<br>" . $e->getMessage();
-                }
-
-
+               
         }
-        ?>
+?>
