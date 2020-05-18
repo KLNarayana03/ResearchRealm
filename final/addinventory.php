@@ -370,7 +370,17 @@ function closeForm3() {
     <div>  
     <label style="font-size:17.5px; font-weight:100;">Inventory Name: &nbsp  </label>
     <input style="width: 28%; padding: 15px; margin: 5px 0 22px 0; border: none; background: #f1f1f1;" for="inventoryname" type="text" placeholder="Enter Inventory Name" name="inventoryname" required>
-    </div> 
+    </div> <br>
+
+    <div>  
+    <label style="font-size:17.5px; font-weight:100;">Inventory Id: &nbsp  </label>
+    <input style="width: 28%; padding: 15px; margin: 5px 0 22px 0; border: none; background: #f1f1f1;" for="inventoryid" type="text" placeholder="Enter Unique Inventory Id" name="inventoryid" required>
+    </div><br>
+
+    <div>  
+    <label style="font-size:17.5px; font-weight:100;">Manufacturer Name: &nbsp  </label>
+    <input style="width: 28%; padding: 15px; margin: 5px 0 22px 0; border: none; background: #f1f1f1;" for="manufacturername" type="text" placeholder="Enter Manufacturer Name" name="manufacturername" required>
+    </div><br>
     
     <textarea for="inventorydesc" name="inventorydesc" id="inventorydesc" class="projectdescription" placeholder="Enter Inventory Description (Optional)" style="height:200px"></textarea>
     </textarea><br><br>
@@ -381,12 +391,14 @@ function closeForm3() {
      <div>
     <table style="width:95%; border: 1px solid #ddd;">
       <tr style="background-color:lightblue;">
-        <th colspan="4" style="text-align:center;"><h3>Inventories</h3></th>  
+        <th colspan="6" style="text-align:center;"><h3>Inventories</h3></th>  
       </tr>
       <tr>
         <th style="padding:5px; border: 1px solid #ddd; text-align:center;">S.No</th>
         <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Type</th>
         <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Name</th>
+        <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Manufacturer Name</th>
+        <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Inventory-Id</th>
         <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Delete</th> 
       </tr>
       <?php
@@ -396,6 +408,8 @@ function closeForm3() {
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$sno."</td>
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['inventorytype']."</td>
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['inventoryname']."</td>
+            <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['manufacturer']."</td>
+            <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['inventoryid']."</td>
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\"><a href = 'deleteinventory.php?rn=$rows[id]' onclick=\"return confirm('Are you sure?')\">Delete</a></td>
             </tr>
             ";
@@ -466,10 +480,12 @@ function closeForm3() {
             $inventorytype = $_POST['inventorytype'];
             $inventoryname = $_POST['inventoryname'];
             $inventorydesc = $_POST['inventorydesc'];
+            $inventoryid = $_POST['inventoryid'];
+            $manufacturer = $_POST['manufacturername'];
 
           try {
             if($projectid!=""){
-              $SQLInsert = "INSERT into addinventory(projectid, inventorytype, inventoryname, inventorydesc) VALUES ('$projectid','$inventorytype','$inventoryname','$inventorydesc')";
+              $SQLInsert = "INSERT into addinventory(projectid, inventorytype, inventoryname, inventorydesc, inventoryid, manufacturer, userid) VALUES ('$projectid','$inventorytype','$inventoryname','$inventorydesc','$inventoryid','$manufacturer','$userid')";
 
             $statement = $conn->prepare($SQLInsert);
             $statement->execute();

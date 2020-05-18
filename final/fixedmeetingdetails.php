@@ -382,6 +382,31 @@ function closeForm3() {
     ?>
     </b>
     </div><br>
+    <form action="" class="form-container" method="post" enctype="multipart/form-data">
+    <textarea for="mom" class="projectdescription" name="mom" placeholder="Enter Minutes of the meeting (optional)" style="height:200px"></textarea>
+    <input type="submit" name="projectup-btn" class="btn" value="Add Minutes of Meeting">
+    </form>
+
+    <table style="width:95%; border: 1px solid #ddd;">
+      <tr style="background-color:lightblue;">
+        <th colspan="1" style="text-align:center;"><h3>Minutes of Meeting</h3></th>  
+      </tr>
+      <?php
+       $query = "select * from fixmeeting where id = $projectid";
+       $result_display_fixedmeeting =$conn->prepare($query);
+       $result_display_fixedmeeting->execute();
+        while($rows=$result_display_fixedmeeting->fetch(PDO::FETCH_ASSOC)){
+            echo "
+            <tr>
+            <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['mom']."</td>
+            </tr>
+            ";
+        }
+        ?>
+
+      <!-- php code for displaying project members-->  
+
+    </table>
 
     <div style="font-size:18px;">
     Cancel Meeting: &nbsp  
@@ -449,3 +474,23 @@ function closeForm3() {
 
 </body>
 </html>
+<?php
+        if(isset($_POST['projectup-btn'])) {
+            $meetingid = $_GET['rn'];
+            $mom = $_POST['mom'];
+
+          try {
+            if($meetingid!=""){
+              $SQLInsert = "UPDATE fixmeeting SET mom = '$mom' WHERE id = $meetingid";
+
+            $statement = $conn->prepare($SQLInsert);
+            $statement->execute();
+            echo '<script>alert("Minutes of Meeting added Successfully. Press Back to see it in table")</script>';
+            }
+          }
+          catch(PDOException $e)
+            {
+            echo $SQLInsert . "<br>" . $e->getMessage();
+            }
+        }
+?>

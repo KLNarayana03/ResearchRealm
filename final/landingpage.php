@@ -75,8 +75,8 @@ $result_calendar->execute();
     <i class="fa fa-caret-down"></i>
   </button>
   <div class="dropdown-container">
-    <a href="#">Link 1</a>
-    <a href="#">Link 2</a>
+    <a href="displayallinventories.php">All Inventories</a>
+    <a href="displayallmembers.php">All members</a>
     <a href="#">Link 3</a>
   </div>
 
@@ -334,7 +334,7 @@ function closeForm3() {
     <!-- <?php echo "<h1> Welcome ".$_SESSION['username']." To Dashboard </h1>" ?> -->
 <table align="center" style="width:650px; line-height:40px; border: 1px solid #ddd;">
       <tr>
-        <th colspan="5" style="background-color:lightgreen; text-align:center;"><h3>Ongoing Projects</h3></th>  
+        <th colspan="5" style="background-color:lightgreen; text-align:center;"><h3>My Projects</h3></th>  
       </tr>
       <tr>
         <th style="padding:12px; border: 1px solid #ddd;">Project Name</th>
@@ -410,7 +410,7 @@ function closeForm3() {
 
  <table align="center" style="width:650px; line-height:40px; border: 1px solid #ddd;">
       <tr>
-        <th colspan="4" style="background-color: lightgreen; text-align:center;"><h3>Present Tasks</h3></th>  
+        <th colspan="4" style="background-color: lightgreen; text-align:center;"><h3>My Tasks</h3></th>  
       </tr>
       <tr>
         <th style="padding:12px; border: 1px solid #ddd;">Task Name</th>
