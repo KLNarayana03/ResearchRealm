@@ -77,7 +77,6 @@ $result_calendar->execute();
   <div class="dropdown-container">
     <a href="displayallinventories.php">All Inventories</a>
     <a href="displayallmembers.php">All members</a>
-    <a href="#">Link 3</a>
   </div>
 
   <button class="dropdown-btn"><i class='far fa-folder-open' style="margin-right: 20px;"></i>Create 
