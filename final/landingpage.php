@@ -299,7 +299,7 @@ function closeForm3() {
     <i class="fa fa-caret-down"></i>
   </button>
   <div class="dropdown-container">
-    <a href="#">Chat Box</a>
+    <a href="index.php" style="color:white;">Chat Box</a>
     <a href="#">Discussion Thread</a>
   </div>
 
