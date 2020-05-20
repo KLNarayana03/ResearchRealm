@@ -8,7 +8,7 @@ session_start();
 
 $query = "
 SELECT * FROM users 
-WHERE id != '".$_SESSION['id']."' 
+WHERE id!= '".$_SESSION['id']."' 
 ";
 
 $statement = $connect->prepare($query);

@@ -96,7 +96,7 @@ function fetch_user_chat_history($from_user_id, $to_user_id, $connect)
 
 function get_user_name($id, $connect)
 {
-	$query = "SELECT username FROM login WHERE id = '$id'";
+	$query = "SELECT username FROM users WHERE id = '$id'";
 	$statement = $connect->prepare($query);
 	$statement->execute();
 	$result = $statement->fetchAll();
