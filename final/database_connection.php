@@ -151,7 +151,7 @@ function fetch_group_chat_history($connect)
 {
 	$query = "
 	SELECT * FROM chat_message 
-	WHERE to_user_id = '0'  
+	WHERE to_user_id IS NULL  
 	ORDER BY timestamp DESC
 	";
 
