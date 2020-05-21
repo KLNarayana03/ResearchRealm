@@ -7,8 +7,8 @@ include('database_connection.php');
 session_start();
 
 $query = "
-SELECT * FROM assign 
-WHERE userid= '".$_SESSION['id']."' 
+SELECT * FROM users 
+WHERE id!= '".$_SESSION['id']."' 
 ";
 
 $statement = $connect->prepare($query);
@@ -20,9 +20,9 @@ $result = $statement->fetchAll();
 $output = '
 <table class="table table-bordered table-striped">
 	<tr>
-		<th width="70%">Username</td>
-		<th width="20%">Status</td>
-		<th width="10%">Action</td>
+		<th width="34%">Username</td>
+		<th width="33%">Status</td>
+		<th width="33%">Action</td>
 	</tr>
 ';
 
