@@ -488,7 +488,7 @@ function closeForm3() {
           else{
             try {
               if($projectid!=""){
-                $SQLInsert = "INSERT into assign(projectid, post ,username) VALUES ('$projectid','$assignrole','$assignname')";
+                $SQLInsert = "INSERT into assign(projectid, post ,username, userid) VALUES ('$projectid','$assignrole','$assignname','$userid')";
   
               $statement = $conn->prepare($SQLInsert);
               $statement->execute();

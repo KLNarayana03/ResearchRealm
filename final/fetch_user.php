@@ -7,8 +7,8 @@ include('database_connection.php');
 session_start();
 
 $query = "
-SELECT * FROM users 
-WHERE id!= '".$_SESSION['id']."' 
+SELECT * FROM assign 
+WHERE userid= '".$_SESSION['id']."' 
 ";
 
 $statement = $connect->prepare($query);
