@@ -58,7 +58,7 @@ $result_calendar->execute();
 </head>
 <body>
 
-  <div class="header">
+<div class="header">
 
     <a href="landingpage.php" style="margin-left: 5px;">App logo</a>
     
@@ -75,9 +75,9 @@ $result_calendar->execute();
     <i class="fa fa-caret-down"></i>
   </button>
   <div class="dropdown-container">
-    <a href="#">Link 1</a>
-    <a href="#">Link 2</a>
-    <a href="#">Link 3</a>
+    <a href="displayallinventories.php">All Inventories</a>
+    <a href="displayallmembers.php">All members</a>
+    <a href="displayallresources.php">All resources</a>
   </div>
 
   <button class="dropdown-btn"><i class='far fa-folder-open' style="margin-right: 20px;"></i>Create 
@@ -202,17 +202,82 @@ function closeForm3() {
 </script>
   </div>
 
+  <button class="dropdown-btn">Inventories 
+   <!-- <i class="fa fa-caret-down"></i>-->
+  </button>
+  <div class="dropdown-container">
+  <button class="open-formbutton" onclick="openForm4()">New Inventory</button>
+        <div class="form-popup" id="myForm4">
+  <!-- <form action="createcalendarentries.php" class="form-container" method="post">
+    
+  <button class="open-button">Create new Calendar Entry</button>  
+    <hr class="new1">
+    <input for="calendarentryname" type="text" placeholder="Title" name="calendarentryname" required>
+    <select for="calendarentrytype" id="projecttype" name="calendarentrytype" style="margin-bottom:20px;">
+    <option value="meetings">Meetings</option>
+    <option value="deadlines">Deadlines</option>
+    <option value="reminders">Reminders</option>
+    </select>
+    <label style="font-size:15.5px;">Date: &nbsp &nbsp </label>
+    <input for="calendarentrylastdate" type="date" name="calendarentrylastdate" required>
+    <textarea for="calendarentrydesc" class="projectdescription" name="calendarentrydesc" placeholder="Description" style="height:200px"></textarea> 
+    <input type="submit" name="projectup-btn" class="btn" value="Submit">
+    <button type="button" class="btn cancel" onclick="closeForm3()">Close</button>
+  </form> -->
+  <form action="createinventory.php" method="POST" class="form-container">  
+  <button class="open-button">Create new Inventory</button>  
+    <hr class="new1">
+    <label style="font-size:17.5px; font-weight:100;">Inventory Type: &nbsp </label>
+    <select style="width: 20.9%; padding: 15px; margin: 5px 0 22px 0; border: none; background: #f1f1f1;" for="inventorytype" id="inventorytype" name="inventorytype" style="margin-bottom:20px;">
+      <option value="Equipment">Equipment</option>
+      <option value="Consumables">Consumables</option>
+    </select><br> 
+  
+    <label style="font-size:17.5px; font-weight:100;">Inventory Name: &nbsp  </label>
+    <input style="width: 28%; padding: 15px; margin: 5px 0 22px 0; border: none; background: #f1f1f1;" for="inventoryname" type="text" placeholder="Enter Inventory Name" name="inventoryname" required>
+    <br>
+  
+    <label style="font-size:17.5px; font-weight:100;">Inventory Id: &nbsp  </label>
+    <input style="width: 28%; padding: 15px; margin: 5px 0 22px 0; border: none; background: #f1f1f1;" for="inventoryid" type="text" placeholder="Enter Unique Inventory Id" name="inventoryid" required>
+    <br>
+  
+    <label style="font-size:17.5px; font-weight:100;">Manufacturer Name: &nbsp  </label>
+    <input style="width: 28%; padding: 15px; margin: 5px 0 22px 0; border: none; background: #f1f1f1;" for="manufacturername" type="text" placeholder="Enter Manufacturer Name" name="manufacturername" required>
+    <br>
+    
+    <textarea for="inventorydesc" name="inventorydesc" id="inventorydesc" class="projectdescription" placeholder="Enter Inventory Description (Optional)" style="height:50px"></textarea>
+    </textarea><br>
+
+    <input type="submit" name="projectup-btn" class="btn" value="Submit">
+    <button type="button" class="btn cancel" onclick="closeForm4()">Close</button>
+     </form> 
+  </div>
+
+<script>
+function openForm4() {
+  document.getElementById("myForm4").style.display = "block";
+  document.getElementById("main").style.display = "none";
+}
+
+function closeForm4() {
+  document.getElementById("myForm4").style.display = "none";
+  document.getElementById("main").style.display = "block";
+}
+</script>
+  </div>
+
   </div>
 
   <button class="dropdown-btn"><i class='far fa-edit' style="margin-right: 20px;"></i>Assign 
     <i class="fa fa-caret-down"></i>
   </button>
   <div class="dropdown-container">
-  <a href="assignproject.php" style="color:white;">Project 
+    <a href="assignproject.php" style="color:white;">Project 
      <!-- <i class="fa fa-caret-down"></i> -->
       </a>
+     
 
-      <a href="assigntasktable.php" style="color:white;">Task 
+      <a href="assigntasktable.php" style="color:white;">Task
      <!-- <i class="fa fa-caret-down"></i> -->
       </a>
 
@@ -299,7 +364,7 @@ function closeForm3() {
     <i class="fa fa-caret-down"></i>
   </button>
   <div class="dropdown-container">
-    <a href="#">Chat Box</a>
+    <a href="chatindex.php" style="color:white;">Chat Box</a>
     <a href="#">Discussion Thread</a>
   </div>
 
