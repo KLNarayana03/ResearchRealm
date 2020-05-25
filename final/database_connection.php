@@ -11,7 +11,7 @@ function fetch_user_last_activity($id, $connect)
 	$query = "
 	SELECT * FROM login_details 
 	WHERE id = '$id' 
-	ORDER BY last_activity DESC 
+	
 	LIMIT 1
 	";
 	$statement = $connect->prepare($query);
@@ -31,7 +31,7 @@ function fetch_user_chat_history($from_user_id, $to_user_id, $connect)
 	AND to_user_id = '".$to_user_id."') 
 	OR (from_user_id = '".$to_user_id."' 
 	AND to_user_id = '".$from_user_id."') 
-	ORDER BY timestamp DESC
+	
 	";
 	$statement = $connect->prepare($query);
 	$statement->execute();
