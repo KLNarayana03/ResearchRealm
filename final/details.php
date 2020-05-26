@@ -450,6 +450,7 @@ document.getElementById("main").style.display = "block";
     </div><br><br>
 
 
+
 <!-- View Resources-->   
 <div style="max-width: 28rem; float:left; margin-right:25%; background-color:#39CCCC; margin-bottom:4%;">
   <div class="card-header" style="font-size:18px; color:white;">
@@ -620,7 +621,7 @@ document.getElementById("main").style.display = "block";
     <h3 class="card-title">Invite to the project</h3>
     <p class="card-text">Here you can invite people to join your project.</p>
   </div>
-</div>  
+</div>  <br><br>
 
 
 <!-- End project -->   
@@ -643,6 +644,27 @@ document.getElementById("main").style.display = "block";
     <p class="card-text">Click here if you want to end the project.</p>
   </div>
 </div>  
+
+<!-- Chat on Project Basis-->   
+<div style="max-width: 28rem; float:left; margin-right:15%; margin-top:4%; margin-bottom:4%; background-color: #FFDC00;">
+  <div class="card-header" style="font-size:18px; color:white;">
+  <?php   
+            $query = "select * from projects where userid = $userid and id = $projectid";
+            $result_project =$conn->prepare($query);
+            $result_project->execute();
+            while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
+                echo "
+                <a href = 'projectchat.php?projectid=$projectid' style='color: gray;'>Chat</a>
+                ";
+                
+              }
+    ?>
+  </div>
+  <div class="card-body" style="font-size:14.5px; color:rgb(59, 49, 54);">
+    <h3 class="card-title">Chat for the Project</h3>
+    <p class="card-text">Here you can chat with the member you want.</p>
+  </div>
+</div>
 
 
     <div">
