@@ -7,7 +7,7 @@ $userid = $_SESSION['id'];
 $sno = 1;
 
 //Query for displaying all inventories
-$query = "select * from assign, projects  where assign.projectid = projects.id and userid = $userid order by projectname";
+$query = "select * from assign, projects  where assign.projectid = projects.id and assign.userid = $userid order by projectname";
 $result_display_allmembers =$conn->prepare($query);
 $result_display_allmembers->execute();
 
