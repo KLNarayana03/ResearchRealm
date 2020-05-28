@@ -484,15 +484,27 @@ function closeForm4() {
       </tr>
       <?php
         while($rows=$result_task->fetch(PDO::FETCH_ASSOC)){
-          echo "
+          ?>
+          <!-- echo "
           <tr>
           <td style=\"padding:12px; border: 1px solid #ddd;\">".$rows['taskname']."</td>
           <td style=\"padding:12px; border: 1px solid #ddd;\">".$rows['tasktype']."</td>
           <td style=\"padding:12px; border: 1px solid #ddd;\">".$rows['tasklastdate']."</td>
           <td style=\"padding:12px; border: 1px solid #ddd;\"><a href = 'taskdetails.php?rn=$rows[id]'>Details</td>
         </tr>
-          ";
-        
+          "; -->
+          <tr>
+          <td style="padding:12px; border: 1px solid #ddd;"><?php echo $rows['taskname']; ?></td>
+          <td style="padding:12px; border: 1px solid #ddd;"><?php echo $rows['tasktype']; ?></td>
+          <!-- <td style="padding:12px; border: 1px solid #ddd;"><?php echo date("Y/m/d"); ?></td> -->
+          <?php if(date("Y-m-d") > $rows['tasklastdate'])
+                    echo"<td style=\"padding:5px; border: 1px solid #ddd; background-color:red;\">".$rows['tasklastdate']."</td>";
+                else 
+                    echo"<td style=\"padding:5px; border: 1px solid #ddd;\">".$rows['tasklastdate']."</td>";   
+          ?>
+          <td style="padding:12px; border: 1px solid #ddd;"><?php echo "<a href = 'taskdetails.php?rn=$rows[id]'>"; ?>Details</td>
+        </tr>
+        <?php
         }
           ?>
       
@@ -510,15 +522,27 @@ function closeForm4() {
       </tr>
       <?php
         while($rows=$result_display_assigned_task->fetch(PDO::FETCH_ASSOC)){
-          echo "
+          ?>
+          <!-- echo "
           <tr>
           <td style=\"padding:12px; border: 1px solid #ddd;\">".$rows['assigntaskname']."</td>
           <td style=\"padding:12px; border: 1px solid #ddd;\">".$rows['assigntasktype']."</td>
           <td style=\"padding:12px; border: 1px solid #ddd;\">".$rows['assigntasklastdate']."</td>
           <td style=\"padding:12px; border: 1px solid #ddd;\"><a href = 'assigntaskdetails.php?rn=$rows[id]'>Details</td>
         </tr>
-          ";
-        
+          "; -->
+          <tr>
+          <td style="padding:12px; border: 1px solid #ddd;"><?php echo $rows['assigntaskname']; ?></td>
+          <td style="padding:12px; border: 1px solid #ddd;"><?php echo $rows['assigntasktype']; ?></td>
+          <!-- <td style="padding:12px; border: 1px solid #ddd;"><?php echo date("Y/m/d"); ?></td> -->
+          <?php if(date("Y-m-d") > $rows['assigntasklastdate'])
+                    echo"<td style=\"padding:5px; border: 1px solid #ddd; background-color:red;\">".$rows['assigntasklastdate']."</td>";
+                else 
+                    echo"<td style=\"padding:5px; border: 1px solid #ddd;\">".$rows['assigntasklastdate']."</td>";   
+          ?>
+          <td style="padding:12px; border: 1px solid #ddd;"><?php echo "<a href = 'assigntaskdetails.php?rn=$rows[id]'>"; ?>Details</td>
+        </tr>
+        <?php
         }
           ?>
       
@@ -542,7 +566,12 @@ function closeForm4() {
         <tr>
           <td style="padding:12px; border: 1px solid #ddd;"><?php echo $rows['calendarentryname']; ?></td>
           <td style="padding:12px; border: 1px solid #ddd;"><?php echo $rows['calendarentrytype']; ?></td>
-          <td style="padding:12px; border: 1px solid #ddd;"><?php echo $rows['calendarentrylastdate']; ?></td>
+          <!-- <td style="padding:12px; border: 1px solid #ddd;"><?php echo date("Y/m/d"); ?></td> -->
+          <?php if(date("Y-m-d") > $rows['calendarentrylastdate'])
+                    echo"<td style=\"padding:5px; border: 1px solid #ddd; background-color:red;\">".$rows['calendarentrylastdate']."</td>";
+                else 
+                    echo"<td style=\"padding:5px; border: 1px solid #ddd;\">".$rows['calendarentrylastdate']."</td>";   
+          ?>
           <td style="padding:12px; border: 1px solid #ddd;"><?php echo $rows['calendarentrydate']; ?></td>
         </tr>
           <?php
