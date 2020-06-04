@@ -136,7 +136,7 @@ $(document).ready(function(){
 	function fetch_user()
 	{
 		$.ajax({
-			url:"projectchatfetch_user.php?projectid="+21,
+			url:"projectchatfetch_user.php?projectid="+19,
 			method:"POST",
 			success:function(data){
 				$('#user_details').html(data);

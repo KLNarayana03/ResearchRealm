@@ -10,7 +10,7 @@ $projectid = $_GET['projectid'];
 echo $projectid;
 $query = "
 SELECT * FROM assign 
-WHERE projectid = 22
+WHERE projectid = 19
 ";
 
 $statement = $connect->prepare($query);
