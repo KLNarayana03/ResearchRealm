@@ -9,6 +9,55 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
  <title>Home Page</title> 
 <link rel="stylesheet" href="homepage.css">
+
+<style>
+  
+  .mySlides {display: none;}
+  img {vertical-align: middle;}
+  
+  /* Slideshow container */
+  .slideshow-container {
+    max-width: 1001px;
+    position: relative;
+    margin: auto;
+    margin-left: 35%;
+  }
+  
+  /* The dots/bullets/indicators */
+  .dot {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+  }
+  
+  .active {
+    background-color: #717171;
+  }
+  
+  /* Fading animation */
+  .fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+    
+  }
+  
+  @-webkit-keyframes fade {
+    from {opacity: .4} 
+    to {opacity: 1}
+  }
+  
+  @keyframes fade {
+    from {opacity: .4} 
+    to {opacity: 1}
+  }
+  
+  </style>
 </head>
 <body>
 
@@ -35,11 +84,100 @@
     <img class="appimage" src="gmailhomepageimage.png" height="100%" width="93%"/>
   </div>
 </div>
+<hr>
+<div class="row" style="margin-top: 0px;">
+  <div class="column" style="margin-left: 7%; width: 40%;">
+     <img class="appimage" src="trellohomepageimage.svg" height="100%" width="93%"/>
+  </div>
+
+  <div class="column" style="background-color:white; text-align: center;margin-left: 2%; margin-right: 10%; width: 40%;">
+    <br><br>
+    <h1 id="heading" style="font-size: 40px;">Keep your team organized and connected.</h1>
+    <div class="para">RPMS’s boards, lists, and cards enable you to organize and prioritize your projects in a fun, flexible, and rewarding way.
+    </div>
+    <a id="signupbutton2" style="background-color:#43A047;" href=signup.html>Sign Up - It's Free!</a>
+  </div>
+</div>
+
+<div class="row">
+  <div class="column" style="background-color:white; text-align: center;">
+
+    <h1 id="heading" style="font-size: 40px;">Save time with in-app messaging</h1>
+    <div class="para" style="width: 80%; margin-left: 10%;">RPMS’s online project management tools include a built-in chat — a fun way to seamlessly reduce your team’s email use! 
+    </div>
+  </div>
+
+
+  <div class="column">
+    <p style="margin-bottom: 25px;"></p>
+    <img class="appimage" src="chatboximage.jpg" height="85%" width="83%"/>
+  </div>
+</div>
+
+<div class="row">
+  <h1  style="margin-left: 38%;">
+    See how it works
+  </h1>
+
+  <div style="margin-left: -5%; font-size: 23px; text-align: center; line-height: 1.8;">
+    Go from idea to action in seconds with RPMS’s intuitively<br> simple boards, lists, and cards.
+  </div>
+  <br>
+  <div class="slideshow-container">
+
+    <div class="mySlides fade">
+     
+      <img src="trellohomepageimage.svg" style="width:500px; height: 500px;">
+      
+    </div>
+    
+    <div class="mySlides fade">
+      
+      <img src="chatboximage.jpg" style="width:500px; height: 500px;">
+      
+    </div>
+    
+    <div class="mySlides fade">
+
+      <img src="gmailhomepageimage.png" style="width:500px; height: 500px;">
+      
+    </div>
+    
+    </div>
+    <br>
+    
+    <div style="text-align:center">
+      <span class="dot"></span> 
+      <span class="dot"></span> 
+      <span class="dot"></span> 
+    </div>
+    
+    <script>
+    var slideIndex = 0;
+    showSlides();
+    
+    function showSlides() {
+      var i;
+      var slides = document.getElementsByClassName("mySlides");
+      var dots = document.getElementsByClassName("dot");
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) {slideIndex = 1}    
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex-1].style.display = "block";  
+      dots[slideIndex-1].className += " active";
+      setTimeout(showSlides, 2000); // Change image every 2 seconds
+    }
+    </script>
+</div>
 
 <div class="footer">
     <p class="copyright">Copyright © App Name. All Rights Reserved.</p>
 </div>
-
 
 </body>
 </html>
