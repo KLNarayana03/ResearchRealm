@@ -403,7 +403,7 @@ document.getElementById("main").style.display = "block";
     <b style="font-size:17.5px; font-weight:100;">Project Name : &nbsp</b> 
     <!-- php code for project name -->
     <?php
-      $query = "select * from projects where userid = $userid and id = $projectid";
+      $query = "select * from projects where id = $projectid";
       $result_project =$conn->prepare($query);
       $result_project->execute();
       while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
@@ -417,7 +417,7 @@ document.getElementById("main").style.display = "block";
     <b style="font-size:17.5px; font-weight:100;">Project Type : &nbsp </b>
     <!-- php code for project type -->
     <?php
-      $query = "select * from projects where userid = $userid and id = $projectid";
+      $query = "select * from projects where id = $projectid";
       $result_project =$conn->prepare($query);
       $result_project->execute();
       while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
