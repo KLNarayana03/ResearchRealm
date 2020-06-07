@@ -498,7 +498,7 @@ function closeForm4() {
           <td style="padding:12px; border: 1px solid #ddd;"><?php echo $rows['tasktype']; ?></td>
           <!-- <td style="padding:12px; border: 1px solid #ddd;"><?php echo date("Y/m/d"); ?></td> -->
           <?php if(date("Y-m-d") > $rows['tasklastdate'])
-                    echo"<td style=\"padding:5px; border: 1px solid #ddd; background-color:red;\">".$rows['tasklastdate']."</td>";
+                    echo"<td style=\"padding:5px; border: 1px solid #ddd; background-color:rgba(255, 0, 0, 0.75);\">".$rows['tasklastdate']."</td>";
                 else 
                     echo"<td style=\"padding:5px; border: 1px solid #ddd;\">".$rows['tasklastdate']."</td>";   
           ?>

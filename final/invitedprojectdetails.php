@@ -41,6 +41,10 @@ $result_calendar->execute();
   <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   
  <title>Details Page</title> 
 <link rel="stylesheet" href="landingpage.css">
@@ -378,6 +382,7 @@ document.getElementById("main").style.display = "block";
 </div>
 
 </div>
+
 <div class="main" id="main">
 <?php if(!isset($_SESSION['username'])): header("location: logout.php");?>
 
@@ -393,7 +398,7 @@ document.getElementById("main").style.display = "block";
     <b style="font-size:18px; font-weight:100;">Project Name : &nbsp</b> 
     <!-- php code for project name -->
     <?php
-      $query = "select * from projects where id = $projectid";
+      $query = "select * from projects where userid = $userid and id = $projectid";
       $result_project =$conn->prepare($query);
       $result_project->execute();
       while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
@@ -407,7 +412,7 @@ document.getElementById("main").style.display = "block";
     <b style="font-size:18px; font-weight:100;">Project Type : &nbsp </b>
     <!-- php code for project type -->
     <?php
-      $query = "select * from projects where id = $projectid";
+      $query = "select * from projects where userid = $userid and id = $projectid";
       $result_project =$conn->prepare($query);
       $result_project->execute();
       while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
@@ -421,7 +426,7 @@ document.getElementById("main").style.display = "block";
     <b style="font-size:18px; font-weight:100;">Project Start Date : &nbsp </b> 
     <!-- php code for project type -->
     <?php
-      $query = "select * from projects where id = $projectid" ;
+      $query = "select * from projects where userid = $userid and id = $projectid" ;
       $result_project =$conn->prepare($query);
       $result_project->execute();
       while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
@@ -434,7 +439,7 @@ document.getElementById("main").style.display = "block";
     Project Description : &nbsp 
     <b style="font-weight:100; font-size:16px;"> 
     <?php
-      $query = "select * from projects where id = $projectid";
+      $query = "select * from projects where userid = $userid and id = $projectid";
       $result_project =$conn->prepare($query);
       $result_project->execute();
       while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
@@ -442,62 +447,230 @@ document.getElementById("main").style.display = "block";
       }
     ?>
     </b>
-    </div><br>
+    </div><br><br>
 
-    <div style="font-size:18px;">
-    Resources: &nbsp  
-    <?php   
-            $query = "select * from projects where id = $projectid";
+
+
+<!-- View Resources-->   
+<div style="max-width: 28rem; float:left; margin-right:25%; background-color:#39CCCC; margin-bottom:4%;">
+  <div class="card-header" style="font-size:18px; color:white;">
+  <?php   
+            $query = "select * from projects where userid = $userid and id = $projectid";
             $result_project =$conn->prepare($query);
             $result_project->execute();
             while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
                 echo "
-                <a href = 'displayresources.php?projectid=$projectid'>Show Resources</a>
+                <a href = 'displayresources.php?projectid=$projectid' style='color: #1f497d;'>View Resources</a>
+                ";
+                
+              }
+  ?>
+  </div>
+  <div class="card-body" style="font-size:14.5px; color:black;">
+    <h3 class="card-title">Resources</h3>
+    <p class="card-text">Here you can view the resources shared in this project.</p>
+  </div>
+</div>
+
+
+
+<!-- Add Inventory-->   
+<div style="max-width: 28rem; background-color:pink; float:left; margin-bottom:4%;">
+  <div class="card-header" style="font-size:18px; color:white;">
+  <?php   
+            $query = "select * from projects where userid = $userid and id = $projectid";
+            $result_project =$conn->prepare($query);
+            $result_project->execute();
+            while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
+                echo "
+                <a href = 'addinventory.php?rn=$projectid' style='color: #1f497d;'> Inventory</a>
+                ";
+                
+              }
+    ?>
+  </div>
+  <div class="card-body" style="font-size:14.5px;">
+    <h3 class="card-title">Add or view inventory</h3>
+    <p class="card-text">Here you can add or view inventories in this project.</p>
+  </div>
+</div>
+<br>
+<!-- Assign Inventory-->   
+<div style="max-width: 28rem; float:left; margin-right:25%; background-color: #FF6F61; margin-bottom:4%;">
+  <div class="card-header" style="font-size:18px; color:white;">
+  <?php   
+            $query = "select * from projects where userid = $userid and id = $projectid";
+            $result_project =$conn->prepare($query);
+            $result_project->execute();
+            while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
+                echo "
+                <a href = 'assigninventory.php?rn=$projectid' style='color:white;'>Assign Inventory</a>
+                ";
+                
+              }
+    ?>
+  </div>
+  <div class="card-body" style="font-size:14.5px; color:white;">
+    <h3 class="card-title">Assign Inventories</h3>
+    <p class="card-text">Here you can assign inventories of this project to the project members.</p>
+  </div>
+</div>
+
+<!-- Fix Meeting -->   
+<div style="max-width: 28rem; float:left; background-color:#2ECC40;">
+  <div class="card-header" style="font-size:18px; color:white;">
+  <?php   
+            $query = "select * from projects where userid = $userid and id = $projectid";
+            $result_project =$conn->prepare($query);
+            $result_project->execute();
+            while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
+                echo "
+                <a href = 'fixmeeting.php?rn=$projectid' style='color: whitesmoke;'>Fix Meeting</a>
+                ";
+                
+              }
+    ?>
+  </div>
+  <div class="card-body" style="font-size:14.5px; color:whitesmoke;">
+    <h3 class="card-title">Fix Meeting</h3>
+    <p class="card-text">Here you can fix meeting with the members of the project.</p>
+  </div>
+</div>  
+<br><br>
+
+<!-- Assign Project-->   
+<div style="max-width: 28rem; float:left; margin-right:25%;  background-color: #92A8D1;">
+  <div class="card-header" style="font-size:18px; color:white;">
+  <?php   
+            $query = "select * from projects where userid = $userid and id = $projectid";
+            $result_project =$conn->prepare($query);
+            $result_project->execute();
+            while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
+                echo "
+                <a href = 'assign.php?rn=$projectid' style='color:#1f497d;'>Assign Project</a>
+                ";
+                
+              }
+    ?>
+  </div>
+  <div class="card-body" style="font-size:14.5px; color:whitesmoke; ">
+    <h3 class="card-title">Assign Project</h3>
+    <p class="card-text">Here you can add people to your project. </p>
+  </div>
+</div>
+
+<!-- Assign Task-->   
+<div style="max-width: 28rem; float:left; margin-right:15%; background-color: #FFDC00;">
+  <div class="card-header" style="font-size:18px; color:white;">
+  <?php   
+            $query = "select * from projects where userid = $userid and id = $projectid";
+            $result_project =$conn->prepare($query);
+            $result_project->execute();
+            while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
+                echo "
+                <a href = 'assigntask.php?rn=$projectid' style='color: gray;'>Assign Task</a>
+                ";
+                
+              }
+    ?>
+  </div>
+  <div class="card-body" style="font-size:14.5px; color:rgb(59, 49, 54);">
+    <h3 class="card-title">Assign Task</h3>
+    <p class="card-text">Here you can assign a task to the project member you want.</p>
+  </div>
+</div>
+
+<!-- Add Project Expenses -->   
+<div style="max-width: 28rem; float:left; margin-right:25%; margin-top:4%; background-color: #81d8d0;">
+  <div class="card-header" style="font-size:18px; color:white;">
+  <?php   
+            $query = "select * from projects where userid = $userid and id = $projectid";
+            $result_project =$conn->prepare($query);
+            $result_project->execute();
+            while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
+                echo "
+                <a href = 'addprojectexpenses.php?rn=$projectid' style='color: #1f497d;'>Project Expenses</a>
+                ";
+                
+              }
+    ?>
+  </div>
+  <div class="card-body" style="font-size:14.5px;">
+    <h3 class="card-title">Add or view project expenses</h3>
+    <p class="card-text">Here you can add or view expenses made in this project.</p>
+  </div>
+</div>  
+
+  
+<!-- Invite to the project -->   
+<div style="max-width: 28rem; float:left; margin-right:15%; margin-top:4%; background-color: #7FDBFF;">
+  <div class="card-header" style="font-size:18px; color:white;">
+  <?php   
+            $query = "select * from projects where userid = $userid and id = $projectid";
+            $result_project =$conn->prepare($query);
+            $result_project->execute();
+            while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
+                echo "
+                <a href = 'invite.php?rn=$projectid' style='color:#1f497d;'>Invite</a>
                 ";
                 
               }
         ?>
-    
-    <!--php code for ending the project <a href = 'delete.php?rn=$rows[id]' onclick=\"return confirm('Are you sure?')\">Delete</a> -->
-    </div><br>
+  </div>
+  <div class="card-body" style="font-size:14.5px;">
+    <h3 class="card-title">Invite to the project</h3>
+    <p class="card-text">Here you can invite people to join your project.</p>
+  </div>
+</div>  <br><br>
 
-    <div style="font-size:18px;">
-    Assign Task: &nbsp
-    <?php   
-            $query = "select * from projects where id = $projectid";
+
+<!-- End project -->   
+<div style="max-width: 28rem; float:left; margin-right:25%; margin-top:4%; margin-bottom:4%; background-color: whitesmoke;">
+  <div class="card-header" style="font-size:18px; color:white;">
+  <?php   
+            $query = "select * from projects where userid = $userid and id = $projectid";
             $result_project =$conn->prepare($query);
             $result_project->execute();
             while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
                 echo "
-                <a href = 'assigntask.php?rn=$projectid'>Assign</a>
+                <a style='color:#1f497d;' href = 'delete.php?rn=$rows[id]' onclick=\"return confirm('Are you sure?')\">End Project</a>
                 ";
                 
               }
-    ?>
-    <!-- php code for assigning project -->
-    </div><br>
+        ?>
+  </div>
+  <div class="card-body" style="font-size:14.5px;">
+    <h3 class="card-title">End Project</h3>
+    <p class="card-text">Click here if you want to end the project.</p>
+  </div>
+</div>  
 
-    <div style="font-size:18px;">
-    Fix Meeting: &nbsp
-    <?php   
-            $query = "select * from projects where id = $projectid";
+<!-- Chat on Project Basis-->   
+<div style="max-width: 28rem; float:left; margin-right:15%; margin-top:4%; margin-bottom:4%; background-color: #FFDC00;">
+  <div class="card-header" style="font-size:18px; color:white;">
+  <?php   
+            $query = "select * from projects where userid = $userid and id = $projectid";
             $result_project =$conn->prepare($query);
             $result_project->execute();
             while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
                 echo "
-                <a href = 'fixmeeting.php?rn=$projectid'>Fix</a>
+                <a href = 'projectchat.php?projectid=$projectid' style='color: gray;'>Chat</a>
                 ";
                 
               }
     ?>
-    <!-- php code for assigning project -->
-    </div><br>
+  </div>
+  <div class="card-body" style="font-size:14.5px; color:rgb(59, 49, 54);">
+    <h3 class="card-title">Chat for the Project</h3>
+    <p class="card-text">Here you can chat with the member you want.</p>
+  </div>
+</div>
 
 
-    <div>
-    <table style="width:98%; border: 1px solid #ddd;">
+    <div">
+    <table style="width:98%; border: 1px solid #ddd; font-size:15px;">
       <tr style="background-color:lightblue;">
-        <th colspan="3" style="text-align:center;"><h3>Project Members</h3></th>  
+        <th colspan="3" height="75" style="text-align:center;"><span style="font-size:24px; font-weight:100;">Project Members</span></th>  
       </tr>
       <tr>
         <th style="padding:5px; border: 1px solid #ddd; text-align:center;">S.No</th>
@@ -562,7 +735,7 @@ document.getElementById("main").style.display = "block";
 
 </div>
 
-<div class="footer">
+<div class="footer" style="font-size:14px;">
     <p class="copyright">Copyright © App Name. All Rights Reserved.</p>
 </div>
 
