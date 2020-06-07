@@ -67,7 +67,7 @@ $events = $req->fetchAll();
 
         <div class="row">
             <div class="col-lg-12 text-center">
-                <p class="lead">Complete with pre-defined file paths that you won't have to change!</p>
+                <p class="lead">Double tap to enter the task</p>
                 <div id="calendar" class="col-centered">
                 </div>
             </div>
