@@ -373,7 +373,7 @@ function closeForm4() {
     <i class="fa fa-caret-down"></i>
   </button>
   <div class="dropdown-container">
-    <a href="https://calendar.google.com/calendar?cid=NXBybWhiZm9qa283anJ1N2pmNWNnYThxZHNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ">Calendar Entries</a>
+    <a href="calendarindex.php">Calendar Entries</a>
   </div>
 
 
