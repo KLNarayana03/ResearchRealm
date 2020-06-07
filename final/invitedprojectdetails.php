@@ -5,6 +5,7 @@ include_once 'source/session.php';
 
 $projectid = $_GET['rn'];
 $userid = $_SESSION['id'];
+$username = $_SESSION['username'];
 $sno = 1;
 //Query for displaying members
 $query = "select * from assign where projectid = $projectid";
@@ -444,6 +445,19 @@ document.getElementById("main").style.display = "block";
       $result_project->execute();
       while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
         echo $rows['projectdesc'];
+      }
+    ?>
+    </b>
+    </div><br>
+    <div style="font-size:18px;">
+    My Roll : &nbsp 
+    <b style="font-weight:100; font-size:16px;"> 
+    <?php
+      $query = "select * from assign where projectid = $projectid and username = '$username'";
+      $result_project =$conn->prepare($query);
+      $result_project->execute();
+      while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
+        echo $rows['post'];
       }
     ?>
     </b>
