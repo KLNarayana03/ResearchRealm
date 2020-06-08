@@ -468,8 +468,8 @@ document.getElementById("main").style.display = "block";
 <!-- View Resources-->   
 <div style="max-width: 28rem; float:left; margin-right:25%; background-color:#39CCCC; margin-bottom:4%;">
   <div class="card-header" style="font-size:18px; color:white;">
-  <?php   
-            $query = "select * from projects where userid = $userid and id = $projectid";
+  <?php      
+            $query = "select * from projects where id = $projectid";
             $result_project =$conn->prepare($query);
             $result_project->execute();
             while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
@@ -492,7 +492,15 @@ document.getElementById("main").style.display = "block";
 <div style="max-width: 28rem; background-color:pink; float:left; margin-bottom:4%;">
   <div class="card-header" style="font-size:18px; color:white;">
   <?php   
-            $query = "select * from projects where userid = $userid and id = $projectid";
+
+  // Checking Conditions
+  $query = "select * from assign where projectid = $projectid and username = '$username'";
+  $result_project =$conn->prepare($query);
+  $result_project->execute();
+  $row1=$result_project->fetch(PDO::FETCH_ASSOC);
+              if($row1['post'] == 'Mentor' || $row1['post'] == 'Lab-Incharge' || $row1['post'] == 'Collaborator'){
+
+            $query = "select * from projects where id = $projectid";
             $result_project =$conn->prepare($query);
             $result_project->execute();
             while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
@@ -501,6 +509,10 @@ document.getElementById("main").style.display = "block";
                 ";
                 
               }
+            }
+            else{
+              echo "not applicable";
+            }
     ?>
   </div>
   <div class="card-body" style="font-size:14.5px;">
@@ -513,7 +525,14 @@ document.getElementById("main").style.display = "block";
 <div style="max-width: 28rem; float:left; margin-right:25%; background-color: #FF6F61; margin-bottom:4%;">
   <div class="card-header" style="font-size:18px; color:white;">
   <?php   
-            $query = "select * from projects where userid = $userid and id = $projectid";
+  //checking conditions
+  $query = "select * from assign where projectid = $projectid and username = '$username'";
+  $result_project =$conn->prepare($query);
+  $result_project->execute();
+  $row1=$result_project->fetch(PDO::FETCH_ASSOC);
+              if($row1['post'] == 'Mentor' || $row1['post'] == 'Lab-Incharge' || $row1['post'] == 'Collaborator'){
+
+            $query = "select * from projects where id = $projectid";
             $result_project =$conn->prepare($query);
             $result_project->execute();
             while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
@@ -522,6 +541,10 @@ document.getElementById("main").style.display = "block";
                 ";
                 
               }
+            }
+            else{
+              echo "not applicable";
+            }
     ?>
   </div>
   <div class="card-body" style="font-size:14.5px; color:white;">
@@ -534,7 +557,7 @@ document.getElementById("main").style.display = "block";
 <div style="max-width: 28rem; float:left; background-color:#2ECC40;">
   <div class="card-header" style="font-size:18px; color:white;">
   <?php   
-            $query = "select * from projects where userid = $userid and id = $projectid";
+            $query = "select * from projects where id = $projectid";
             $result_project =$conn->prepare($query);
             $result_project->execute();
             while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
@@ -556,7 +579,14 @@ document.getElementById("main").style.display = "block";
 <div style="max-width: 28rem; float:left; margin-right:25%;  background-color: #92A8D1;">
   <div class="card-header" style="font-size:18px; color:white;">
   <?php   
-            $query = "select * from projects where userid = $userid and id = $projectid";
+  //check conditions
+  $query = "select * from assign where projectid = $projectid and username = '$username'";
+  $result_project =$conn->prepare($query);
+  $result_project->execute();
+  $row1=$result_project->fetch(PDO::FETCH_ASSOC);
+              if($row1['post'] == 'Collaborator'){
+
+            $query = "select * from projects where id = $projectid";
             $result_project =$conn->prepare($query);
             $result_project->execute();
             while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
@@ -565,6 +595,10 @@ document.getElementById("main").style.display = "block";
                 ";
                 
               }
+            }
+            else{
+              echo "not applicable";
+            }
     ?>
   </div>
   <div class="card-body" style="font-size:14.5px; color:whitesmoke; ">
@@ -577,7 +611,14 @@ document.getElementById("main").style.display = "block";
 <div style="max-width: 28rem; float:left; margin-right:15%; background-color: #FFDC00;">
   <div class="card-header" style="font-size:18px; color:white;">
   <?php   
-            $query = "select * from projects where userid = $userid and id = $projectid";
+  //check conditions
+  $query = "select * from assign where projectid = $projectid and username = '$username'";
+  $result_project =$conn->prepare($query);
+  $result_project->execute();
+  $row1=$result_project->fetch(PDO::FETCH_ASSOC);
+              if($row1['post'] == 'Mentor' || $row1['post'] == 'Lab-Incharge' || $row1['post'] == 'Collaborator'){
+
+            $query = "select * from projects where id = $projectid";
             $result_project =$conn->prepare($query);
             $result_project->execute();
             while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
@@ -586,6 +627,10 @@ document.getElementById("main").style.display = "block";
                 ";
                 
               }
+            }
+            else{
+              echo "not applicable";
+            }
     ?>
   </div>
   <div class="card-body" style="font-size:14.5px; color:rgb(59, 49, 54);">
@@ -598,7 +643,14 @@ document.getElementById("main").style.display = "block";
 <div style="max-width: 28rem; float:left; margin-right:25%; margin-top:4%; background-color: #81d8d0;">
   <div class="card-header" style="font-size:18px; color:white;">
   <?php   
-            $query = "select * from projects where userid = $userid and id = $projectid";
+   //check conditions
+   $query = "select * from assign where projectid = $projectid and username = '$username'";
+   $result_project =$conn->prepare($query);
+   $result_project->execute();
+   $row1=$result_project->fetch(PDO::FETCH_ASSOC);
+               if($row1['post'] == 'Mentor' || $row1['post'] == 'Lab-Incharge' || $row1['post'] == 'Collaborator'){
+ 
+            $query = "select * from projects where id = $projectid";
             $result_project =$conn->prepare($query);
             $result_project->execute();
             while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
@@ -607,6 +659,10 @@ document.getElementById("main").style.display = "block";
                 ";
                 
               }
+            }
+            else{
+              echo "not applicable";
+            }
     ?>
   </div>
   <div class="card-body" style="font-size:14.5px;">
@@ -620,7 +676,14 @@ document.getElementById("main").style.display = "block";
 <div style="max-width: 28rem; float:left; margin-right:15%; margin-top:4%; background-color: #7FDBFF;">
   <div class="card-header" style="font-size:18px; color:white;">
   <?php   
-            $query = "select * from projects where userid = $userid and id = $projectid";
+   //check conditions
+   $query = "select * from assign where projectid = $projectid and username = '$username'";
+   $result_project =$conn->prepare($query);
+   $result_project->execute();
+   $row1=$result_project->fetch(PDO::FETCH_ASSOC);
+               if($row1['post'] == 'Collaborator'){
+
+            $query = "select * from projects where id = $projectid";
             $result_project =$conn->prepare($query);
             $result_project->execute();
             while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
@@ -629,6 +692,10 @@ document.getElementById("main").style.display = "block";
                 ";
                 
               }
+            }
+            else{
+              echo "not applicable";
+            }
         ?>
   </div>
   <div class="card-body" style="font-size:14.5px;">
@@ -642,7 +709,14 @@ document.getElementById("main").style.display = "block";
 <div style="max-width: 28rem; float:left; margin-right:25%; margin-top:4%; margin-bottom:4%; background-color: whitesmoke;">
   <div class="card-header" style="font-size:18px; color:white;">
   <?php   
-            $query = "select * from projects where userid = $userid and id = $projectid";
+   //check conditions
+   $query = "select * from assign where projectid = $projectid and username = '$username'";
+   $result_project =$conn->prepare($query);
+   $result_project->execute();
+   $row1=$result_project->fetch(PDO::FETCH_ASSOC);
+               if($row1['post'] == 'Collaborator'){
+
+            $query = "select * from projects where id = $projectid";
             $result_project =$conn->prepare($query);
             $result_project->execute();
             while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
@@ -651,6 +725,10 @@ document.getElementById("main").style.display = "block";
                 ";
                 
               }
+            }
+            else{
+              echo "not applicable";
+            }
         ?>
   </div>
   <div class="card-body" style="font-size:14.5px;">
@@ -663,7 +741,7 @@ document.getElementById("main").style.display = "block";
 <div style="max-width: 28rem; float:left; margin-right:15%; margin-top:4%; margin-bottom:4%; background-color: #FFDC00;">
   <div class="card-header" style="font-size:18px; color:white;">
   <?php   
-            $query = "select * from projects where userid = $userid and id = $projectid";
+            $query = "select * from projects where id = $projectid";
             $result_project =$conn->prepare($query);
             $result_project->execute();
             while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
