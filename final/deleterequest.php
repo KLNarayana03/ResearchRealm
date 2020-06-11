@@ -9,10 +9,10 @@
 
    if($result_delete)
    {
-       echo "Request Deleted";
+    echo '<script>alert("Request rejected Successfully!")</script>';
    }
    else
    {
-       echo "Inventory failed to delete";
+    echo '<script>alert("Request not rejected!")</script>';
    }
 ?>

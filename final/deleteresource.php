@@ -9,10 +9,10 @@
 
    if($result_delete)
    {
-       echo "Resource deleted from database";
+    echo '<script>alert("Resource deleted Successfully!")</script>';
    }
    else
    {
-       echo "Project failed to delete";
+    echo '<script>alert("Resource FAILED to delete!")</script>';
    }
 ?>
