@@ -9,10 +9,10 @@
 
    if($result_delete)
    {
-       echo "Bill Details Deleted";
+        echo '<script>alert("Bill deleted Successfully!")</script>';
    }
    else
    {
-       echo "Project failed to delete";
+    echo '<script>alert("Bill FAILED to delete!")</script>';
    }
 ?>

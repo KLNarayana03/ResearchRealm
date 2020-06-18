@@ -9,10 +9,10 @@
 
    if($result_delete)
    {
-       echo "Inventory deleted from database";
+        echo '<script>alert("Deleted from database Successfully!")</script>';
    }
    else
    {
-       echo "Inventory failed to delete";
+       echo '<script>alert("Failed to delete!")</script>';
    }
 ?>

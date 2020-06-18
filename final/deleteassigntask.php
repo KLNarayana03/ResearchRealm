@@ -9,10 +9,10 @@
 
    if($result_delete)
    {
-       echo "Task Deleted";
+        echo '<script>alert("Task deleted Successfully!")</script>';
    }
    else
    {
-       echo "Project failed to delete";
+        echo '<script>alert("Task FAILED to delete!")</script>';
    }
 ?>

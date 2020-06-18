@@ -9,10 +9,10 @@
 
    if($result_delete)
    {
-       echo "Project deleted from database";
+       echo '<script>alert("Project deleted Successfully!")</script>';
    }
    else
    {
-       echo "Project failed to delete";
+    echo '<script>alert("Project FAILED to delete!")</script>';
    }
 ?>

@@ -511,7 +511,7 @@ document.getElementById("main").style.display = "block";
               }
             }
             else{
-              echo "not applicable";
+              echo '<script>alert("You do not have permission to view this!")</script>';
             }
     ?>
   </div>
@@ -543,7 +543,7 @@ document.getElementById("main").style.display = "block";
               }
             }
             else{
-              echo "not applicable";
+              echo '<script>alert("You do not have permission to view this!")</script>';
             }
     ?>
   </div>
@@ -597,7 +597,7 @@ document.getElementById("main").style.display = "block";
               }
             }
             else{
-              echo "not applicable";
+              echo '<script>alert("You do not have permission to view this!")</script>';
             }
     ?>
   </div>
@@ -629,7 +629,7 @@ document.getElementById("main").style.display = "block";
               }
             }
             else{
-              echo "not applicable";
+              echo '<script>alert("You do not have permission to view this!")</script>';
             }
     ?>
   </div>
@@ -661,7 +661,7 @@ document.getElementById("main").style.display = "block";
               }
             }
             else{
-              echo "not applicable";
+              echo '<script>alert("You do not have permission to view this!")</script>';
             }
     ?>
   </div>
@@ -694,7 +694,7 @@ document.getElementById("main").style.display = "block";
               }
             }
             else{
-              echo "not applicable";
+              echo '<script>alert("You do not have permission to view this!")</script>';
             }
         ?>
   </div>
@@ -727,7 +727,7 @@ document.getElementById("main").style.display = "block";
               }
             }
             else{
-              echo "not applicable";
+              echo '<script>alert("You do not have permission to view this!")</script>';
             }
         ?>
   </div>
