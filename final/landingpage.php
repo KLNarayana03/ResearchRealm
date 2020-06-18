@@ -66,7 +66,10 @@ $result_calendar->execute();
     
     <div id="usertype"><?php echo $_SESSION['username'] ?><a href="#"><i class="far fa-address-card" style="margin-left: 15px;"></i></a></div>
  </div>
-
+ <div>
+   <a href="deletedprojects.php">Recycle-Bin</a>
+  </div>
+ 
 <div class="row">
 
   <div class="sidenav" id="sidenav">
