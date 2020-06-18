@@ -14,7 +14,7 @@
 
    if($result_delete)
    {
-       echo "Project deleted from database";
+       echo "Project moved to recycle bin";
    }
    else
    {
