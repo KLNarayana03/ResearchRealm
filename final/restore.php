@@ -4,7 +4,7 @@
 
    $id = $_GET['rn'];
 
-   $query = "INSERT INTO projects (projectname, projecttype, projectdesc, projectdate, userid) SELECT projectname, projecttype, projectdesc, projectdate, userid FROM recyclebin WHERE id = $id";
+   $query = "INSERT INTO projects (id, projectname, projecttype, projectdesc, projectdate, userid) SELECT id, projectname, projecttype, projectdesc, projectdate, userid FROM recyclebin WHERE id = $id";
    $result_insert =$conn->prepare($query);
    $result_insert->execute();
 
