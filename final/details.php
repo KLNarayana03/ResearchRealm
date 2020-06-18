@@ -633,7 +633,7 @@ document.getElementById("main").style.display = "block";
             $result_project->execute();
             while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
                 echo "
-                <a style='color:#1f497d;' href = 'delete.php?rn=$rows[id]' onclick=\"return confirm('Are you sure?')\">End Project</a>
+                <a style='color:#1f497d;' href = 'recyclebin.php?rn=$rows[id]' onclick=\"return confirm('Are you sure?')\">End Project</a>
                 ";
                 
               }
