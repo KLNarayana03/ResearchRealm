@@ -525,7 +525,7 @@ document.getElementById("main").style.display = "block";
             $result_project->execute();
             while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
                 echo "
-                <a href = 'fixmeeting.php?rn=$projectid' style='color: whitesmoke;'>Fix Meeting</a>
+                <a href = 'fixmeeting.php?rn=$projectid' style='color: #1f497d;'>Fix Meeting</a>
                 ";
                 
               }
@@ -568,7 +568,7 @@ document.getElementById("main").style.display = "block";
             $result_project->execute();
             while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
                 echo "
-                <a href = 'assigntask.php?rn=$projectid' style='color: gray;'>Assign Task</a>
+                <a href = 'assigntask.php?rn=$projectid' style='color: #1f497d;'>Assign Task</a>
                 ";
                 
               }

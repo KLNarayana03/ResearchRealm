@@ -43,13 +43,17 @@ $result_calendar->execute();
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+<meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   
  <title>Landing Page</title> 
 <link rel="stylesheet" href="landingpage.css">
@@ -66,9 +70,7 @@ $result_calendar->execute();
     
     <div id="usertype"><?php echo $_SESSION['username'] ?><a href="#"><i class="far fa-address-card" style="margin-left: 15px;"></i></a></div>
  </div>
- <div>
-   <a href="deletedprojects.php">Recycle-Bin</a>
-  </div>
+ 
  
 <div class="row">
 
@@ -81,6 +83,7 @@ $result_calendar->execute();
     <a href="displayallinventories.php">All Inventories</a>
     <a href="displayallmembers.php">All members</a>
     <a href="displayallresources.php">All resources</a>
+    <a href="deletedprojects.php">Recycle-Bin</a>
   </div>
 
   <button class="dropdown-btn"><i class='far fa-folder-open' style="margin-right: 20px;"></i>Create 
@@ -399,189 +402,97 @@ function closeForm4() {
     <?php endif ?>
 
     <!-- <?php echo "<h1> Welcome ".$_SESSION['username']." To Dashboard </h1>" ?> -->
-<table align="center" style="width:650px; line-height:40px; border: 1px solid #ddd;">
-      <tr>
-        <th colspan="5" style="background-color:lightgreen; text-align:center;"><h3>My Projects</h3></th>  
-      </tr>
-      <tr>
-        <th style="padding:12px; border: 1px solid #ddd;">Project Name</th>
-        <th style="padding:12px; border: 1px solid #ddd;">Project Type</th>
-        <th style="padding:12px; border: 1px solid #ddd;">Project Date</th>
-        <th style="padding:12px; border: 1px solid #ddd;">Project Details</th>
-      </tr>
-      <?php
-        while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
-            echo "
-            <tr>
-            <td style=\"padding:12px; border: 1px solid #ddd;\">".$rows['projectname']."</td>
-            <td style=\"padding:12px; border: 1px solid #ddd;\">".$rows['projecttype']."</td>
-            <td style=\"padding:12px; border: 1px solid #ddd;\">".$rows['projectdate']."</td>
-            <td style=\"padding:12px; border: 1px solid #ddd;\"><a href = 'details.php?rn=$rows[id]'>Details</td>
-            </tr>
-            ";
-        }
-        ?>      
- </table>
-  <br>
-  <table align="center" style="width:650px; line-height:40px; border: 1px solid #ddd;">
-      <tr>
-        <th colspan="5" style="background-color:#81d8d0; text-align:center;"><h3>Invited Projects</h3></th>  
-      </tr>
-      <tr>
-        <th style="padding:12px; border: 1px solid #ddd;">Project Name</th>
-        <th style="padding:12px; border: 1px solid #ddd;">Project Type</th>
-        <th style="padding:12px; border: 1px solid #ddd;">Project Date</th>
-        <th style="padding:12px; border: 1px solid #ddd;">Project Details</th>
-      </tr>
-      <?php
-        while($rows=$result_display_invited_projects->fetch(PDO::FETCH_ASSOC)){
-            echo "
-            <tr>
-            <td style=\"padding:12px; border: 1px solid #ddd;\">".$rows['projectname']."</td>
-            <td style=\"padding:12px; border: 1px solid #ddd;\">".$rows['projecttype']."</td>
-            <td style=\"padding:12px; border: 1px solid #ddd;\">".$rows['projectdate']."</td>
-            <td style=\"padding:12px; border: 1px solid #ddd;\"><a href = 'invitedprojectdetails.php?rn=$rows[id]'>Details</td>
-            </tr>
-            ";
-        }
-        ?>      
- </table>
-   <br> 
 
-   <table align="center" style="width:650px; line-height:40px; border: 1px solid #ddd;">
-      <tr>
-        <th colspan="4" style="background-color:rgba(255, 0, 0, 0.4); text-align:center;"><h3>Pending Requests</h3></th>  
-      </tr>
-      <tr>
-        <th style="padding:12px; border: 1px solid #ddd;">Project Name</th>
-        <th style="padding:12px; border: 1px solid #ddd;">Invited By</th>
-        <th style="padding:12px; border: 1px solid #ddd;">Accept</th>
-        <th style="padding:12px; border: 1px solid #ddd;">Decline</th>
-      </tr>
-      <?php
-        while($rows=$result_display_notification->fetch(PDO::FETCH_ASSOC)){
-          echo "
-          <tr>
-          <td style=\"padding:12px; border: 1px solid #ddd;\">".$rows['projectname']."</td>
-          <td style=\"padding:12px; border: 1px solid #ddd;\">".$rows['username']."</td>
-          <td style=\"padding:12px; border: 1px solid #ddd;\"><a href = 'acceptrequest.php?rn=$rows[id]'>Accept</td>
-          <td style=\"padding:12px; border: 1px solid #ddd;\"><a href = 'deleterequest.php?rn=$rows[id]' onclick=\"return confirm('Are you sure?')\">Delete</a></td>
-        </tr>
-          ";
-        
-        }
-          ?>
-      
- </table>     
- <br>
+<div class="maincolumn1" id="maincolumn1">
+<button class="topbutton">Timeline</button>
+<hr class="new1">
 
- <table align="center" style="width:650px; line-height:40px; border: 1px solid #ddd;">
-      <tr>
-        <th colspan="4" style="background-color: lightgreen; text-align:center;"><h3>My Tasks</h3></th>  
-      </tr>
-      <tr>
-        <th style="padding:12px; border: 1px solid #ddd;">Task Name</th>
-        <th style="padding:12px; border: 1px solid #ddd;">Task Type</th>
-        <th style="padding:12px; border: 1px solid #ddd;">Task Last Date</th>
-        <th style="padding:12px; border: 1px solid #ddd;">Task Details</th>
-      </tr>
-      <?php
-        while($rows=$result_task->fetch(PDO::FETCH_ASSOC)){
-          ?>
-          <!-- echo "
-          <tr>
-          <td style=\"padding:12px; border: 1px solid #ddd;\">".$rows['taskname']."</td>
-          <td style=\"padding:12px; border: 1px solid #ddd;\">".$rows['tasktype']."</td>
-          <td style=\"padding:12px; border: 1px solid #ddd;\">".$rows['tasklastdate']."</td>
-          <td style=\"padding:12px; border: 1px solid #ddd;\"><a href = 'taskdetails.php?rn=$rows[id]'>Details</td>
-        </tr>
-          "; -->
-          <tr>
-          <td style="padding:12px; border: 1px solid #ddd;"><?php echo $rows['taskname']; ?></td>
-          <td style="padding:12px; border: 1px solid #ddd;"><?php echo $rows['tasktype']; ?></td>
-          <!-- <td style="padding:12px; border: 1px solid #ddd;"><?php echo date("Y/m/d"); ?></td> -->
-          <?php if(date("Y-m-d") > $rows['tasklastdate'])
-                    echo"<td style=\"padding:5px; border: 1px solid #ddd; background-color:rgba(255, 0, 0, 0.75);\">".$rows['tasklastdate']."</td>";
-                else 
-                    echo"<td style=\"padding:5px; border: 1px solid #ddd;\">".$rows['tasklastdate']."</td>";   
-          ?>
-          <td style="padding:12px; border: 1px solid #ddd;"><?php echo "<a href = 'taskdetails.php?rn=$rows[id]'>"; ?>Details</td>
-        </tr>
-        <?php
-        }
-          ?>
-      
- </table>     
- <br>
- <table align="center" style="width:650px; line-height:40px; border: 1px solid #ddd;">
-      <tr>
-        <th colspan="4" style="background-color:lightblue; text-align:center;"><h3>Assigned Tasks</h3></th>  
-      </tr>
-      <tr>
-        <th style="padding:12px; border: 1px solid #ddd;">Task Name</th>
-        <th style="padding:12px; border: 1px solid #ddd;">Task Type</th>
-        <th style="padding:12px; border: 1px solid #ddd;">Task Deadline</th>
-        <th style="padding:12px; border: 1px solid #ddd;">Task Details</th>
-      </tr>
-      <?php
-        while($rows=$result_display_assigned_task->fetch(PDO::FETCH_ASSOC)){
-          ?>
-          <!-- echo "
-          <tr>
-          <td style=\"padding:12px; border: 1px solid #ddd;\">".$rows['assigntaskname']."</td>
-          <td style=\"padding:12px; border: 1px solid #ddd;\">".$rows['assigntasktype']."</td>
-          <td style=\"padding:12px; border: 1px solid #ddd;\">".$rows['assigntasklastdate']."</td>
-          <td style=\"padding:12px; border: 1px solid #ddd;\"><a href = 'assigntaskdetails.php?rn=$rows[id]'>Details</td>
-        </tr>
-          "; -->
-          <tr>
-          <td style="padding:12px; border: 1px solid #ddd;"><?php echo $rows['assigntaskname']; ?></td>
-          <td style="padding:12px; border: 1px solid #ddd;"><?php echo $rows['assigntasktype']; ?></td>
-          <!-- <td style="padding:12px; border: 1px solid #ddd;"><?php echo date("Y/m/d"); ?></td> -->
-          <?php if(date("Y-m-d") > $rows['assigntasklastdate'])
-                    echo"<td style=\"padding:5px; border: 1px solid #ddd; background-color:red;\">".$rows['assigntasklastdate']."</td>";
-                else 
-                    echo"<td style=\"padding:5px; border: 1px solid #ddd;\">".$rows['assigntasklastdate']."</td>";   
-          ?>
-          <td style="padding:12px; border: 1px solid #ddd;"><?php echo "<a href = 'assigntaskdetails.php?rn=$rows[id]'>"; ?>Details</td>
-        </tr>
-        <?php
-        }
-          ?>
-      
- </table>     
- <br>
- 
-   <br>      
- <table align="center" style="width:650px; line-height:40px; border: 1px solid #ddd;">
-      <tr>
-        <th colspan="4" style="background-color: whitesmoke; text-align:center;"><h3>Calendar Entries</h3></th>  
-      </tr>
-      <tr>
-        <th style="padding:12px; border: 1px solid #ddd;">Title</th>
-        <th style="padding:12px; border: 1px solid #ddd;">Type</th>
-        <th style="padding:12px; border: 1px solid #ddd;">Last Date</th>
-        <th style="padding:12px; border: 1px solid #ddd;">Creation Date</th>
-      </tr>
-      <?php
-        while($rows=$result_calendar->fetch(PDO::FETCH_ASSOC)){
-      ?>
-        <tr>
-          <td style="padding:12px; border: 1px solid #ddd;"><?php echo $rows['calendarentryname']; ?></td>
-          <td style="padding:12px; border: 1px solid #ddd;"><?php echo $rows['calendarentrytype']; ?></td>
-          <!-- <td style="padding:12px; border: 1px solid #ddd;"><?php echo date("Y/m/d"); ?></td> -->
-          <?php if(date("Y-m-d") > $rows['calendarentrylastdate'])
-                    echo"<td style=\"padding:5px; border: 1px solid #ddd; background-color:red;\">".$rows['calendarentrylastdate']."</td>";
-                else 
-                    echo"<td style=\"padding:5px; border: 1px solid #ddd;\">".$rows['calendarentrylastdate']."</td>";   
-          ?>
-          <td style="padding:12px; border: 1px solid #ddd;"><?php echo $rows['calendarentrydate']; ?></td>
-        </tr>
-          <?php
-        }
-          ?>
-      
- </table>     
+<!-- My Projects -->
+<div style="max-width: 28rem; float:left; margin-right:21.5%; background-color:#39CCCC; margin-bottom:4%;">
+  <div class="card-header" style="font-size:18px; color:white;">
+  <a href ="prelandingpage.php" style="color: #1f497d;">My Projects</a>
+  </div>
+  <div class="card-body" style="font-size:14.5px; color:black;">
+    <h3 class="card-title">My Projects</h3>
+    <p class="card-text">Here you can view all the projects created by you.</p>
+  </div>
+</div>
+
+<!-- Invited Projects-->   
+<div style="max-width: 28rem; background-color:pink; float:left; margin-bottom:4%;">
+  <div class="card-header" style="font-size:18px; color:white;">
+  <a href ="prelandingpage.php" style="color: #1f497d;">Invited Projects</a>
+  </div>
+  <div class="card-body" style="font-size:14.5px;">
+    <h3 class="card-title">Invited Projects</h3>
+    <p class="card-text">Here you can view all the projects in which you have been invited.</p>
+  </div>
+</div>
+<br>
+<!--Pending Requests-->   
+<div style="max-width: 28rem; float:left; margin-right:21.5%; background-color: #FF6F61; margin-bottom:4%;">
+  <div class="card-header" style="font-size:18px; color:white;">
+  <a href ="prelandingpage.php" style="color: white;">Pending Requests</a>
+  </div>
+  <div class="card-body" style="font-size:14.5px; color:white;">
+    <h3 class="card-title">Pending Requests</h3>
+    <p class="card-text">Here you can view all the pending requests for joining a project.</p>
+  </div>
+</div>
+
+<!-- My Tasks -->   
+<div style="max-width: 28rem; float:left; background-color:#2ECC40;  margin-bottom:4%;">
+  <div class="card-header" style="font-size:18px; color:white;">
+  <a href ="prelandingpage.php" style="color: #1f497d;">My Tasks</a>
+  </div>
+  <div class="card-body" style="font-size:14.5px; color:whitesmoke;">
+    <h3 class="card-title">My Tasks</h3>
+    <p class="card-text">Here you can view all the tasks created by you.</p>
+  </div>
+</div>  
+<br>
+
+<!-- Assigned tasks-->   
+<div style="max-width: 28rem; float:left; margin-right:21.5%;  background-color: #92A8D1;  margin-bottom:4%;">
+  <div class="card-header" style="font-size:18px; color:white;">
+  <a href ="prelandingpage.php" style="color: #1f497d;">Assigned Tasks</a>
+  </div>
+  <div class="card-body" style="font-size:14.5px; color:whitesmoke; ">
+    <h3 class="card-title">Assigned Tasks</h3>
+    <p class="card-text">Here you can view all the tasks assigned to you.</p>
+  </div>
+</div>
+  
+<!-- Calendar Entries-->   
+<div style="max-width: 28rem; float:left;  background-color: #FFDC00;">
+  <div class="card-header" style="font-size:18px; color:white;">
+  <a href ="prelandingpage.php" style="color: #1f497d;">Calendar Entries</a>
+  </div>
+  <div class="card-body" style="font-size:14.5px; color:rgb(59, 49, 54);">
+    <h3 class="card-title">Calendar Entries</h3>
+    <p class="card-text">Here you can view all the calendar entries created by you.</p>
+  </div>
+</div>
+<!-- maincolumn1 closes on next line-->
+</div>
+
+<div class="maincolumn2" id="maincolumn2">
+<button class="topbutton">Notifications</button>
+<hr class="new1">
+<!-- End project -->   
+<div style="max-width: 28rem; margin-left:0%; margin-top:4%; margin-bottom:4%; background-color: whitesmoke;">
+  <div class="card-header" style="font-size:18px; color:white;">
+
+  <a style="color:#1f497d;" href = "deletedprojects.php" ><i class="fa fa-trash-o" style="font-size:24px; margin-right: 15px;"></i>Recycle-Bin</a>
+  
+  </div>
+  <div class="card-body" style="font-size:14.5px;">
+    <h3 class="card-title">Recycle-Bin</h3>
+    <p class="card-text">Click here if you want to end the project.</p>
+  </div>
+</div>
+<!-- maincolumn2 closes on next line-->  
+</div>  
 
 </div>  
 
