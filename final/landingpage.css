@@ -46,7 +46,7 @@ body {
 .main{
   background-color: white;
   float: left;
-  width: 81.05%;
+  width: 80%;
   padding: 10px;
   height: auto; /* Should be removed. Only for demonstration */
 } 
@@ -56,7 +56,7 @@ body {
   margin-right: 2%;
   background-color: white;
   float: left;
-  width: 57%;
+  width: 61%;
   padding: 10px;
   height: auto;
 }

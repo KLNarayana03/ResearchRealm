@@ -394,7 +394,7 @@ function closeForm4() {
 
   </div>
 
-<div class="main" id="main">
+<div class="main">
 <?php if(!isset($_SESSION['username'])): header("location: logout.php");?>
 
     <?php else: ?>
@@ -474,7 +474,8 @@ function closeForm4() {
   </div>
 </div>
 <!-- maincolumn1 closes on next line-->
-</div>
+</div> 
+
 
 <div class="maincolumn2" id="maincolumn2">
 <button class="topbutton">Notifications</button>
@@ -492,9 +493,15 @@ function closeForm4() {
   </div>
 </div>
 <!-- maincolumn2 closes on next line-->  
-</div>  
+</div> 
 
-</div>  
+
+</div> 
+
+
+
+
+
 
 
 
