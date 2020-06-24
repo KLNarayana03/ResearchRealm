@@ -175,13 +175,13 @@ function closeForm2() {
    <!-- <i class="fa fa-caret-down"></i>-->
   </button>
   <div class="dropdown-container">
-  <button class="open-formbutton" onclick="openForm3()">New Calendar Entry</button>
+  <button class="open-formbutton"><a href="calendarindex.php">New Calendar Entry</a></button>
         <div class="form-popup" id="myForm3">
   <form action="createcalendarentries.php" class="form-container" method="post">
     
   <button class="open-button">Create new Calendar Entry</button>  
     <hr class="new1">
-    <input for="calendarentryname" type="text" placeholder="Title" name="calendarentryname" required>
+    <!-- <input for="calendarentryname" type="text" placeholder="Title" name="calendarentryname" required>
     <select for="calendarentrytype" id="projecttype" name="calendarentrytype" style="margin-bottom:20px;">
     <option value="meetings">Meetings</option>
     <option value="deadlines">Deadlines</option>
@@ -191,7 +191,7 @@ function closeForm2() {
     <input for="calendarentrylastdate" type="date" name="calendarentrylastdate" required>
     <textarea for="calendarentrydesc" class="projectdescription" name="calendarentrydesc" placeholder="Description" style="height:200px"></textarea> 
     <input type="submit" name="projectup-btn" class="btn" value="Submit">
-    <button type="button" class="btn cancel" onclick="closeForm3()">Close</button>
+    <button type="button" class="btn cancel" onclick="closeForm3()">Close</button> -->
   </form>
   </div>
 
