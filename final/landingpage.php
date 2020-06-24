@@ -429,19 +429,10 @@ function closeForm4() {
   </div>
 </div>
 <br>
-<!--Pending Requests-->   
-<div style="max-width: 28rem; float:left; margin-right:21.5%; background-color: #FF6F61; margin-bottom:4%;">
-  <div class="card-header" style="font-size:18px; color:white;">
-  <a href ="prelandingpage.php" style="color: white;">Pending Requests</a>
-  </div>
-  <div class="card-body" style="font-size:14.5px; color:white;">
-    <h3 class="card-title">Pending Requests</h3>
-    <p class="card-text">Here you can view all the pending requests for joining a project.</p>
-  </div>
-</div>
+
 
 <!-- My Tasks -->   
-<div style="max-width: 28rem; float:left; background-color:#2ECC40;  margin-bottom:4%;">
+<div style="max-width: 28rem; float:left; margin-right:21.5%; background-color:#2ECC40;  margin-bottom:4%;">
   <div class="card-header" style="font-size:18px; color:white;">
   <a href ="prelandingpage.php" style="color: #1f497d;">My Tasks</a>
   </div>
@@ -453,7 +444,7 @@ function closeForm4() {
 <br>
 
 <!-- Assigned tasks-->   
-<div style="max-width: 28rem; float:left; margin-right:21.5%;  background-color: #92A8D1;  margin-bottom:4%;">
+<div style="max-width: 28rem; float:left;  background-color: #92A8D1;  margin-bottom:4%;">
   <div class="card-header" style="font-size:18px; color:white;">
   <a href ="prelandingpage.php" style="color: #1f497d;">Assigned Tasks</a>
   </div>
@@ -490,6 +481,17 @@ function closeForm4() {
   <div class="card-body" style="font-size:14.5px;">
     <h3 class="card-title">Recycle-Bin</h3>
     <p class="card-text">Click here if you want to end the project.</p>
+  </div>
+</div><br>
+
+<!--Pending Requests-->   
+<div style="max-width: 28rem; float:left; margin-right:21.5%; background-color: #FF6F61; margin-bottom:4%;">
+  <div class="card-header" style="font-size:18px; color:white;">
+  <a href ="prelandingpage.php" style="color: white;">Pending Requests</a>
+  </div>
+  <div class="card-body" style="font-size:14.5px; color:white;">
+    <h3 class="card-title">Pending Requests</h3>
+    <p class="card-text">Here you can view all the pending requests for joining a project.</p>
   </div>
 </div>
 <!-- maincolumn2 closes on next line-->  
