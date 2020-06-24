@@ -511,7 +511,7 @@ document.getElementById("main").style.display = "block";
               }
             }
             else{
-              echo '<script>alert("You do not have permission to view this!")</script>';
+              echo "<a style='color:#1f497d;' href = '#' onclick=\"return confirm('Option Not Available')\">Inventory</a>";
             }
     ?>
   </div>
@@ -543,7 +543,7 @@ document.getElementById("main").style.display = "block";
               }
             }
             else{
-              echo '<script>alert("You do not have permission to view this!")</script>';
+              echo "<a style='color:#1f497d;' href = '#' onclick=\"return confirm('Option Not Available')\">Assign Inventory</a>";
             }
     ?>
   </div>
@@ -597,7 +597,7 @@ document.getElementById("main").style.display = "block";
               }
             }
             else{
-              echo '<script>alert("You do not have permission to view this!")</script>';
+              echo "<a style='color:#1f497d;' href = '#' onclick=\"return confirm('Option Not Available')\">Assign Project</a>";
             }
     ?>
   </div>
@@ -629,7 +629,7 @@ document.getElementById("main").style.display = "block";
               }
             }
             else{
-              echo '<script>alert("You do not have permission to view this!")</script>';
+              echo "<a style='color:#1f497d;' href = '#' onclick=\"return confirm('Option Not Available')\">Assign Task</a>";
             }
     ?>
   </div>
@@ -661,7 +661,7 @@ document.getElementById("main").style.display = "block";
               }
             }
             else{
-              echo '<script>alert("You do not have permission to view this!")</script>';
+              echo "<a style='color:#1f497d;' href = '#' onclick=\"return confirm('Option Not Available')\">Project Expenses</a>";
             }
     ?>
   </div>
@@ -694,7 +694,7 @@ document.getElementById("main").style.display = "block";
               }
             }
             else{
-              echo '<script>alert("You do not have permission to view this!")</script>';
+              echo "<a style='color:#1f497d;' href = '#' onclick=\"return confirm('Option Not Available')\">Invite</a>";
             }
         ?>
   </div>
@@ -727,7 +727,7 @@ document.getElementById("main").style.display = "block";
               }
             }
             else{
-              echo '<script>alert("You do not have permission to view this!")</script>';
+              echo "<a style='color:#1f497d;' href = '#' onclick=\"return confirm('Option Not Available')\">End Project</a>";
             }
         ?>
   </div>
