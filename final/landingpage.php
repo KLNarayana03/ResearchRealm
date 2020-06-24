@@ -457,7 +457,7 @@ function closeForm4() {
 <!-- Calendar Entries-->   
 <div style="max-width: 28rem; margin-right:21.5%; float:left;  background-color: #FFDC00;">
   <div class="card-header" style="font-size:18px; color:white;">
-  <a href ="allcalendarentries.php" style="color: #1f497d;">Calendar Entries</a>
+  <a href ="calendarindex.php" style="color: #1f497d;">Calendar Entries</a>
   </div>
   <div class="card-body" style="font-size:14.5px; color:rgb(59, 49, 54);">
     <h3 class="card-title">Calendar Entries</h3>
