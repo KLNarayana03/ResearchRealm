@@ -391,13 +391,14 @@ document.getElementById("main").style.display = "block";
     <?php endif ?>
 
     <!-- <?php echo "<h1> Welcome ".$_SESSION['username']." To Dashboard </h1>" ?> -->
-  <div class="maincontent">
-    <button class="topbutton">Recycle Bin</button>
-    <hr class="new1">
+    <button class="topbutton" style=" margin-left:15px;">Recycle Bin</button>
+    <hr class="new1" style="margin-right:45px; margin-left:15px;">
+    <div class="maincontent">
+  
     </div><br>
        
     <div>
-    <table style="width:95%; border: 1px solid #ddd;">
+    <table style="width:95%; border: 1px solid #ddd; margin-left:15px;">
       <tr style="background-color:lightblue;">
         <th colspan="6" style="text-align:center;"><h3>Recycle Bin</h3></th>  
       </tr>
