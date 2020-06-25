@@ -434,7 +434,7 @@ function closeForm4() {
   
   </div>
   <div class="card-body" style="font-size:14.5px;">
-    <h3 class="card-title">Recycle-Bin</h3>
+    <h3 class="card-title">Completed Projects and Tasks</h3>
     <p class="card-text">Click here if you want to end the project.</p>
   </div>
 </div><br>
