@@ -538,7 +538,7 @@ document.getElementById("main").style.display = "block";
 </div>  
 <br><br>
 
-<!-- Assign Project-->   
+<!-- Assign Role-->   
 <div style="max-width: 28rem; float:left; margin-right:25%;  background-color: #92A8D1;">
   <div class="card-header" style="font-size:18px; color:white;">
   <?php   
@@ -547,15 +547,15 @@ document.getElementById("main").style.display = "block";
             $result_project->execute();
             while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
                 echo "
-                <a href = 'assign.php?rn=$projectid' style='color:#1f497d;'>Assign Project</a>
+                <a href = 'assign.php?rn=$projectid' style='color:#1f497d;'>Assign Role</a>
                 ";
                 
               }
     ?>
   </div>
   <div class="card-body" style="font-size:14.5px; color:whitesmoke; ">
-    <h3 class="card-title">Assign Project</h3>
-    <p class="card-text">Here you can add people to your project. </p>
+    <h3 class="card-title">Assign Role</h3>
+    <p class="card-text">Here you can assign roles for your project. </p>
   </div>
 </div>
 

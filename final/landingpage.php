@@ -76,15 +76,6 @@ $result_calendar->execute();
 
   <div class="sidenav" id="sidenav">
     
-  <button class="dropdown-btn"><i class="fas fa-tasks" style="margin-right: 15px;"></i>Current Status
-    <i class="fa fa-caret-down"></i>
-  </button>
-  <div class="dropdown-container">
-    <a href="displayallinventories.php">All Inventories</a>
-    <a href="displayallmembers.php">All members</a>
-    <a href="displayallresources.php">All resources</a>
-    <a href="deletedprojects.php">Recycle-Bin</a>
-  </div>
 
   <button class="dropdown-btn"><i class='far fa-folder-open' style="margin-right: 20px;"></i>Create 
     <i class="fa fa-caret-down"></i>
@@ -383,14 +374,6 @@ function closeForm4() {
   </div>
 
 
-  <button class="dropdown-btn"><i class="fa fa-line-chart" style="margin-right: 20px; font-size: 24px;"></i>Progress 
-    <i class="fa fa-caret-down"></i>
-  </button>
-  <div class="dropdown-container">
-    <a href="#">Project 1</a>
-    <a href="#">Project 2</a>
-    <a href="#">Project 3</a>
-  </div>
 
   </div>
 
@@ -418,21 +401,9 @@ function closeForm4() {
   </div>
 </div>
 
-<!-- Invited Projects-->   
-<div style="max-width: 28rem; background-color:pink; float:left; margin-bottom:4%;">
-  <div class="card-header" style="font-size:18px; color:white;">
-  <a href ="allprojects.php" style="color: #1f497d;">Invited Projects</a>
-  </div>
-  <div class="card-body" style="font-size:14.5px;">
-    <h3 class="card-title">Invited Projects</h3>
-    <p class="card-text">Here you can view all the projects in which you have been invited.</p>
-  </div>
-</div>
-<br>
-
 
 <!-- My Tasks -->   
-<div style="max-width: 28rem; float:left; margin-right:21.5%; background-color:#2ECC40;  margin-bottom:4%;">
+<div style="max-width: 28rem; background-color:pink; float:left; margin-bottom:4%;">
   <div class="card-header" style="font-size:18px; color:white;">
   <a href ="alltasks.php" style="color: #1f497d;">My Tasks</a>
   </div>
@@ -443,16 +414,6 @@ function closeForm4() {
 </div>  
 <br>
 
-<!-- Assigned tasks-->   
-<div style="max-width: 28rem; float:left;  background-color: #92A8D1;  margin-bottom:4%;">
-  <div class="card-header" style="font-size:18px; color:white;">
-  <a href ="alltasks.php" style="color: #1f497d;">Assigned Tasks</a>
-  </div>
-  <div class="card-body" style="font-size:14.5px; color:whitesmoke; ">
-    <h3 class="card-title">Assigned Tasks</h3>
-    <p class="card-text">Here you can view all the tasks assigned to you.</p>
-  </div>
-</div>
   
 <!-- Calendar Entries-->   
 <div style="max-width: 28rem; margin-right:21.5%; float:left;  background-color: #FFDC00;">
@@ -477,6 +438,17 @@ function closeForm4() {
     <p class="card-text">Click here if you want to end the project.</p>
   </div>
 </div><br>
+
+<!-- Resources-->   
+<div style="max-width: 28rem; margin-right:21.5%; float:left;  background-color: green;">
+  <div class="card-header" style="font-size:18px; color:white;">
+  <a href ="allresources.php" style="color: #1f497d;">Resources</a>
+  </div>
+  <div class="card-body" style="font-size:14.5px; color:rgb(59, 49, 54);">
+    <h3 class="card-title">Resources</h3>
+    <p class="card-text">Here you can view all the calendar entries created by you.</p>
+  </div>
+</div>
 <!-- maincolumn1 closes on next line-->
 </div> 
 

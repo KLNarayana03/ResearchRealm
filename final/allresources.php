@@ -6,12 +6,21 @@ include_once 'source/session.php';
 $userid = $_SESSION['id'];
 $sno = 1;
 
-//Query for displaying all inventories
+//Query for displaying all resources
 $query = "select * from resources where userid = $userid";
 $result_display_allresources =$conn->prepare($query);
 $result_display_allresources->execute();
 
+//Query for displaying all inventories
+$query = "select * from addinventory where userid = $userid";
+$result_display_allinventory =$conn->prepare($query);
+$result_display_allinventory->execute();
 
+
+//Query for displaying all members
+$query = "select * from assign, projects  where assign.projectid = projects.id and assign.userid = $userid order by projectname";
+$result_display_allmembers =$conn->prepare($query);
+$result_display_allmembers->execute();
 
 
 
@@ -415,6 +424,83 @@ document.getElementById("main").style.display = "block";
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['projectname']."</td>
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['resourcedesc']."</td>
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\"><a target ='_blank' href='view.php?id=".$rows['id']."'>".$rows['path']."</a></td>
+            </tr>
+            ";
+            $sno++;
+        }
+        ?>
+
+      <!-- php code for displaying project members-->  
+
+    </table>
+    </div><br>
+    <div class="maincontent">
+    <button class="topbutton">All Inventories</button>
+    <hr class="new1">
+    </div><br>
+       
+    <div>
+    <table style="width:95%; border: 1px solid #ddd;">
+      <tr style="background-color:lightblue;">
+        <th colspan="6" style="text-align:center;"><h3>Inventories</h3></th>  
+      </tr>
+      <tr>
+        <th style="padding:5px; border: 1px solid #ddd; text-align:center;">S.No</th>
+        <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Type</th>
+        <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Name</th>
+        <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Manufacturer Name</th>
+        <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Inventory-Id</th>
+        <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Delete</th> 
+      </tr>
+      <?php
+        while($rows=$result_display_allinventory->fetch(PDO::FETCH_ASSOC)){
+            echo "
+            <tr>
+            <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$sno."</td>
+            <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['inventorytype']."</td>
+            <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['inventoryname']."</td>
+            <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['manufacturer']."</td>
+            <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['inventoryid']."</td>
+            <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\"><a href = 'deleteinventory.php?rn=$rows[id]' onclick=\"return confirm('Are you sure?')\">Delete</a></td>
+            </tr>
+            ";
+            $sno++;
+        }
+        ?>
+
+      <!-- php code for displaying project members-->  
+
+    </table>
+    </div><br>
+
+    <div class="maincontent">
+    <button class="topbutton">All Members</button>
+    <hr class="new1">
+    </div><br>
+       
+    <div>
+    <table style="width:95%; border: 1px solid #ddd;">
+      <tr style="background-color:lightblue;">
+        <th colspan="6" style="text-align:center;"><h3>Members</h3></th>  
+      </tr>
+      <tr>
+        <th style="padding:5px; border: 1px solid #ddd; text-align:center;">S.No</th>
+        <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Name</th>
+        <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Role</th>
+        <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Project Name</th>
+        <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Project Type</th>
+        <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Last Date</th> 
+      </tr>
+      <?php
+        while($rows=$result_display_allmembers->fetch(PDO::FETCH_ASSOC)){
+            echo "
+            <tr>
+            <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$sno."</td>
+            <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['username']."</td>
+            <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['post']."</td>
+            <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['projectname']."</td>
+            <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['projecttype']."</td>
+            <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['projectdate']."</td>
             </tr>
             ";
             $sno++;

@@ -409,7 +409,7 @@ function closeForm4() {
 
 <table align="center" style="width:1000px; line-height:40px; border: 1px solid #ddd;">
       <tr>
-        <th colspan="5" style="background-color:lightgreen; text-align:center;"><h3>My Projects</h3></th>  
+        <th colspan="5" style="background-color:lightgreen; text-align:center;"><h3>Own Projects</h3></th>  
       </tr>
       <tr>
         <th style="padding:12px; border: 1px solid #ddd;">Project Name</th>
