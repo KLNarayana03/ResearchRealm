@@ -383,12 +383,13 @@ function closeForm4() {
 
     <!-- <?php echo "<h1> Welcome ".$_SESSION['username']." To Dashboard </h1>" ?> -->
   <div class="maincontent">
-    <button class="topbutton">All Resources</button>
-    <hr class="new1">
+   <br>
+    <button class="topbutton" style="margin-left:0px;">All Resources</button>
+    <hr class="new1" style="width:111.5%;">
     </div><br>
        
     <div>
-    <table style="width:95%; border: 1px solid #ddd;">
+    <table style="width:90%; margin-left:3.3%; border: 1px solid #ddd;">
       <tr style="background-color:lightblue;">
         <th colspan="6" style="text-align:center;"><h3>Resources</h3></th>  
       </tr>
@@ -416,13 +417,15 @@ function closeForm4() {
 
     </table>
     </div><br>
+<br><br>
+
     <div class="maincontent">
     <button class="topbutton">All Inventories</button>
-    <hr class="new1">
+    <hr class="new1" style="width:111.5%;">
     </div><br>
        
     <div>
-    <table style="width:95%; border: 1px solid #ddd;">
+    <table style="width:90%; margin-left:3.3%; border: 1px solid #ddd;">
       <tr style="background-color:lightblue;">
         <th colspan="6" style="text-align:center;"><h3>Inventories</h3></th>  
       </tr>
@@ -454,14 +457,14 @@ function closeForm4() {
 
     </table>
     </div><br>
-
+<br><br>
     <div class="maincontent">
     <button class="topbutton">All Members</button>
-    <hr class="new1">
+    <hr class="new1" style="width:111.5%;">
     </div><br>
        
     <div>
-    <table style="width:95%; border: 1px solid #ddd;">
+    <table style="width:90%; margin-left:3.3%; border: 1px solid #ddd;">
       <tr style="background-color:lightblue;">
         <th colspan="6" style="text-align:center;"><h3>Members</h3></th>  
       </tr>
