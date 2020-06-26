@@ -397,7 +397,7 @@ function closeForm4() {
 
     <!-- <?php echo "<h1> Welcome ".$_SESSION['username']." To Dashboard </h1>" ?> -->
   <div class="maincontent">
-    <button class="topbutton">Assign Project</button>
+    <button class="topbutton">Assign Role</button>
     <hr class="new1">
     <div style="font-size:17.5px;">
     <b style="font-size:17.5px; font-weight:100;">Project Name : &nbsp</b> 
@@ -456,12 +456,13 @@ function closeForm4() {
     <div>
     <table style="width:95%; border: 1px solid #ddd;">
       <tr style="background-color:lightblue;">
-        <th colspan="4" style="text-align:center;"><h3>Project Members</h3></th>  
+        <th colspan="5" style="text-align:center;"><h3>Project Members</h3></th>  
       </tr>
       <tr>
         <th style="padding:5px; border: 1px solid #ddd; text-align:center;">S.No</th>
         <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Name</th>
         <th style="padding:5px; border: 1px solid #ddd; text-align:center;">User Type</th> <!-- faculty,mentor,etc -->
+        <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Update Role</th>
         <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Delete</th>
       </tr>
       <?php
@@ -471,6 +472,7 @@ function closeForm4() {
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$sno."</td>
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['username']."</td>
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['post']."</td>
+            <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\"><a href = 'updaterole.php?rn=$rows[id]'>Update</a></td>
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\"><a href = 'deleteassignproject.php?rn=$rows[id]' onclick=\"return confirm('Are you sure?')\">Delete</a></td>
             </tr>
             ";
