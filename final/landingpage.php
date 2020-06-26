@@ -387,17 +387,17 @@ function closeForm4() {
     <!-- <?php echo "<h1> Welcome ".$_SESSION['username']." To Dashboard </h1>" ?> -->
 
 <div class="maincolumn1" id="maincolumn1">
-<button class="topbutton">Timeline</button>
+<button class="topbutton">My Dashboard</button>
 <hr class="new1">
 
 <!-- My Projects -->
 <div style="max-width: 28rem; float:left; margin-right:21.5%; background-color:#39CCCC; margin-bottom:4%;">
   <div class="card-header" style="font-size:18px; color:white;">
-  <a href ="allprojects.php" style="color: #1f497d;">My Projects</a>
+  <a href ="allprojects.php" style="color: #1f497d;"><i class='far fa-folder-open' style="font-size:22px; margin-right: 10px;"></i>Projects</a>
   </div>
   <div class="card-body" style="font-size:14.5px; color:black;">
-    <h3 class="card-title">My Projects</h3>
-    <p class="card-text">Here you can view all the projects created by you.</p>
+    <h3 class="card-title">Projects</h3>
+    <p class="card-text">Here you can view all the projects in which you are present.</p>
   </div>
 </div>
 
@@ -405,11 +405,11 @@ function closeForm4() {
 <!-- My Tasks -->   
 <div style="max-width: 28rem; background-color:pink; float:left; margin-bottom:4%;">
   <div class="card-header" style="font-size:18px; color:white;">
-  <a href ="alltasks.php" style="color: #1f497d;">My Tasks</a>
+  <a href ="alltasks.php" style="color: #1f497d;"><i class='far fa-edit' style="font-size:21.5px;  margin-right: 10px;"></i>Tasks</a>
   </div>
-  <div class="card-body" style="font-size:14.5px; color:whitesmoke;">
-    <h3 class="card-title">My Tasks</h3>
-    <p class="card-text">Here you can view all the tasks created by you.</p>
+  <div class="card-body" style="font-size:14.5px; color:black;">
+    <h3 class="card-title">Tasks</h3>
+    <p class="card-text">Here you can view all your tasks created or assigned to you.</p>
   </div>
 </div>  
 <br>
@@ -418,7 +418,7 @@ function closeForm4() {
 <!-- Calendar Entries-->   
 <div style="max-width: 28rem; margin-right:21.5%; float:left;  background-color: #FFDC00;">
   <div class="card-header" style="font-size:18px; color:white;">
-  <a href ="calendarindex.php" style="color: #1f497d;">Calendar Entries</a>
+  <a href ="calendarindex.php" style="color: #1f497d;"><i class="far fa-calendar" style="font-size:21px; margin-right: 11px;"></i>Calendar Entries</a>
   </div>
   <div class="card-body" style="font-size:14.5px; color:rgb(59, 49, 54);">
     <h3 class="card-title">Calendar Entries</h3>
@@ -426,23 +426,23 @@ function closeForm4() {
   </div>
 </div>
 
-<!-- End project -->   
+<!-- Recycle-Bin -->   
 <div style="max-width: 28rem; float:left;  background-color: whitesmoke;  margin-bottom:4%;">
   <div class="card-header" style="font-size:18px; color:white;">
 
-  <a style="color:#1f497d;" href = "deletedprojects.php" ><i class="fa fa-trash-o" style="font-size:24px; margin-right: 15px;"></i>Recycle-Bin</a>
+  <a style="color:#1f497d;" href = "deletedprojects.php" ><i class="fa fa-trash-o" style="font-size:24px; margin-right: 10px;"></i>Recycle-Bin</a>
   
   </div>
   <div class="card-body" style="font-size:14.5px;">
     <h3 class="card-title">Completed Projects and Tasks</h3>
-    <p class="card-text">Click here if you want to end the project.</p>
+    <p class="card-text">Here you can view and restore all your completed work.</p>
   </div>
 </div><br>
 
 <!-- Resources-->   
-<div style="max-width: 28rem; margin-right:21.5%; float:left;  background-color: green;">
+<div style="max-width: 28rem; margin-right:21.5%; float:left;  background-color: #7FDBFF;">
   <div class="card-header" style="font-size:18px; color:white;">
-  <a href ="allresources.php" style="color: #1f497d;">Resources</a>
+  <a href ="allresources.php" style="color: #1f497d;"><i class="fas fa-share-alt" style="font-size:20.5px; margin-right:10px;"></i>Resources</a>
   </div>
   <div class="card-body" style="font-size:14.5px; color:rgb(59, 49, 54);">
     <h3 class="card-title">Resources</h3>
@@ -454,16 +454,16 @@ function closeForm4() {
 
 
 <div class="maincolumn2" id="maincolumn2">
-<button class="topbutton">Notifications</button>
+<button class="topbutton"><i class="fa fa-bell" style="font-size:20px; margin-right:10px;"></i>Notifications</button>
 <hr class="new1">
 
 
 <!--Pending Requests-->   
 <div style="max-width: 28rem; float:left; margin-right:21.5%; background-color: #FF6F61; margin-bottom:4%;">
   <div class="card-header" style="font-size:18px; color:white;">
-  <a href ="pendingrequests.php" style="color: white;">Pending Requests</a>
+  <a href ="pendingrequests.php" style="color: white;"><i class="fas fa-user-friends" style="font-size:20.5px; margin-right:10px;"></i>Pending Requests</a>
   </div>
-  <div class="card-body" style="font-size:14.5px; color:white;">
+  <div class="card-body" style="font-size:14.5px; color:whitesmoke;">
     <h3 class="card-title">Pending Requests</h3>
     <p class="card-text">Here you can view all the pending requests for joining a project.</p>
   </div>
