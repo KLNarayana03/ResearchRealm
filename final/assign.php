@@ -472,7 +472,7 @@ function closeForm4() {
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$sno."</td>
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['username']."</td>
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['post']."</td>
-            <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\"><a href = 'updaterole.php?rn=$rows[id]'>Update</a></td>
+            <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\"><a href = 'updaterole.php?rn=$rows[id]&id=$projectid'>Update</a></td>
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\"><a href = 'deleteassignproject.php?rn=$rows[id]' onclick=\"return confirm('Are you sure?')\">Delete</a></td>
             </tr>
             ";

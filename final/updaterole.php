@@ -5,6 +5,7 @@ include_once 'source/session.php';
 
 $projectid = $_GET['rn'];
 $userid = $_SESSION['id'];
+$projectuserid = $_GET['id'];
 $sno = 1;
 //Query for displaying members
 $query = "select * from assign where projectid = $projectid";
@@ -403,7 +404,7 @@ function closeForm4() {
     <b style="font-size:17.5px; font-weight:100;">Project Name : &nbsp</b> 
     <!-- php code for project name -->
     <?php
-      $query = "select * from projects where userid = $userid and id = $projectid";
+      $query = "select * from projects where userid = $userid and id = $projectuserid";
       $result_project =$conn->prepare($query);
       $result_project->execute();
       while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
@@ -417,7 +418,7 @@ function closeForm4() {
     
     <div>
     <form action="" method="POST">
-    <label style="font-size:17.5px; font-weight:100;">Assign Role: &nbsp </label>
+    <label style="font-size:17.5px; font-weight:100;">Update Role: &nbsp </label>
     <select style="width: 20.9%; padding: 15px; margin: 5px 0 22px 0; border: none; background: #f1f1f1;" for="assignrole" id="assignrole" name="assignrole" style="margin-bottom:20px;">
       <option value="Collaborator">Collaborator</option>
       <option value="Lab-Incharge">Lab-Incharge</option>
