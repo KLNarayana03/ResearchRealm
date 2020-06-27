@@ -371,7 +371,7 @@ document.getElementById("main").style.display = "block";
 <div class="modal fade" id="ModalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
 	<div class="modal-content">
-	<form class="form-horizontal" method="POST" action="addEvent.php">
+	<form class="form-horizontal" method="POST" action="addEvent.php" enctype="multipart/form-data">
 	
 	  <div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -411,6 +411,11 @@ document.getElementById("main").style.display = "block";
 			<label for="end" class="col-sm-2 control-label">End date</label>
 			<div class="col-sm-10">
 			  <input type="text" name="end" class="form-control" id="end">
+			</div>
+		  </div>
+		  <div class="form-group">
+			<div class="col-sm-10">
+			<input  type="file" name="fileToUpload">
 			</div>
 		  </div>
 		
