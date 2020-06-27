@@ -444,11 +444,12 @@ function closeForm4() {
     <div>
     <table style="width:95%; border: 1px solid #ddd;">
       <tr style="background-color:lightblue;">
-        <th colspan="5" style="text-align:center;"><h3>Fixed Meetings </h3></th>  
+        <th colspan="6" style="text-align:center;"><h3>Fixed Meetings </h3></th>  
       </tr>
       <tr>
         <th style="padding:5px; border: 1px solid #ddd; text-align:center;">S.No</th>
         <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Person Name</th>
+        <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Meeting Setter</th>
         <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Date-Time</th>
         <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Details</th>
       </tr>
@@ -458,6 +459,7 @@ function closeForm4() {
             <tr>
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$sno."</td>
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['username']."</td>
+            <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['setter']."</td>
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['meetingdatetime']."</td>
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\"><a href = 'fixedmeetingdetails.php?rn=$rows[id]'>details</td>
             </tr>
@@ -524,6 +526,7 @@ function closeForm4() {
 <?php
         if(isset($_POST['projectup-btn'])) {
             $projectid = $_GET['rn'];
+            $settername = $_SESSION['username'];
             $meetingtitle = $_POST['meetingtitle'];
             $meetingdatetime = $_POST['meetingdatetime'];
             $meetingdesc = $_POST['meetingdesc'];
@@ -531,7 +534,7 @@ function closeForm4() {
             
           try {
             if($projectid!=""){
-              $SQLInsert = "INSERT into fixmeeting(projectid, meetingtitle , meetingdatetime, meetingdesc, username) VALUES ('$projectid','$meetingtitle','$meetingdatetime','$meetingdesc','$meetingmember')";
+              $SQLInsert = "INSERT into fixmeeting(projectid, meetingtitle , meetingdatetime, meetingdesc, username, setter) VALUES ('$projectid','$meetingtitle','$meetingdatetime','$meetingdesc','$meetingmember', '$settername')";
 
             $statement = $conn->prepare($SQLInsert);
             $statement->execute();
