@@ -5,6 +5,8 @@ include_once 'source/session.php';
 
 $userid = $_SESSION['id'];
 $sno = 1;
+$sno1 = 1;
+$sno2 = 1;
 
 //Query for displaying all resources
 $query = "select * from resources where userid = $userid";
@@ -441,7 +443,7 @@ function closeForm4() {
         while($rows=$result_display_allinventory->fetch(PDO::FETCH_ASSOC)){
             echo "
             <tr>
-            <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$sno."</td>
+            <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$sno1."</td>
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['inventorytype']."</td>
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['inventoryname']."</td>
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['manufacturer']."</td>
@@ -449,7 +451,7 @@ function closeForm4() {
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\"><a href = 'deleteinventory.php?rn=$rows[id]' onclick=\"return confirm('Are you sure?')\">Delete</a></td>
             </tr>
             ";
-            $sno++;
+            $sno1++;
         }
         ?>
 
@@ -480,7 +482,7 @@ function closeForm4() {
         while($rows=$result_display_allmembers->fetch(PDO::FETCH_ASSOC)){
             echo "
             <tr>
-            <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$sno."</td>
+            <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$sno2."</td>
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['username']."</td>
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['post']."</td>
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['projectname']."</td>
@@ -488,7 +490,7 @@ function closeForm4() {
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['projectdate']."</td>
             </tr>
             ";
-            $sno++;
+            $sno2++;
         }
         ?>
 

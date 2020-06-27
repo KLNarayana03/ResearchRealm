@@ -430,7 +430,7 @@ function closeForm4() {
 <div style="max-width: 28rem; float:left;  background-color: whitesmoke;  margin-bottom:4%;">
   <div class="card-header" style="font-size:18px; color:white;">
 
-  <a style="color:#1f497d;" href = "deletedprojects.php" ><i class="fa fa-trash-o" style="font-size:24px; margin-right: 10px;"></i>Recycle-Bin</a>
+  <a style="color:#1f497d;" href = "deletedprojects.php" ><i class="fa fa-trash-o" style="font-size:24px; margin-right: 10px;"></i>Completed Projects</a>
   
   </div>
   <div class="card-body" style="font-size:14.5px;">
