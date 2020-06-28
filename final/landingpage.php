@@ -467,7 +467,44 @@ function closeForm4() {
     <h3 class="card-title">Pending Requests</h3>
     <p class="card-text">Here you can view all the pending requests for joining a project.</p>
   </div>
-</div>
+</div><br>
+
+<?php
+//Query for fetching approaching dates
+  require_once('bdd.php');
+  $sno1=1;
+  $userid = $_SESSION['id'];
+    $sql = "select * from events where DATE(NOW()) - DATE(start) < 3 and userid = $userid";
+    $req = $bdd->prepare($sql);
+    $req->execute();
+?>
+
+<!-- Query for displaying approaching dates -->
+    <table style="width:95%; border: 1px solid #ddd;">
+    <tr style="background-color:lightblue;">
+      <th colspan="3" style="text-align:center;"><h3>Upcoming Meetings </h3></th>  
+    </tr>
+    <tr>
+      <th style="padding:5px; border: 1px solid #ddd; text-align:center;">S.No</th>
+      <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Title</th>
+      <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Date</th>
+    </tr>
+    <?php
+      while($rows=$req->fetch(PDO::FETCH_ASSOC)){
+          echo "
+          <tr>
+          <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$sno1."</td>
+          <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['title']."</td>
+          <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['start']."</td>
+          </tr>
+          ";
+          $sno1++;
+      }
+      ?>
+    
+    <!-- php code for displaying project members-->  
+    
+    </table>
 
 <!-- maincolumn2 closes on next line-->  
 </div> 
