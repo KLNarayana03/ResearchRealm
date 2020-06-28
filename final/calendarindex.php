@@ -4,7 +4,7 @@ include_once 'source/db_connect.php';
 include_once 'source/session.php';
 
 $userid = $_SESSION['id'];
-$sql = "SELECT id, title, start, end, color FROM events where userid = $userid";
+$sql = "SELECT id, title, start, end, color, resources, path FROM events where userid = $userid";
 
 $req = $bdd->prepare($sql);
 $req->execute();
@@ -464,6 +464,18 @@ document.getElementById("main").style.display = "block";
 				</select>
 			</div>
 		  </div>
+		  <div class="form-group">
+			<label for="title" class="col-sm-2 control-label">Download</label>
+			<div class="col-sm-10">
+			  <?php
+				  #$showid = '<a target ="_blank" href ="viewcalendarresource.php?id=" ><input type = "text" id="path"></a>';
+				  #echo $showid;
+				  #echo "<a target ='_blank' href='viewcalendarentries.php?id=".$rows['id']."'>".$rows['path']."</a>";
+				  #echo $_POST['event.path'];
+				  echo '<input type="textbox"  id="id"> Download';
+			  ?>
+			</div>
+		  </div>
 			<div class="form-group"> 
 				<div class="col-sm-offset-2 col-sm-10">
 				  <div class="checkbox">
@@ -524,6 +536,8 @@ $('#calendar').fullCalendar({
 			$('#ModalEdit #id').val(event.id);
 			$('#ModalEdit #title').val(event.title);
 			$('#ModalEdit #color').val(event.color);
+			$('#ModalEdit #path').val(event.path);
+			$('#ModalEdit #resources').val(event.resources);
 			$('#ModalEdit').modal('show');
 		});
 	},
@@ -559,6 +573,8 @@ $('#calendar').fullCalendar({
 			start: '<?php echo $start; ?>',
 			end: '<?php echo $end; ?>',
 			color: '<?php echo $event['color']; ?>',
+			path: '<?php echo $event['path']; ?>',
+			resources: '<?php echo $event['resources']; ?>',
 		},
 	<?php endforeach; ?>
 	]

@@ -524,9 +524,11 @@ function closeForm4() {
 
 
 <?php
+require_once('bdd.php');
         if(isset($_POST['projectup-btn'])) {
             $projectid = $_GET['rn'];
             $settername = $_SESSION['username'];
+            $setterid = $_SESSION['id'];
             $meetingtitle = $_POST['meetingtitle'];
             $meetingdatetime = $_POST['meetingdatetime'];
             $meetingdesc = $_POST['meetingdesc'];
@@ -539,6 +541,10 @@ function closeForm4() {
             $statement = $conn->prepare($SQLInsert);
             $statement->execute();
             echo '<script>alert("Meeting Fixed Successfully. Press Back to see it in table")</script>';
+            $SQLInsert1 = "INSERT into events(title , start, end, userid) VALUES ('$meetingtitle','$meetingdatetime','2020-06-02 00:00:00',$setterid)";
+
+            $statement = $bdd->prepare($SQLInsert1);
+            $statement->execute();
             }
           }
           catch(PDOException $e)
