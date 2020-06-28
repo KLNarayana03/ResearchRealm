@@ -474,7 +474,7 @@ function closeForm4() {
   require_once('bdd.php');
   $sno1=1;
   $userid = $_SESSION['id'];
-    $sql = "select * from events where DATE(NOW()) - DATE(start) < 3 and userid = $userid";
+    $sql = "select * from events where DATE(start) - DATE(NOW()) > 0 and DATE(start) - DATE(NOW()) < 3 and userid = $userid";
     $req = $bdd->prepare($sql);
     $req->execute();
 ?>
