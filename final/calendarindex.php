@@ -465,14 +465,14 @@ document.getElementById("main").style.display = "block";
 			</div>
 		  </div>
 		  <div class="form-group">
-			<label for="title" class="col-sm-2 control-label">Download</label>
+			<label for="title" class="col-sm-2 control-label">Download Attachments</label>
 			<div class="col-sm-10">
 			  <?php
-				  #$showid = '<a target ="_blank" href ="viewcalendarresource.php?id=" ><input type = "text" id="path"></a>';
-				  #echo $showid;
+				  $showid = '<a target ="_blank" href ="viewcalendarresource.php?id=" ><input type = "text" id="resources"></a>';
+				  echo $showid;
 				  #echo "<a target ='_blank' href='viewcalendarentries.php?id=".$rows['id']."'>".$rows['path']."</a>";
 				  #echo $_POST['event.path'];
-				  echo '<input type="textbox"  id="id"> Download';
+				//   echo '<a><input type="textbox"  id="resources"></a> Download';
 			  ?>
 			</div>
 		  </div>
