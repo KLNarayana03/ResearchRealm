@@ -1,9 +1,3 @@
-# FullCalendar-BS3-PHP-MySQL
-FullCalendar 2 integration with bootstrap, php and mysql
+# Project-Management-System-PHP-MySQL
+The repo contains the source code for Research Project Management System webapp written in PHP, HTML, CSS, MySQL and JS. 
 
-## DEMO and Installtion
-[demo](http://jamelbaz.com/non-classe/integration-de-fullcalendar2-php-mysql).
-
-## License
-
-MIT
