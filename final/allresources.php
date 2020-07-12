@@ -386,19 +386,19 @@ function closeForm4() {
     <!-- <?php echo "<h1> Welcome ".$_SESSION['username']." To Dashboard </h1>" ?> -->
   <div class="maincontent">
    <br>
-    <button class="topbutton" style="margin-left:0px;">All Resources</button>
+    <button class="topbutton" style="margin-left:0px;">All Documents</button>
     <hr class="new1" style="width:111.5%;">
     </div><br>
        
     <div>
     <table style="width:90%; margin-left:3.3%; border: 1px solid #ddd;">
       <tr style="background-color:lightblue;">
-        <th colspan="6" style="text-align:center;"><h3>Resources</h3></th>  
+        <th colspan="6" style="text-align:center;"><h3>Documents</h3></th>  
       </tr>
       <tr>
         <th style="padding:5px; border: 1px solid #ddd; text-align:center;">S.No</th>
-        <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Project Name</th>
-        <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Resource Description</th>
+        <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Document Name</th>
+        <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Document Description</th>
         <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Download</th>
       </tr>
       <?php
