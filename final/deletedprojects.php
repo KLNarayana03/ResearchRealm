@@ -373,7 +373,7 @@ function closeForm4() {
     <?php endif ?>
 
     <!-- <?php echo "<h1> Welcome ".$_SESSION['username']." To Dashboard </h1>" ?> -->
-    <button class="topbutton" style=" margin-left:15px;">Recycle Bin</button>
+    <button class="topbutton" style=" margin-left:15px;">Completed Projects</button>
     <hr class="new1" style="margin-right:45px; margin-left:15px;">
     <div class="maincontent">
   
@@ -382,7 +382,7 @@ function closeForm4() {
     <div>
     <table style="width:95%; border: 1px solid #ddd; margin-left:15px;">
       <tr style="background-color:lightblue;">
-        <th colspan="6" style="text-align:center;"><h3>Recycle Bin</h3></th>  
+        <th colspan="6" style="text-align:center;"><h3>Completed Projects</h3></th>  
       </tr>
       <tr>
         <th style="padding:5px; border: 1px solid #ddd; text-align:center;">S.No</th>

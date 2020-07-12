@@ -472,9 +472,9 @@ function closeForm4() {
       </tr>
       <tr>
         <th style="padding:5px; border: 1px solid #ddd; text-align:center;">S.No</th>
+        <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Project Name</th>
         <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Name</th>
         <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Role</th>
-        <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Project Name</th>
         <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Project Type</th>
         <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Last Date</th> 
       </tr>
@@ -483,9 +483,9 @@ function closeForm4() {
             echo "
             <tr>
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$sno2."</td>
+            <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['projectname']."</td>
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['username']."</td>
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['post']."</td>
-            <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['projectname']."</td>
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['projecttype']."</td>
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['projectdate']."</td>
             </tr>
