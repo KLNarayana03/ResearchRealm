@@ -393,13 +393,14 @@ function closeForm4() {
     <div>
     <table style="width:90%; margin-left:3.3%; border: 1px solid #ddd;">
       <tr style="background-color:lightblue;">
-        <th colspan="6" style="text-align:center;"><h3>Documents</h3></th>  
+        <th colspan="7" style="text-align:center;"><h3>Documents</h3></th>  
       </tr>
       <tr>
         <th style="padding:5px; border: 1px solid #ddd; text-align:center;">S.No</th>
         <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Document Name</th>
         <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Document Description</th>
         <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Download</th>
+        <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Delete</th>
       </tr>
       <?php
         while($rows=$result_resources_display->fetch(PDO::FETCH_ASSOC)){
@@ -409,6 +410,7 @@ function closeForm4() {
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['projectname']."</td>
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['resourcedesc']."</td>
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\"><a target ='_blank' href='view.php?id=".$rows['id']."'>".$rows['path']."</a></td>
+            <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\"><a href = 'deleteresource.php?rn=$rows[id]' onclick=\"return confirm('Are you sure?')\">Delete</a></td>
             </tr>
             ";
             $sno++;
