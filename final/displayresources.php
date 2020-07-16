@@ -2,6 +2,7 @@
 
 include_once 'source/db_connect.php';
 include_once 'source/session.php';
+$sno=1;
 $id = $_SESSION['id'];
 //query for displaying members
 $query = "select * from assign";
@@ -368,24 +369,57 @@ function closeForm4() {
 
     <!-- <?php echo "<h1> Welcome ".$_SESSION['username']." To Dashboard </h1>" ?> -->
 <div class="maincontent">
-    <button class="topbutton">Shared Resources</button>
-    <hr class="new1">
+    <!-- <button class="topbutton">Shared Resources</button>
+    <hr class="new1"> -->
 
-<ol>
-<?php
-while($rows=$result_resources_display->fetch(PDO::FETCH_ASSOC)){
-    // echo "<img src = 'uploads/".$rows['resource']."'>";
-    echo "<li><a target ='_blank' href='view.php?id=".$rows['id']."'>".$rows['path']."</a></li>";
-    echo "Resource Description: <b id=".$rows['id']."'>".$rows['resourcedesc']."</b>";
-    echo "<br>";
-    echo "<a href = 'deleteresource.php?rn=$rows[id]' onclick=\"return confirm('Are you sure?')\">Delete</a>";
-    echo "<br>";
-    echo "<br>";
+<!-- <ol>
 
-}
-?>
-</ol>    
+// while($rows=$result_resources_display->fetch(PDO::FETCH_ASSOC)){
+    // echo "<li><a target ='_blank' href='view.php?id=".$rows['id']."'>".$rows['path']."</a></li>";
+    // echo "Resource Description: <b id=".$rows['id']."'>".$rows['resourcedesc']."</b>";
+    // echo "<br>";
+    // echo "<a href = 'deleteresource.php?rn=$rows[id]' onclick=\"return confirm('Are you sure?')\">Delete</a>";
+    // echo "<br>";
+    // echo "<br>";
 
+// }
+
+</ol>     -->
+<br>
+    <button class="topbutton" style="margin-left:0px;">All Documents</button>
+    <hr class="new1" style="width:111.5%;">
+    </div><br>
+       
+    <div>
+    <table style="width:90%; margin-left:3.3%; border: 1px solid #ddd;">
+      <tr style="background-color:lightblue;">
+        <th colspan="6" style="text-align:center;"><h3>Documents</h3></th>  
+      </tr>
+      <tr>
+        <th style="padding:5px; border: 1px solid #ddd; text-align:center;">S.No</th>
+        <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Document Name</th>
+        <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Document Description</th>
+        <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Download</th>
+      </tr>
+      <?php
+        while($rows=$result_resources_display->fetch(PDO::FETCH_ASSOC)){
+            echo "
+            <tr>
+            <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$sno."</td>
+            <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['projectname']."</td>
+            <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['resourcedesc']."</td>
+            <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\"><a target ='_blank' href='view.php?id=".$rows['id']."'>".$rows['path']."</a></td>
+            </tr>
+            ";
+            $sno++;
+        }
+        ?>
+
+      <!-- php code for displaying project members-->  
+
+    </table>
+    </div><br>
+<br><br>
 </div>
 </div>  
 
