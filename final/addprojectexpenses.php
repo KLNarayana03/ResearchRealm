@@ -427,11 +427,23 @@ function closeForm4() {
     <label style="font-size:17.5px; font-weight:100;">Purchase Date : &nbsp  </label>
     <input style="width: 21%; padding: 15px; margin: 5px 0 22px 0; border: none; background: #f1f1f1;" for="purchasedate" type="date" name="purchasedate" required>
     </div><br>
+
+    <div>
+    <label style="font-size:17.5px; font-weight:100;">Vendor Name :&nbsp  </label>
+    <input style="width: 15%; padding: 15px; margin: 5px 0 22px 0; border: none; background: #f1f1f1;" for="billamount" type="text" name="vendorname" required>
+    </div><br>
+
+    <div>
+    <label style="font-size:17.5px; font-weight:100;">Item Description :&nbsp  </label>
+    <textarea for="itemdesc" name="itemdesc" id="itemdesc" class="projectdescription" placeholder="Enter Item Description (Optional)"></textarea>
+    </textarea>
+    </div><br>
     
     <div>
     <label style="font-size:17.5px; font-weight:100;">Bill Amount (in Rupees) :&nbsp  </label>
     <input style="width: 15%; padding: 15px; margin: 5px 0 22px 0; border: none; background: #f1f1f1;" for="billamount" type="number" name="billamount" required>
     </div><br>
+    
 
     <label style="font-size:17.5px; font-weight:100;">Attach Bill: &nbsp </label>
     <input type="file" name="billToUpload">
@@ -522,8 +534,10 @@ function closeForm4() {
             $purchasedate = $_POST['purchasedate'];
             $billamount = $_POST['billamount'];
             $target = "./uploads/".$bill;
+            $vendorname = $_POST['vendorname'];
+            $itemdesc = $_POST['itemdesc'];
             move_uploaded_file($_FILES['billToUpload']['tmp_name'], $target);
-                $SQLInsert = "INSERT into projectexpenses(projectid, expensetype, purchasedate, billamount, resources, path) VALUES ('$projectid','$expensetype','$purchasedate','$billamount','$bill', '$target')";
+                $SQLInsert = "INSERT into projectexpenses(projectid, expensetype, purchasedate, billamount, resources, path, vendorname, itemdesc) VALUES ('$projectid','$expensetype','$purchasedate','$billamount','$bill', '$target', '$vendorname','$itemdesc')";
                 $statement = $conn->prepare($SQLInsert);
                 $statement->execute();
                 echo '<script>alert("Inventory added Successfully. Press Back to see it in table")</script>';

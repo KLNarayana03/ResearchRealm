@@ -417,6 +417,34 @@ function closeForm4() {
     </div><br>
 
     <div style="font-size:18px;">
+    <b style="font-size:18px; font-weight:100;">Vendor Name: &nbsp</b> 
+    <!-- php code for project name -->
+    <?php
+      $query = "select * from projectexpenses where id = $projectid";
+      $result_display_projectexpenses =$conn->prepare($query);
+      $result_display_projectexpenses->execute();
+      while($rows=$result_display_projectexpenses->fetch(PDO::FETCH_ASSOC)){
+        echo $rows['vendorname'];
+      }
+        
+    ?>
+    </div><br>
+
+    <div style="font-size:18px;">
+    <b style="font-size:18px; font-weight:100;">Item Description: &nbsp</b> 
+    <!-- php code for project name -->
+    <?php
+      $query = "select * from projectexpenses where id = $projectid";
+      $result_display_projectexpenses =$conn->prepare($query);
+      $result_display_projectexpenses->execute();
+      while($rows=$result_display_projectexpenses->fetch(PDO::FETCH_ASSOC)){
+        echo $rows['itemdesc'];
+      }
+        
+    ?>
+    </div><br>
+
+    <div style="font-size:18px;">
     <b style="font-size:18px; font-weight:100;">Bill: &nbsp</b> 
     <!-- php code for project name -->
     <?php
