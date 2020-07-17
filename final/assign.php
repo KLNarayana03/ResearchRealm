@@ -357,7 +357,7 @@ $result_calendar->execute();
     </button>
     <div class="dropdown-container">
       <a href="chatindex.php" style="color:white;">Chat Box</a>
-      <a href="discussion.php" style="color:white;">Discussion Thread</a>
+      <!-- <a href="discussion.php" style="color:white;">Discussion Thread</a> -->
     </div>
   
     

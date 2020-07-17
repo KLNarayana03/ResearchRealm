@@ -11,11 +11,12 @@ if (isset($_POST['title']) && isset($_POST['start']) && isset($_POST['end']) && 
 	$end = $_POST['end'];
 	$color = $_POST['color'];
 	$userid = $_SESSION['id'];
+	$calendardesc = $_POST['calendardesc'];
 	$resource = $_FILES["fileToUpload"]["name"];
 
 	$target = "./uploads/".$resource;
     move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target);
-	$sql = "INSERT INTO events(title, start, end, color,userid, resources, path) values ('$title', '$start', '$end', '$color',$userid, '$resource', '$target')";
+	$sql = "INSERT INTO events(title, start, end, color,userid, resources, path, calendardesc) values ('$title', '$start', '$end', '$color',$userid, '$resource', '$target', '$calendardesc')";
 	//$req = $bdd->prepare($sql);
 	//$req->execute();
 	

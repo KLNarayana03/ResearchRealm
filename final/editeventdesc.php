@@ -22,8 +22,8 @@ if (isset($_POST['delete']) && isset($_POST['id'])){
 	
 	$id = $_POST['id'];
 	$title = $_POST['title'];
-	$color = $_POST['color'];
-	$calendardesc = $_POST['calendardesc'];
+    $color = $_POST['color'];
+    $calendardesc = $_POST['calendardesc'];
 	
 	$sql = "UPDATE events SET  title = '$title', color = '$color', calendardesc = '$calendardesc' WHERE id = $id ";
 

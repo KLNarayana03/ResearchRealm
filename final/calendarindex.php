@@ -4,7 +4,7 @@ include_once 'source/db_connect.php';
 include_once 'source/session.php';
 
 $userid = $_SESSION['id'];
-$sql = "SELECT id, title, start, end, color, resources, path FROM events where userid = $userid";
+$sql = "SELECT * FROM events where userid = $userid";
 
 $req = $bdd->prepare($sql);
 $req->execute();
@@ -338,7 +338,7 @@ document.getElementById("main").style.display = "block";
 </button>
 <div class="dropdown-container">
 <a href="chatindex.php" style="color:white;">Chat Box</a>
-<a href="discussion.php" style="color:white;">Discussion Thread</a>
+<!-- <a href="discussion.php" style="color:white;">Discussion Thread</a> -->
 </div>
 
 
@@ -383,6 +383,12 @@ document.getElementById("main").style.display = "block";
 			<label for="title" class="col-sm-2 control-label">Title</label>
 			<div class="col-sm-10">
 			  <input type="text" name="title" class="form-control" id="title" placeholder="Title">
+			</div>
+		  </div>
+		  <div class="form-group">
+			<label for="title" class="col-sm-2 control-label">Description</label>
+			<div class="col-sm-10">
+				<textarea for="calendardesc" name="calendardesc" id="calendardesc" class="projectdescription" placeholder="Enter Calendar Entry Description (Optional)" style="height:50px"></textarea>
 			</div>
 		  </div>
 		  <div class="form-group">
@@ -448,6 +454,15 @@ document.getElementById("main").style.display = "block";
 			  <input type="text" name="title" class="form-control" id="title" placeholder="Title">
 			</div>
 		  </div>
+
+		  <div class="form-group">
+			<label for="title" class="col-sm-2 control-label">Description</label>
+			<div class="col-sm-10">
+				<!-- <input type="text" name="calendardesc" class="form-control" id="calendardesc" placeholder="Enter Calendar Entry Description (Optional)"> -->
+				<textarea name="calendardesc" id="calendardesc" class="form-control" placeholder="Enter Calendar Entry Description (Optional)" style="height:50px"></textarea>
+			</div>
+		  </div>
+
 		  <div class="form-group">
 			<label for="color" class="col-sm-2 control-label">Color</label>
 			<div class="col-sm-10">
@@ -538,6 +553,7 @@ $('#calendar').fullCalendar({
 			$('#ModalEdit #color').val(event.color);
 			$('#ModalEdit #path').val(event.path);
 			$('#ModalEdit #resources').val(event.resources);
+			$('#ModalEdit #calendardesc').val(event.calendardesc);
 			$('#ModalEdit').modal('show');
 		});
 	},
@@ -570,11 +586,13 @@ $('#calendar').fullCalendar({
 		{
 			id: '<?php echo $event['id']; ?>',
 			title: '<?php echo $event['title']; ?>',
+			calendardesc: '<?php echo $event['calendardesc']; ?>',
 			start: '<?php echo $start; ?>',
 			end: '<?php echo $end; ?>',
 			color: '<?php echo $event['color']; ?>',
 			path: '<?php echo $event['path']; ?>',
 			resources: '<?php echo $event['resources']; ?>',
+			
 		},
 	<?php endforeach; ?>
 	]
