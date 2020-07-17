@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 09, 2020 at 04:22 PM
+-- Generation Time: Jul 17, 2020 at 10:03 PM
 -- Server version: 8.0.19
 -- PHP Version: 7.3.3
 
@@ -241,7 +241,8 @@ CREATE TABLE `createtasks` (
 --
 
 INSERT INTO `createtasks` (`id`, `taskname`, `tasktype`, `tasklastdate`, `taskdesc`, `taskdate`, `userid`) VALUES
-(2, 'finish invite integration', 'projectrelatedtask', '2020-05-01', 'User would be able to send invite requests for a particular project', '2020-04-30', 6);
+(2, 'finish invite integration', 'projectrelatedtask', '2020-05-01', 'User would be able to send invite requests for a particular project', '2020-04-30', 6),
+(3, 'i wanted to create a new task', 'projectrelatedtask', '2020-07-17', 'kuch nahi hai description me', '2020-07-16', 6);
 
 -- --------------------------------------------------------
 
@@ -292,7 +293,9 @@ INSERT INTO `fixmeeting` (`id`, `projectid`, `meetingtitle`, `meetingdatetime`, 
 (5, 19, 'Checking settername status', '2020-06-27 20:23:00', 'Check if the settername works.', 'anushka', 'prateek', NULL),
 (6, 22, 'Connectink links', '2020-06-28 17:00:00', 'Checking if I fix a meeting here, then will it automatically be set to calendar or not?', 'prateek', 'vaibhav', NULL),
 (8, 26, 'Connecting links', '2020-06-28 18:05:00', 'check if it works', 'prateek', 'vaibhav', NULL),
-(9, 26, 'Connecting links', '2020-06-28 20:00:00', 'Check if this is linked with the calendar.', 'anushka', 'vaibhav', NULL);
+(9, 26, 'Connecting links', '2020-06-28 20:00:00', 'Check if this is linked with the calendar.', 'anushka', 'vaibhav', NULL),
+(10, 22, 'Connecting links', '2020-07-14 13:35:00', 'cheeking meeting linking', 'prateek', 'vaibhav', NULL),
+(11, 26, 'check minutes of meeting', '2020-07-11 17:40:00', 'cheeking if its coming in the table', 'prateek', 'vaibhav', NULL);
 
 -- --------------------------------------------------------
 
@@ -372,25 +375,31 @@ CREATE TABLE `projectexpenses` (
   `purchasedate` date NOT NULL,
   `billamount` int NOT NULL,
   `resources` longblob NOT NULL,
-  `path` varchar(500) NOT NULL
+  `path` varchar(500) NOT NULL,
+  `vendorname` varchar(255) NOT NULL,
+  `itemdesc` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `projectexpenses`
 --
 
-INSERT INTO `projectexpenses` (`id`, `projectid`, `expensetype`, `purchasedate`, `billamount`, `resources`, `path`) VALUES
-(2, 22, 'Software Purchase', '2020-05-16', 500, 0x323031392d30332d31352d32332d34302d35342d3632322e6a7067, ''),
-(3, 22, 'Inventory Purchase', '2020-05-08', 2, '', './uploads/'),
-(4, 22, 'Inventory Purchase', '2020-05-08', 2, '', './uploads/'),
-(5, 22, 'Inventory Purchase', '2020-05-15', 5, '', './uploads/'),
-(6, 22, 'Inventory Purchase', '2020-05-15', 5, '', './uploads/'),
-(7, 22, 'Inventory Purchase', '2020-05-02', 200, '', './uploads/'),
-(8, 22, 'Others', '2020-05-02', 20000, '', './uploads/'),
-(9, 22, 'Travel Expenses', '2020-05-15', 1500, '', './uploads/'),
-(10, 22, 'Inventory Purchase', '2020-05-23', 32, '', './img/'),
-(11, 22, 'Inventory Purchase', '2020-05-09', 213, 0x494d472d32303139303731392d5741303030342e6a7067, './img/IMG-20190719-WA0004.jpg'),
-(12, 22, 'Software Purchase', '2020-05-15', 150000, 0x494d472d32303139303632352d5741303033342e6a7067, './uploads/IMG-20190625-WA0034.jpg');
+INSERT INTO `projectexpenses` (`id`, `projectid`, `expensetype`, `purchasedate`, `billamount`, `resources`, `path`, `vendorname`, `itemdesc`) VALUES
+(2, 22, 'Software Purchase', '2020-05-16', 500, 0x323031392d30332d31352d32332d34302d35342d3632322e6a7067, '', '', ''),
+(3, 22, 'Inventory Purchase', '2020-05-08', 2, '', './uploads/', '', ''),
+(4, 22, 'Inventory Purchase', '2020-05-08', 2, '', './uploads/', '', ''),
+(5, 22, 'Inventory Purchase', '2020-05-15', 5, '', './uploads/', '', ''),
+(6, 22, 'Inventory Purchase', '2020-05-15', 5, '', './uploads/', '', ''),
+(7, 22, 'Inventory Purchase', '2020-05-02', 200, '', './uploads/', '', ''),
+(8, 22, 'Others', '2020-05-02', 20000, '', './uploads/', '', ''),
+(9, 22, 'Travel Expenses', '2020-05-15', 1500, '', './uploads/', '', ''),
+(10, 22, 'Inventory Purchase', '2020-05-23', 32, '', './img/', '', ''),
+(11, 22, 'Inventory Purchase', '2020-05-09', 213, 0x494d472d32303139303731392d5741303030342e6a7067, './img/IMG-20190719-WA0004.jpg', '', ''),
+(12, 22, 'Software Purchase', '2020-05-15', 150000, 0x494d472d32303139303632352d5741303033342e6a7067, './uploads/IMG-20190625-WA0034.jpg', '', ''),
+(14, 22, 'Travel Expenses', '2020-07-11', 500, '', './uploads/', '', ''),
+(15, 26, 'Software Purchase', '2020-07-18', 500, '', './uploads/', '', ''),
+(16, 26, 'Software Purchase', '2020-07-18', 500, '', './uploads/', 'ramlal', ''),
+(17, 26, 'Travel Expenses', '2020-07-17', 10000, '', './uploads/', 'paris', 'Paris travelling');
 
 -- --------------------------------------------------------
 
@@ -456,7 +465,6 @@ CREATE TABLE `resources` (
 --
 
 INSERT INTO `resources` (`id`, `projectname`, `resources`, `resourcedesc`, `path`, `projectid`, `userid`) VALUES
-(35, 'Intern Project', 0x46425f494d475f313534393231323438343932342e6a7067, 'image1', './uploads/FB_IMG_1549212484924.jpg', 19, 0),
 (36, 'Research Project', 0x61626d6320706f7374206d6964732e706466, 'pdf1', './uploads/abmc post mids.pdf', 6, 0),
 (37, 'Intern Project', 0x6c6f772d636f73742d6275696c64696e672d322e706466, 'BC shhet', './uploads/low-cost-building-2.pdf', 6, 0),
 (38, 'Research Project', 0x5459504553204f462053434146464f4c44494e472e706466, 'BC sheet new', './uploads/TYPES OF SCAFFOLDING.pdf', 6, 0),
@@ -469,7 +477,8 @@ INSERT INTO `resources` (`id`, `projectname`, `resources`, `resourcedesc`, `path
 (45, 'dbms', 0x46425f494d475f313537353433393837333730312e6a7067, 'field trip ka dance', './uploads/FB_IMG_1575439873701.jpg', 22, 0),
 (47, 'dbms', 0x494d472d32303139303632372d5741303030332e6a7067, 'dbms k liye', './uploads/IMG-20190627-WA0003.jpg', 22, 0),
 (48, 'Research Project', 0x494d472d32303139313032372d5741303031322e6a7067, 'checking userid', './uploads/IMG-20191027-WA0012.jpg', 19, 6),
-(49, 'Intern Project', 0x494d472d32303139303632352d5741303032372e6a7067, '', './uploads/IMG-20190625-WA0027.jpg', 20, 6);
+(49, 'Intern Project', 0x494d472d32303139303632352d5741303032372e6a7067, '', './uploads/IMG-20190625-WA0027.jpg', 20, 6),
+(50, 'Practice', 0x6d656d652e706e67, 'meme', './uploads/meme.png', 26, 6);
 
 -- --------------------------------------------------------
 
@@ -652,7 +661,7 @@ ALTER TABLE `createcalendarentries`
 -- AUTO_INCREMENT for table `createtasks`
 --
 ALTER TABLE `createtasks`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `discussion`
@@ -664,7 +673,7 @@ ALTER TABLE `discussion`
 -- AUTO_INCREMENT for table `fixmeeting`
 --
 ALTER TABLE `fixmeeting`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `inviterequest`
@@ -682,7 +691,7 @@ ALTER TABLE `login_details`
 -- AUTO_INCREMENT for table `projectexpenses`
 --
 ALTER TABLE `projectexpenses`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `projects`
@@ -700,7 +709,7 @@ ALTER TABLE `recyclebin`
 -- AUTO_INCREMENT for table `resources`
 --
 ALTER TABLE `resources`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `users`
