@@ -397,7 +397,7 @@ function closeForm4() {
       </tr>
       <tr>
         <th style="padding:5px; border: 1px solid #ddd; text-align:center;">S.No</th>
-        <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Document Name</th>
+        <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Project Name</th>
         <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Document Description</th>
         <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Download</th>
         <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Delete</th>
@@ -420,6 +420,47 @@ function closeForm4() {
       <!-- php code for displaying project members-->  
 
     </table>
+    <br>
+    <button class="open-formbutton" onclick="openshareform1()" style="margin-left:3.3%; color:white; background:#81d8d0;">Add new Document</button>
+ <div class="form-popup" id="shareform1">
+  <form action="shareresources.php" class="form-container" method="post" enctype="multipart/form-data">
+    <button class="open-button">Share Resources</button>  
+    <hr class="new1">
+
+  <!-- code for selecting project in which we want to share resource-->
+  <!-- I am writing a sample code-->
+  <select for="project name" id="projecttype" name="projectname" style="margin-bottom:20px;">
+    <?php
+      $query = "select * from projects where userid = $id";
+      $result_resource =$conn->prepare($query);
+      $result_resource->execute();
+      while($rows=$result_resource->fetch(PDO::FETCH_ASSOC)){
+        $projectname = $rows['projectname'];
+        echo "<option>$projectname</option>";
+      }
+    ?> 
+  </select>
+  
+    
+    <input  type="file" name="fileToUpload">
+    <br>
+    <textarea for="resourcedesc" class="projectdescription" name="resourcedesc" placeholder="Enter Resource Description (optional)" style="height:200px"></textarea>
+
+    <!-- <button type="submit" class="btn" name="projectup-btn">Submit</button> -->
+    <input type="submit" name="projectup-btn" class="btn" value="Share">
+    <button type="button" class="btn cancel" onclick="closeshareform1()">Close</button>
+  </form>
+ </div>
+  <script>
+  function openshareform1() {
+    document.getElementById("shareform1").style.display = "block";
+  }
+
+  function closeshareform1() {
+    document.getElementById("shareform1").style.display = "none";
+    document.getElementById("main").style.display = "block";
+  }
+  </script>
     </div><br>
 <br><br>
 </div>
