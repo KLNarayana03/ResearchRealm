@@ -696,7 +696,7 @@ function closeForm4() {
    $result_project =$conn->prepare($query);
    $result_project->execute();
    $row1=$result_project->fetch(PDO::FETCH_ASSOC);
-               if($row1['post'] == 'Collaborator'){
+               if($row1['post'] == ''){
 
             $query = "select * from projects where id = $projectid";
             $result_project =$conn->prepare($query);
