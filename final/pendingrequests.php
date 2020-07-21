@@ -4,11 +4,12 @@ include_once 'source/db_connect.php';
 include_once 'source/session.php';
 $id = $_SESSION['id'];
 $username = $_SESSION['username'];
+$useremail = $_SESSION['email'];
 
 //query for displaying notification
-$query = "SELECT * FROM inviterequest, projects, users WHERE inviterequest.projectid = projects.id AND projects.userid = users.id AND receivername = :username AND curstatus=0";
+$query = "SELECT * FROM inviterequest, projects, users WHERE inviterequest.projectid = projects.id AND projects.userid = users.id AND receivername = :useremail AND curstatus=0";
 $result_display_notification = $conn->prepare($query);
-$result_display_notification->bindParam(':username', $username);
+$result_display_notification->bindParam(':useremail', $useremail);
 $result_display_notification->execute();
 
 //query for displaying invited projects
@@ -396,7 +397,7 @@ $result_calendar->execute();
           echo "
           <tr>
           <td style=\"padding:12px; border: 1px solid #ddd;\">".$rows['projectname']."</td>
-          <td style=\"padding:12px; border: 1px solid #ddd;\">".$rows['username']."</td>
+          <td style=\"padding:12px; border: 1px solid #ddd;\">".$rows['email']."</td>
           <td style=\"padding:12px; border: 1px solid #ddd;\"><a href = 'acceptrequest.php?rn=$rows[id]'>Accept</td>
           <td style=\"padding:12px; border: 1px solid #ddd;\"><a href = 'deleterequest.php?rn=$rows[id]' onclick=\"return confirm('Are you sure?')\">Delete</a></td>
         </tr>

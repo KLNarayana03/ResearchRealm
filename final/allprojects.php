@@ -4,6 +4,7 @@ include_once 'source/db_connect.php';
 include_once 'source/session.php';
 $id = $_SESSION['id'];
 $username = $_SESSION['username'];
+$useremail = $_SESSION['email'];
 
 //query for displaying notification
 $query = "SELECT * FROM inviterequest, projects, users WHERE inviterequest.projectid = projects.id AND projects.userid = users.id AND receivername = :username AND curstatus=0";
@@ -12,9 +13,9 @@ $result_display_notification->bindParam(':username', $username);
 $result_display_notification->execute();
 
 //query for displaying invited projects
-$query = "SELECT * FROM inviterequest, projects WHERE inviterequest.projectid = projects.id AND receivername = :username AND curstatus=1";
+$query = "SELECT * FROM inviterequest, projects, users WHERE inviterequest.projectid = projects.id AND projects.userid = users.id AND receivername = :useremail AND curstatus=1";
 $result_display_invited_projects = $conn->prepare($query);
-$result_display_invited_projects->bindParam(':username', $username);
+$result_display_invited_projects->bindParam(':useremail', $useremail);
 $result_display_invited_projects->execute();
 
 //query for displaying assigned tasks
@@ -429,7 +430,7 @@ $result_calendar->execute();
             <td style=\"padding:12px; border: 1px solid #ddd;\">".$rows['projectname']."</td>
             <td style=\"padding:12px; border: 1px solid #ddd;\">".$rows['projecttype']."</td>
             <td style=\"padding:12px; border: 1px solid #ddd;\">".$rows['projectdate']."</td>
-            <td style=\"padding:12px; border: 1px solid #ddd;\"><a href = 'invitedprojectdetails.php?rn=$rows[id]'>Details</td>
+            <td style=\"padding:12px; border: 1px solid #ddd;\"><a href = 'invitedprojectdetails.php?rn=$rows[projectid]'>Details</td>
             </tr>
             ";
         }

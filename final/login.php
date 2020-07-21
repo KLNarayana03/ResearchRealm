@@ -17,10 +17,12 @@ if(isset($_POST['login-btn'])) {
         $id = $row['id'];
         $hashed_password = $row['password'];
         $username = $row['username'];
+        $useremail = $row['email'];
 
         if(password_verify($password, $hashed_password)) {
           $_SESSION['id'] = $id;
           $_SESSION['username'] = $username;
+          $_SESSION['email'] = $useremail;
           header('location: landingpage.php');
         }
         else {
