@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 17, 2020 at 10:03 PM
+-- Generation Time: Jul 22, 2020 at 07:00 PM
 -- Server version: 8.0.19
 -- PHP Version: 7.3.3
 
@@ -44,12 +44,12 @@ CREATE TABLE `addinventory` (
 --
 
 INSERT INTO `addinventory` (`id`, `projectid`, `inventorytype`, `inventoryname`, `inventorydesc`, `inventoryid`, `manufacturer`, `userid`) VALUES
-(1, 22, 'Equipment', 'Theodelite', 'Surveying Lab Equipment', '0', '', 0),
-(3, 23, 'Consumables', 'Theodelite', 'asd', '0', '', 0),
-(4, 22, 'Equipment', 'Compass', 'For surveying', '0', '', 0),
+(1, 22, 'Equipment', 'Theodelite', 'Surveying Lab Equipment', '0', 'null', 0),
+(3, 23, 'Consumables', 'Theodelite', 'asd', '0', 'something', 0),
+(4, 22, 'Equipment', 'Compass', 'For surveying', '0', 'awed', 0),
 (5, 20, 'Consumables', 'DC Motor', 'For Autonomous vehicle manufacturing.', '18ar10037', 'Agrawal Motors', 0),
 (8, NULL, 'Equipment', 'check', 'check', 'check', 'check', 6),
-(9, 24, 'Consumables', 'something', '..', 'some', 'thing', 6);
+(9, 24, 'Consumables', 'something', '..asdfae', 'some', 'thing', 6);
 
 -- --------------------------------------------------------
 
@@ -193,7 +193,14 @@ INSERT INTO `chat_message` (`chat_message_id`, `to_user_id`, `from_user_id`, `ch
 (32, 9, 6, 'how you doin\'', 1),
 (33, NULL, 6, 'tempo se junta<div><br></div>', 1),
 (34, NULL, 6, 'group-thread_chat', 1),
-(35, NULL, 6, 'tjh', 1);
+(35, NULL, 6, 'tjh', 1),
+(36, 6, 22, 'Hi', 1),
+(37, 6, 22, 'I am User', 1),
+(38, 20, 22, 'Hi', 0),
+(39, 20, 22, 'I am User, nice to meet you', 0),
+(40, 22, 20, 'Hey, nice to meet you user', 0),
+(41, 22, 20, 'I am new', 0),
+(42, 20, 22, '😁😇', 1);
 
 -- --------------------------------------------------------
 
@@ -347,7 +354,12 @@ INSERT INTO `inviterequest` (`id`, `projectid`, `receivername`, `curstatus`, `us
 (15, 26, 'prateek', 1, 6),
 (16, 26, 'new', 1, 6),
 (17, 26, 'anushka', 1, 6),
-(18, 19, 'User', 0, 6);
+(18, 19, 'User', 1, 6),
+(19, 22, 'abc@gmail.com', 1, 6),
+(20, 26, 'user@gmail.com', 1, 6),
+(21, 26, 'new@gmail.com', 1, 6),
+(22, 22, 'new@gmail.com', 1, 6),
+(23, 13, 'user@gmail.com', 1, 9);
 
 -- --------------------------------------------------------
 
@@ -649,7 +661,7 @@ ALTER TABLE `assigntask`
 -- AUTO_INCREMENT for table `chat_message`
 --
 ALTER TABLE `chat_message`
-  MODIFY `chat_message_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `chat_message_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `createcalendarentries`
@@ -679,7 +691,7 @@ ALTER TABLE `fixmeeting`
 -- AUTO_INCREMENT for table `inviterequest`
 --
 ALTER TABLE `inviterequest`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `login_details`

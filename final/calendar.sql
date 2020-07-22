@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 17, 2020 at 10:03 PM
+-- Generation Time: Jul 22, 2020 at 07:01 PM
 -- Server version: 8.0.19
 -- PHP Version: 7.3.3
 
@@ -83,7 +83,8 @@ INSERT INTO `events` (`id`, `title`, `color`, `start`, `end`, `userid`, `resourc
 (54, 'check minutes of meeting', NULL, '2020-07-11 17:40:00', '2020-06-02 00:00:00', 6, NULL, NULL, ''),
 (55, 'calendar desc', '#000', '2020-07-13 00:00:00', '2020-07-14 00:00:00', 6, '', './uploads/', ''),
 (56, 'abd', '#008000', '2020-07-22 00:00:00', '2020-07-23 00:00:00', 6, '', './uploads/', 'calendardesc is changed'),
-(57, 'def', '#0071c5', '2020-07-23 00:00:00', '2020-07-24 00:00:00', 6, '', './uploads/', 'check');
+(57, 'def', '#0071c5', '2020-07-23 00:00:00', '2020-07-24 00:00:00', 6, '', './uploads/', 'check'),
+(58, 'Check if everything is completed', '#0071c5', '2020-07-24 20:00:00', '2020-07-25 21:00:00', 6, '', './uploads/', 'no description required');
 
 --
 -- Indexes for dumped tables
@@ -103,7 +104,7 @@ ALTER TABLE `events`
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
