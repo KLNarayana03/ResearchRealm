@@ -442,15 +442,15 @@ function closeForm4() {
             $result_project->execute();
             while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
                 echo "
-                <a href = 'displayresources.php?projectid=$projectid' style='color: #1f497d;'>View Documents</a>
+                <a href = 'displayresources.php?projectid=$projectid' style='color: #1f497d;'>Documents</a>
                 ";
                 
               }
   ?>
   </div>
   <div class="card-body" style="font-size:14.5px; color:black;">
-    <h3 class="card-title">Documents</h3>
-    <p class="card-text">Here you can view the resources shared in this project.</p>
+    <h3 class="card-title">Add or view documents</h3>
+    <p class="card-text">Here you can view and add the documents shared in this project.</p>
   </div>
 </div>
 

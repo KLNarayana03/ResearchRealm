@@ -421,7 +421,7 @@ function closeForm4() {
 
     </table>
     <br>
-    <button class="open-formbutton" onclick="openshareform1()" style="margin-left:3.3%; color:white; background:#81d8d0;">Add new Document</button>
+    <button class="open-formbutton" onclick="openshareform1()" style="margin-left:3.3%; color:black; background:lightblue;">Add new Document</button>
  <div class="form-popup" id="shareform1">
   <form action="shareresources.php" class="form-container" method="post" enctype="multipart/form-data">
     <button class="open-button">Share Resources</button>  
