@@ -3,11 +3,10 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 22, 2020 at 07:00 PM
+-- Generation Time: Jul 23, 2020 at 04:05 PM
 -- Server version: 8.0.19
 -- PHP Version: 7.3.3
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -37,7 +36,7 @@ CREATE TABLE `addinventory` (
   `inventoryid` varchar(255) NOT NULL,
   `manufacturer` varchar(255) NOT NULL,
   `userid` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `addinventory`
@@ -63,7 +62,7 @@ CREATE TABLE `assign` (
   `post` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
   `userid` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `assign`
@@ -104,7 +103,7 @@ CREATE TABLE `assigninventory` (
   `projectid` int NOT NULL,
   `inventoryname` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `assigninventory`
@@ -128,7 +127,7 @@ CREATE TABLE `assigntask` (
   `assigntasklastdate` date NOT NULL,
   `assigntaskdesc` text NOT NULL,
   `username` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `assigntask`
@@ -153,7 +152,7 @@ CREATE TABLE `chat_message` (
   `chat_message` text NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `status` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `chat_message`
@@ -216,7 +215,7 @@ CREATE TABLE `createcalendarentries` (
   `calendarentrydesc` text NOT NULL,
   `calendarentrydate` date NOT NULL,
   `userid` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `createcalendarentries`
@@ -241,7 +240,7 @@ CREATE TABLE `createtasks` (
   `taskdesc` text NOT NULL,
   `taskdate` date NOT NULL,
   `userid` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `createtasks`
@@ -262,10 +261,10 @@ CREATE TABLE `discussion` (
   `threadname` varchar(255) NOT NULL,
   `threaddesc` text NOT NULL,
   `from_user_id` int NOT NULL,
-  `chat_message` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `chat_message` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
   `timestamp` timestamp NOT NULL,
   `status` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `discussion`
@@ -288,8 +287,8 @@ CREATE TABLE `fixmeeting` (
   `meetingdesc` text NOT NULL,
   `username` varchar(255) NOT NULL,
   `setter` varchar(255) NOT NULL,
-  `mom` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `mom` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `fixmeeting`
@@ -314,7 +313,7 @@ CREATE TABLE `friends` (
   `id` int NOT NULL,
   `project_id` int NOT NULL,
   `sender_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `friends`
@@ -335,7 +334,7 @@ CREATE TABLE `inviterequest` (
   `receivername` varchar(255) NOT NULL,
   `curstatus` int NOT NULL,
   `userid` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `inviterequest`
@@ -372,7 +371,7 @@ CREATE TABLE `login_details` (
   `id` int NOT NULL,
   `last_activity` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `is_type` enum('no','yes') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -390,7 +389,7 @@ CREATE TABLE `projectexpenses` (
   `path` varchar(500) NOT NULL,
   `vendorname` varchar(255) NOT NULL,
   `itemdesc` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `projectexpenses`
@@ -421,12 +420,12 @@ INSERT INTO `projectexpenses` (`id`, `projectid`, `expensetype`, `purchasedate`,
 
 CREATE TABLE `projects` (
   `id` int NOT NULL,
-  `projectname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `projecttype` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `projectdesc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `projectname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `projecttype` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `projectdesc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
   `projectdate` date DEFAULT NULL,
   `userid` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `projects`
@@ -454,7 +453,7 @@ CREATE TABLE `recyclebin` (
   `projectdesc` text NOT NULL,
   `projectdate` date NOT NULL,
   `userid` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -470,7 +469,7 @@ CREATE TABLE `resources` (
   `path` varchar(500) NOT NULL,
   `projectid` int NOT NULL,
   `userid` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `resources`
@@ -504,7 +503,7 @@ CREATE TABLE `users` (
   `email` varchar(255) DEFAULT NULL,
   `password` varchar(128) DEFAULT NULL,
   `confirm` varchar(128) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
