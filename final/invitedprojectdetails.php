@@ -6,6 +6,7 @@ include_once 'source/session.php';
 $projectid = $_GET['rn'];
 $userid = $_SESSION['id'];
 $username = $_SESSION['username'];
+$useremail = $_SESSION['email'];
 $sno = 1;
 //Query for displaying members
 $query = "select * from assign where projectid = $projectid";
@@ -435,7 +436,7 @@ function closeForm4() {
     My Roll : &nbsp 
     <b style="font-weight:100; font-size:16px;"> 
     <?php
-      $query = "select * from assign where projectid = $projectid and username = '$username'";
+      $query = "select * from assign,users where assign.username = users.email AND projectid = $projectid and users.email = '$useremail'";
       $result_project =$conn->prepare($query);
       $result_project->execute();
       while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){

@@ -7,7 +7,7 @@ $projectid = $_GET['rn'];
 $userid = $_SESSION['id'];
 $sno = 1;
 //Query for displaying members
-$query = "select * from assign where projectid = $projectid";
+$query = "select * from assign,users where assign.username = users.email AND projectid = $projectid";
 $result_invite =$conn->prepare($query);
 $result_invite->execute();
 
