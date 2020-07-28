@@ -10,9 +10,13 @@
    if($result_delete)
    {
        echo "Request Accepted";
+    //    header("Location: pendingrequests.php");
+    //     exit();
+        header( "refresh:1;url=pendingrequests.php" );
    }
    else
    {
        echo "Inventory failed to delete";
+       header( "refresh:1;url=pendingrequests.php" );
    }
 ?>

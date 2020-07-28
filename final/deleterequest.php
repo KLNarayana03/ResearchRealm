@@ -10,6 +10,7 @@
    if($result_delete)
    {
     echo '<script>alert("Request rejected Successfully!")</script>';
+    header( "refresh:1;url=pendingrequests.php" );
    }
    else
    {
