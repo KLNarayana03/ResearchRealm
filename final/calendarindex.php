@@ -268,7 +268,7 @@ document.getElementById("main").style.display = "block";
  <!-- <i class="fa fa-caret-down"></i> -->
   </a>
 
-  <a href="assignproject.php" style="color:white;">Inventory 
+  <a href="assigninventorytable.php" style="color:white;">Inventory 
  <!-- <i class="fa fa-caret-down"></i> -->
   </a>
 
