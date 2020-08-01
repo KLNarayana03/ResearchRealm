@@ -18,7 +18,9 @@
             $statement = $conn->prepare($SQLInsert);
             $statement->execute();
             echo '<script>alert("Inventory added Successfully. Press Back to see it in table")</script>';
-          }
+            header( "refresh:1;url=landingpage.php");
+   }
+          
           catch(PDOException $e)
             {
             echo $SQLInsert . "<br>" . $e->getMessage();

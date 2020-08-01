@@ -16,6 +16,7 @@
             $statement = $conn->prepare($SQLInsert);
             $statement->execute();
             echo '<script>alert("New Thread Successfully Created. Press Back to see it in table")</script>';
+            header( "refresh:1;url=landingpage.php");
           }
           catch(PDOException $e)
             {

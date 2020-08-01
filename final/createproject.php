@@ -16,6 +16,7 @@ if(isset($_POST['projectup-btn'])) {
     $statement = $conn->prepare($SQLInsert);
     $statement->execute();
     echo $statement->rowCount() . " records UPDATED successfully";
+    header( "refresh:1;url=landingpage.php");
     }
   }
   catch(PDOException $e)
