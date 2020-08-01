@@ -455,13 +455,14 @@ function closeForm4() {
         <th style="padding:5px; border: 1px solid #ddd; text-align:center;">Delete</th>
       </tr>
       <?php
+      $projectid = $_GET['rn'];
         while($rows=$result_display_assigninventory->fetch(PDO::FETCH_ASSOC)){
             echo "
             <tr>
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$sno."</td>
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['username']."</td>
             <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\">".$rows['inventoryname']."</td>
-            <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\"><a href = 'deleteassigninventory.php?rn=$rows[id]' onclick=\"return confirm('Are you sure?')\">Delete</a></td>
+            <td style=\"padding:5px; text-align:center; border: 1px solid #ddd;\"><a href = 'deleteassigninventory.php?rn=$rows[id]&projectid=$projectid' onclick=\"return confirm('Are you sure?')\">Delete</a></td>
             </tr>
             ";
             $sno++;

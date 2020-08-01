@@ -375,7 +375,7 @@ function closeForm4() {
             <tr>
             <td style=\"padding:5px; border: 1px solid #ddd;\">".$rows['projectname']."</td>
             <td style=\"padding:5px; border: 1px solid #ddd;\">".$rows['projecttype']."</td>
-            <td style=\"padding:5px; border: 1px solid #ddd;\"><a href = 'details.php?rn=$rows[id]'>Next</td>
+            <td style=\"padding:5px; border: 1px solid #ddd;\"><a href = 'assign.php?rn=$rows[id]'>Next</td>
             </tr>
             ";
         }

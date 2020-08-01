@@ -2,15 +2,6 @@
 
 include_once 'source/db_connect.php';
 include_once 'source/session.php';
-
-$projectid = $_GET['rn'];
-$userid = $_SESSION['id'];
-$sno = 1;
-//Query for displaying projectexpensesdetails
-$query = "select * from projectexpenses where projectid = $projectid";
-$result_display_projectexpenses =$conn->prepare($query);
-$result_display_projectexpenses->execute();
-
 $id = $_SESSION['id'];
 //query for displaying members
 $query = "select * from assign";
@@ -28,7 +19,6 @@ $result_task->execute();
 $query = "select * from createcalendarentries where userid = $id";
 $result_calendar =$conn->prepare($query);
 $result_calendar->execute();
-
 ?>
 
 
@@ -43,7 +33,7 @@ $result_calendar->execute();
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   
- <title>Details Page</title> 
+ <title>_project</title> 
 <link rel="stylesheet" href="landingpage.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="font-awesome.css">
@@ -349,7 +339,7 @@ function closeForm4() {
   </button>
   <div class="dropdown-container">
     <a href="chatindex.php" style="color:white;">Chat Box</a>
-    <!-- <a href="#">Discussion Thread</a> -->
+    <!-- <a href="discussion.php" style="color:white;">Discussion Thread</a> -->
   </div>
 
   
@@ -370,115 +360,30 @@ function closeForm4() {
     <?php endif ?>
 
     <!-- <?php echo "<h1> Welcome ".$_SESSION['username']." To Dashboard </h1>" ?> -->
-  <div class="maincontent">
-    <button class="topbutton">Expense Details</button>
-    <hr class="new1">
-
-    <div style="font-size:18px;">
-    <b style="font-size:18px; font-weight:100;">Expense Type: &nbsp</b> 
-    <!-- php code for project name -->
-    <?php
-      $query = "select * from projectexpenses where id = $projectid";
-      $result_display_projectexpenses =$conn->prepare($query);
-      $result_display_projectexpenses->execute();
-      while($rows=$result_display_projectexpenses->fetch(PDO::FETCH_ASSOC)){
-        echo $rows['expensetype'];
-      }
-        
-    ?>
-    </div><br>
-    
-    <div style="font-size:18px;">
-    <b style="font-size:18px; font-weight:100;">Purchase Date : &nbsp</b> 
-    <!-- php code for project name -->
-    <?php
-      $query = "select * from projectexpenses where id = $projectid";
-      $result_display_projectexpenses =$conn->prepare($query);
-      $result_display_projectexpenses->execute();
-      while($rows=$result_display_projectexpenses->fetch(PDO::FETCH_ASSOC)){
-        echo $rows['purchasedate'];
-      }
-        
-    ?>
-    </div><br>
-
-    <div style="font-size:18px;">
-    <b style="font-size:18px; font-weight:100;">billamount: &nbsp</b> 
-    <!-- php code for project name -->
-    <?php
-      $query = "select * from projectexpenses where id = $projectid";
-      $result_display_projectexpenses =$conn->prepare($query);
-      $result_display_projectexpenses->execute();
-      while($rows=$result_display_projectexpenses->fetch(PDO::FETCH_ASSOC)){
-        echo $rows['billamount'];
-      }
-        
-    ?>
-    </div><br>
-
-    <div style="font-size:18px;">
-    <b style="font-size:18px; font-weight:100;">Vendor Name: &nbsp</b> 
-    <!-- php code for project name -->
-    <?php
-      $query = "select * from projectexpenses where id = $projectid";
-      $result_display_projectexpenses =$conn->prepare($query);
-      $result_display_projectexpenses->execute();
-      while($rows=$result_display_projectexpenses->fetch(PDO::FETCH_ASSOC)){
-        echo $rows['vendorname'];
-      }
-        
-    ?>
-    </div><br>
-
-    <div style="font-size:18px;">
-    <b style="font-size:18px; font-weight:100;">Item Description: &nbsp</b> 
-    <!-- php code for project name -->
-    <?php
-      $query = "select * from projectexpenses where id = $projectid";
-      $result_display_projectexpenses =$conn->prepare($query);
-      $result_display_projectexpenses->execute();
-      while($rows=$result_display_projectexpenses->fetch(PDO::FETCH_ASSOC)){
-        echo $rows['itemdesc'];
-      }
-        
-    ?>
-    </div><br>
-
-    <div style="font-size:18px;">
-    <b style="font-size:18px; font-weight:100;">Bill: &nbsp</b> 
-    <!-- php code for project name -->
-    <?php
-      $query = "select * from projectexpenses where id = $projectid";
-      $result_display_projectexpenses =$conn->prepare($query);
-      $result_display_projectexpenses->execute();
-      while($rows=$result_display_projectexpenses->fetch(PDO::FETCH_ASSOC)){
-          //code for bill image/pdf
-        echo "<a target ='_blank' href='viewbill.php?id=".$rows['id']."'>".$rows['path']."</a>";
-        
-      }
-        
-    ?>
-    </div><br>
-
-    <div style="font-size:18px;">
-    Delete Bill: &nbsp  
-    <?php   
-            $query = "select * from projectexpenses where id = $projectid";
-            $result_display_projectexpenses =$conn->prepare($query);
-            $result_display_projectexpenses->execute();
-            while($rows=$result_display_projectexpenses->fetch(PDO::FETCH_ASSOC)){
-                echo "
-                <a href = 'deletebill.php?rn=$rows[id]&projectid=$projectid' onclick=\"return confirm('Are you sure?')\">Delete</a>
-                ";
-                
-              }
-        ?>
-    
-    <!--php code for ending the project <a href = 'delete.php?rn=$rows[id]' onclick=\"return confirm('Are you sure?')\">Delete</a> -->
-    </div><br>
-
-          
-</div>
+<table align="center" style="width:800px; line-height:40px; border: 1px solid #ddd;">
+      <tr>
+        <th colspan="5" style="background-color:lightgreen; text-align:center;"><h3>Ongoing Projects</h3></th>  
+      </tr>
+      <tr>
+        <th style="padding:5px; border: 1px solid #ddd;">Project Name</th>
+        <th style="padding:5px; border: 1px solid #ddd;">Project Type</th>
+        <th style="padding:5px; border: 1px solid #ddd;">Select the Project</th>
+      </tr>
+      <?php
+        while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
+            echo "
+            <tr>
+            <td style=\"padding:5px; border: 1px solid #ddd;\">".$rows['projectname']."</td>
+            <td style=\"padding:5px; border: 1px solid #ddd;\">".$rows['projecttype']."</td>
+            <td style=\"padding:5px; border: 1px solid #ddd;\"><a href = 'assigninventory.php?rn=$rows[id]'>Next</td>
+            </tr>
+            ";
+        }
+        ?>      
+ </table>
+  
+   <br>      
+ 
 </div>  
 
 
@@ -499,13 +404,12 @@ function closeForm4() {
       }
       });
     }
-  </script>
+    </script>
 <script type="text/javascript">
     window.onload = function() {
         var left=document.getElementById('sidenav').clientHeight;
         var right=document.getElementById('main').clientHeight;
         if(left>right) {
-           
             document.getElementById('main').style.height=left+"px";
         }
         if(left<right) {
