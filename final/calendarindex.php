@@ -427,8 +427,8 @@ document.getElementById("main").style.display = "block";
 		
 	  </div>
 	  <div class="modal-footer">
-		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		<button type="submit" class="btn btn-primary">Save changes</button>
+	  	<button type="submit" class="btn btn-primary" style="padding:5px;">Save changes</button>
+		<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
 	  </div>
 	</form>
 	</div>
@@ -504,8 +504,8 @@ document.getElementById("main").style.display = "block";
 		
 	  </div>
 	  <div class="modal-footer">
-		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		<button type="submit" class="btn btn-primary">Save changes</button>
+		<button type="submit" class="btn btn-primary" style="padding:5px;">Save changes</button>
+		<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
 	  </div>
 	</form>
 	</div>
