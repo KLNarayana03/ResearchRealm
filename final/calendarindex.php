@@ -259,7 +259,7 @@ document.getElementById("main").style.display = "block";
 <i class="fa fa-caret-down"></i>
 </button>
 <div class="dropdown-container">
-<a href="assignproject.php" style="color:white;">Project 
+<a href="assignproject.php" style="color:white;">Role 
  <!-- <i class="fa fa-caret-down"></i> -->
   </a>
 
