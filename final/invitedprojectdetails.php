@@ -481,8 +481,9 @@ function closeForm4() {
   $result_project =$conn->prepare($query);
   $result_project->execute();
   $row1=$result_project->fetch(PDO::FETCH_ASSOC);
-              if($row1['post'] == 'Mentor' || $row1['post'] == 'Lab-Incharge' || $row1['post'] == 'Collaborator'){
-
+  
+              if($row1['post'] == 'Lab-Incharge' || $row1['post'] == 'Collaborator'){
+              
             $query = "select * from projects where id = $projectid";
             $result_project =$conn->prepare($query);
             $result_project->execute();
@@ -494,6 +495,7 @@ function closeForm4() {
               }
             }
             else{
+              
               echo "<a style='color:#1f497d;' href = '#' onclick=\"return confirm('Option Not Available')\">Inventory</a>";
             }
     ?>
@@ -697,21 +699,21 @@ function closeForm4() {
    $result_project =$conn->prepare($query);
    $result_project->execute();
    $row1=$result_project->fetch(PDO::FETCH_ASSOC);
-               if($row1['post'] == ''){
+            //    if($row1['post'] == ''){
 
-            $query = "select * from projects where id = $projectid";
-            $result_project =$conn->prepare($query);
-            $result_project->execute();
-            while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
-                echo "
-                <a style='color:#1f497d;' href = 'delete.php?rn=$rows[id]' onclick=\"return confirm('Are you sure?')\">End Project</a>
-                ";
+            // $query = "select * from projects where id = $projectid";
+            // $result_project =$conn->prepare($query);
+            // $result_project->execute();
+            // while($rows=$result_project->fetch(PDO::FETCH_ASSOC)){
+            //     echo "
+            //     <a style='color:#1f497d;' href = 'delete.php?rn=$rows[id]' onclick=\"return confirm('Are you sure?')\">End Project</a>
+            //     ";
                 
-              }
-            }
-            else{
+            //   }
+            // }
+            // else{
               echo "<a style='color:#1f497d;' href = '#' onclick=\"return confirm('Option Not Available')\">End Project</a>";
-            }
+            // }
         ?>
   </div>
   <div class="card-body" style="font-size:14.5px;">
