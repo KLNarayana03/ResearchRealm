@@ -288,7 +288,7 @@ function closeForm4() {
     <i class="fa fa-caret-down"></i>
   </button>
   <div class="dropdown-container">
-  <a href="assignproject.php" style="color:white;">Meeting
+  <a href="fixmeetingtable.php" style="color:white;">Meeting
      <!-- <i class="fa fa-caret-down"></i> -->
       </a>
   </div>
