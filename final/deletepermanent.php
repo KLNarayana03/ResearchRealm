@@ -10,6 +10,7 @@
    if($result_delete)
    {
        echo '<script>alert("Project deleted Successfully!")</script>';
+       header( "refresh:1;url=deletedprojects.php" );
    }
    else
    {

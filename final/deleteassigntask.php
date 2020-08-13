@@ -10,6 +10,7 @@
    if($result_delete)
    {
         echo '<script>alert("Task deleted Successfully!")</script>';
+        header( "refresh:1;url=alltasks.php" );
    }
    else
    {
