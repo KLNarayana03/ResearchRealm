@@ -431,10 +431,10 @@ function closeForm4() {
     </div><br>
     <form action="" class="form-container" method="post" enctype="multipart/form-data">
     <textarea for="mom" class="projectdescription" name="mom" placeholder="Enter Minutes of the meeting (optional)" style="height:200px"></textarea>
-    <input type="submit" name="projectup-btn" class="btn" value="Add Minutes of Meeting">
-    </form>
-
-    <table style="width:95%; border: 1px solid #ddd;">
+    <input type="submit" name="projectup-btn" class="btn" style="width:auto; padding:10px;" value="Save Minutes of Meeting">
+    </form> 
+    <br>
+    <table style="width:98%; border: 1px solid #ddd; margin-left:12px;">
       <tr style="background-color:lightblue;">
         <th colspan="1" style="text-align:center;"><h3>Minutes of Meeting</h3></th>  
       </tr>
