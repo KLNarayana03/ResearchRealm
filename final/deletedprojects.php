@@ -55,16 +55,23 @@ $result_calendar->execute();
 
 <div class="header">
 
-<a href="landingpage.php" style="margin-left: 5px;">App logo</a>
+    <a id="logo" href="landingpage.php" >Logo</a>
+    
+    <div id="header_icons">
+    <div id="usertype"><?php echo $_SESSION['username'] ?><a href="#"><i class="far fa-address-card"></i></a></div>
+    
+    <div id="logout"><a href="logout.php"><i class="fas fa-sign-out-alt"></i></a></div>
+    </div>
+ </div>
 
-<div id="logout">Logout<a href="logout.php"><i class="fas fa-sign-out-alt" style="margin-left: 15px;"></i></a></div>
 
-<div id="usertype"><?php echo $_SESSION['username'] ?><a href="#"><i class="far fa-address-card" style="margin-left: 15px;"></i></a></div>
-</div>
+ <!-- VIEW SECTION STARTS -->
+ <section id="view">
 
-<div class="row">
+ 
 
-<div class="sidenav" id="sidenav">
+<!-- SIDE NAV SECTION STARTS -->
+  <div class="sidenav" id="sidenav">
     
 
   <button class="dropdown-btn"><i class='far fa-folder-open' style="margin-right: 20px;"></i>Create 
@@ -73,15 +80,23 @@ $result_calendar->execute();
   <div class="dropdown-container">
     
     <button class="dropdown-btn">Project 
-        <!-- <i class="fa fa-caret-down"></i> -->
+        <i class="fa fa-caret-down"></i>
     </button>
       <div class="dropdown-container">
-      <button class="open-formbutton" onclick="openForm()">Create new Project</button>
-<div class="form-popup" id="myForm">
+      <button   data-toggle="modal" data-target="#exampleModal" class="open-formbutton" onclick="openForm()">Create new Project</button>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+
+<div class="form-popup modal-content" id="myForm">
   <form action="createproject.php" class="form-container" method="post">
 
+    <div class="modal-header" style="text-align: center">
     <button class="open-button">Create new Project</button>  
     <hr class="new1">
+    </div>
     <input for="projectname" type="text" placeholder="Enter Project Name" name="projectname" required>
     <select for="projecttype" id="projecttype" name="projecttype">
     <option value="btp">B.Tech Project</option>
@@ -95,8 +110,13 @@ $result_calendar->execute();
 
     <!-- <button type="submit" class="btn" name="projectup-btn">Submit</button> -->
     <input type="submit" name="projectup-btn" class="btn" value="Submit">
-    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+   <div  class="modal-footer" >
+   <button type="button" class="btn cancel" data-dismiss="modal" onclick="closeForm()">Close</button>
+   </div>
+
   </form>
+</div>
+</div>
 </div>
 
 <script>
@@ -110,22 +130,26 @@ function closeForm() {
   document.getElementById("main").style.display = "block";
 }
 </script>
-        <!-- <a href="#">B.Tech Project</a>
-        <a href="#">M.Tech Project</a>
-        <a href="#">PhD Project</a>
-        <a href="#">Sponsored Project</a>
-        <a href="#">Intern Project</a> -->
+       
       </div>
 
       <button class="dropdown-btn">Tasks 
-      <!-- <i class="fa fa-caret-down"></i> -->
+      <i class="fa fa-caret-down"></i>
       </button>
       <div class="dropdown-container">
-        <button class="open-formbutton" onclick="openForm2()">Create new Task</button>
-        <div class="form-popup" id="myForm2">
+        <button type="button" class="open-formbutton" data-toggle="modal" data-target="#exampleModal2" onclick="openForm2()">Create new Task</button>
+
+
+<!-- Modal2 -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+
+        <div class="form-popup modal-content" id="myForm2">
   <form action="createtasks.php" class="form-container" method="post">
+  <div class="modal-header" style="text-align: center">
     <button class="open-button">Create new Task</button>  
     <hr class="new1">
+    </div>
     <input for="taskname" type="text" placeholder="Enter Task Name" name="taskname" required>
     <select for="tasktype" id="projecttype" name="tasktype" style="margin-bottom:20px;">
     <option value="projectrelatedtask">Project Related Task</option>
@@ -138,7 +162,8 @@ function closeForm() {
     <button type="button" class="btn cancel" onclick="closeForm2()">Close</button>
   </form>
   </div>
-
+</div>
+</div>
 <script>
 function openForm2() {
   document.getElementById("myForm2").style.display = "block";
@@ -153,26 +178,16 @@ function closeForm2() {
       </div>
 
   <button class="dropdown-btn">Calendar Entries 
-   <!-- <i class="fa fa-caret-down"></i>-->
+   <i class="fa fa-caret-down"></i>
   </button>
   <div class="dropdown-container">
-  <button class="open-formbutton"><a href="calendarindex.php">New Calendar Entry</a></button>
+  <button class="open-formbutton" style="margin-left: 0 ; padding: 5px"><a href="calendarindex.php">New Calendar Entry</a></button>
         <div class="form-popup" id="myForm3">
   <form action="createcalendarentries.php" class="form-container" method="post">
     
   <button class="open-button">Create new Calendar Entry</button>  
     <hr class="new1">
-    <!-- <input for="calendarentryname" type="text" placeholder="Title" name="calendarentryname" required>
-    <select for="calendarentrytype" id="projecttype" name="calendarentrytype" style="margin-bottom:20px;">
-    <option value="meetings">Meetings</option>
-    <option value="deadlines">Deadlines</option>
-    <option value="reminders">Reminders</option>
-    </select>
-    <label style="font-size:15.5px;">Date: &nbsp &nbsp </label>
-    <input for="calendarentrylastdate" type="date" name="calendarentrylastdate" required>
-    <textarea for="calendarentrydesc" class="projectdescription" name="calendarentrydesc" placeholder="Description" style="height:200px"></textarea> 
-    <input type="submit" name="projectup-btn" class="btn" value="Submit">
-    <button type="button" class="btn cancel" onclick="closeForm3()">Close</button> -->
+   
   </form>
   </div>
 
@@ -190,30 +205,21 @@ function closeForm3() {
   </div>
 
   <button class="dropdown-btn">Inventories 
-   <!-- <i class="fa fa-caret-down"></i>-->
+   <i class="fa fa-caret-down"></i>
   </button>
   <div class="dropdown-container">
-  <button class="open-formbutton" onclick="openForm4()">New Inventory</button>
-        <div class="form-popup" id="myForm4">
-  <!-- <form action="createcalendarentries.php" class="form-container" method="post">
-    
-  <button class="open-button">Create new Calendar Entry</button>  
-    <hr class="new1">
-    <input for="calendarentryname" type="text" placeholder="Title" name="calendarentryname" required>
-    <select for="calendarentrytype" id="projecttype" name="calendarentrytype" style="margin-bottom:20px;">
-    <option value="meetings">Meetings</option>
-    <option value="deadlines">Deadlines</option>
-    <option value="reminders">Reminders</option>
-    </select>
-    <label style="font-size:15.5px;">Date: &nbsp &nbsp </label>
-    <input for="calendarentrylastdate" type="date" name="calendarentrylastdate" required>
-    <textarea for="calendarentrydesc" class="projectdescription" name="calendarentrydesc" placeholder="Description" style="height:200px"></textarea> 
-    <input type="submit" name="projectup-btn" class="btn" value="Submit">
-    <button type="button" class="btn cancel" onclick="closeForm3()">Close</button>
-  </form> -->
+  <button class="open-formbutton" data-toggle="modal" data-target="#exampleModal3" onclick="openForm4()">New Inventory</button>
+        
+ 
+  <!-- Modal3 -->
+  <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+  <div class="form-popup modal-content" id="myForm4">
   <form action="createinventory.php" method="POST" class="form-container">  
+  <div class="modal-header" style = "text-align: center;">
   <button class="open-button">Create new Inventory</button>  
     <hr class="new1">
+</div>
     <label style="font-size:17.5px; font-weight:100;">Inventory Type: &nbsp </label>
     <select style="width: 20.9%; padding: 15px; margin: 5px 0 22px 0; border: none; background: #f1f1f1;" for="inventorytype" id="inventorytype" name="inventorytype" style="margin-bottom:20px;">
       <option value="Equipment">Equipment</option>
@@ -239,7 +245,8 @@ function closeForm3() {
     <button type="button" class="btn cancel" onclick="closeForm4()">Close</button>
      </form> 
   </div>
-
+</div>
+</div>
 <script>
 function openForm4() {
   document.getElementById("myForm4").style.display = "block";
@@ -259,19 +266,21 @@ function closeForm4() {
     <i class="fa fa-caret-down"></i>
   </button>
   <div class="dropdown-container">
-    <a href="assignproject.php" style="color:white;">Role
-     <!-- <i class="fa fa-caret-down"></i> -->
-      </a>
+    <button class="dropdown-btn"><a href="assignproject.php">Role
+     <i class="fa fa-caret-down"></i>
+     </a></button>
+      
      
 
-      <a href="assigntasktable.php" style="color:white;">Task
-     <!-- <i class="fa fa-caret-down"></i> -->
+     <button class="dropdown-btn"> <a href="assigntasktable.php">Task
+     <i class="fa fa-caret-down"></i>
       </a>
+      </button>
 
-      <a href="assigninventorytable.php" style="color:white;">Inventory 
-     <!-- <i class="fa fa-caret-down"></i> -->
+      <button class="dropdown-btn"><a href="assigninventorytable.php" >Inventory 
+     <i class="fa fa-caret-down"></i>
       </a>
-
+      </button>
   </div>
 
   
@@ -279,9 +288,9 @@ function closeForm4() {
     <i class="fa fa-caret-down"></i>
   </button>
   <div class="dropdown-container">
-  <a href="fixmeetingtable.php" style="color:white;">Meeting
-     <!-- <i class="fa fa-caret-down"></i> -->
-      </a>
+  <button class="dropdown-btn"><a href="fixmeetingtable.php" >Meeting
+     <i class="fa fa-caret-down"></i>
+      </a></button>
   </div>
 
   
@@ -289,12 +298,17 @@ function closeForm4() {
     <i class="fa fa-caret-down"></i>
   </button>
   <div class="dropdown-container">
-    <button class="open-formbutton" onclick="openshareform()">Resources</button>
- <div class="form-popup" id="shareform">
+    <button class="open-formbutton" data-toggle="modal" data-target="#exampleModal4" onclick="openshareform()">Resources</button>
+
+    <!-- Modal4 -->
+    <div class="modal fade" id="exampleModal4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+ <div class="form-popup modal-content" id="shareform">
   <form action="shareresources.php" class="form-container" method="post" enctype="multipart/form-data">
+  <div class="modal-header" style="text-align: center">
     <button class="open-button">Share Resources</button>  
     <hr class="new1">
-
+</div>
   <!-- code for selecting project in which we want to share resource-->
   <!-- I am writing a sample code-->
   <select for="project name" id="projecttype" name="projectname" style="margin-bottom:20px;">
@@ -319,6 +333,8 @@ function closeForm4() {
     <button type="button" class="btn cancel" onclick="closeshareform()">Close</button>
   </form>
  </div>
+    </div>
+    </div>
   <script>
   function openshareform() {
     document.getElementById("shareform").style.display = "block";
@@ -338,11 +354,11 @@ function closeForm4() {
   </button>
   <div class="dropdown-container">
   <a href="assignproject.php" style="color:white;">Project 
-     <!-- <i class="fa fa-caret-down"></i> -->
+     <i class="fa fa-caret-down"></i>
       </a>
 
       <a href="assignproject.php" style="color:white;">Assigned Tasks 
-     <!-- <i class="fa fa-caret-down"></i> -->
+     <i class="fa fa-caret-down"></i>
       </a>
   </div>
 
@@ -363,9 +379,14 @@ function closeForm4() {
     <a href="calendarindex.php">Calendar Entries</a>
   </div>
 
-</div>
 
-<div class="main" id="main">
+
+  </div>
+<!-- SIDE NAV ENDS -->
+
+<div id="main_part">
+
+<div class="main" id="main" style="display: flex; flex-direction: column;align-items: center">
 <?php if(!isset($_SESSION['username'])): header("location: logout.php");?>
 
     <?php else: ?>
@@ -373,11 +394,16 @@ function closeForm4() {
     <?php endif ?>
 
     <!-- <?php echo "<h1> Welcome ".$_SESSION['username']." To Dashboard </h1>" ?> -->
+
+
+    <div class = "mainContentContainer">
+    <div style="text-align: center">
     <button class="topbutton" style=" margin-left:15px;">Completed Projects</button>
-    <hr class="new1" style="margin-right:45px; margin-left:15px;">
+    <hr class="new1">
+    </div>
     <div class="maincontent">
   
-    </div><br>
+    </div>
        
     <div>
     <table style="width:95%; border: 1px solid #ddd; margin-left:15px;">
@@ -411,9 +437,8 @@ function closeForm4() {
       <!-- php code for displaying project members-->  
 
     </table>
-    </div><br>
-          
-  <br>       
+    </div>
+      </div>
 </div>
 </div>  
 
@@ -453,10 +478,8 @@ function closeForm4() {
 
 
 </div>
-
-<div class="footer">
-    <p class="copyright">Copyright © App Name. All Rights Reserved.</p>
-</div>
+  </div>
+  </section>
 
 
 </body>

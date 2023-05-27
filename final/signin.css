@@ -1,0 +1,217 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+   
+  }
+  body{
+    font-family: 'Oswald', sans-serif;
+  }
+  body::-webkit-scrollbar{
+    display: none;
+  }
+
+  /* Style the header */
+  .header {
+    background-color:rgba(55,125,237,255);
+    padding: 1.25vw 5vw;
+    color: rgb(248, 248, 248);
+    font-size: 30px;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+  }
+  .header div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .header div p{
+    padding: 0 1rem;
+  }
+  #logo{
+    text-decoration: none;
+    font-size: 30px;
+    color: white;
+    transition: 0.5s ease-in-out;
+    text-shadow: 0px 0px 5px #0070C0;
+  }
+  #logo:hover{
+    opacity: 50%;
+    color:#efefef;
+  }
+
+  #signinbutton {
+    /* display: inline-block; */
+     float: right;
+     padding: 10px 20px;
+     font-size: 15px;
+     text-decoration: none;
+     border: 1.5px;
+     border-radius: 20px;
+     border-color: white;
+     color: white;
+     border-style: solid;
+     transition: 0.5s ease-in-out;
+     background-color:rgba(55,125,237,255);
+     
+ }
+ 
+ #signinbutton:hover{
+     background: white;
+     color: #0070C0;
+ }
+  #createaccountbutton {
+    padding: 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    background-color: #43A047;
+    color: white;
+    font-size: 18px;
+    margin-bottom: 0;
+  }
+
+  #createaccountbutton:hover {
+    background: green;
+  }
+  .viewSection{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  hr.new1 {
+    border: 1.5px solid #43A047;
+    border-radius: 2px;
+    margin-top: 4px;
+    margin-bottom: 18px;
+  }
+
+  .header a {
+    color: rgb(230, 230, 230);
+  }
+
+  .column {
+    width: 50%;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    /* Should be removed. Only for demonstration */
+  }
+  .column img{
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0px 0px 2px black);
+  }
+
+  .login-page {
+    width: 90%;
+    padding: 0 0 0;
+    margin: auto;
+  }
+
+  .form {
+    position: relative;
+    background: white;
+    max-width: 90%;
+    margin: 0 auto 100px;
+    padding: 40px;
+    box-shadow: 0px 0px 5px black;
+    border-radius: 10px;
+    text-align: center;
+
+
+  }
+  .form h3{
+    color: #4CAF50;
+    
+  }
+
+  .form input {
+    font-family: "Robonto", sans-serif;
+    outline: 1;
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+    border-radius: 5px;
+  }
+
+
+  .btn {
+    font-family: "Robonto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #4CAF50;
+    width: 100%;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    cursor: pointer;
+    margin-bottom: 15px;
+  }
+  .haveanaccount{
+    font-size: 15px;
+ } 
+  .btn :hover,
+  .form button:active {
+    background: #43A047;
+  }
+
+  .message{
+    text-align: center;
+    padding: 1rem;
+  }
+  .form .message a {
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.1s ease-in-out;
+    cursor: pointer;
+  }
+
+  .form .message a:hover {
+    opacity: 80%;
+  }
+
+  .form .login-form {
+    display: none;
+  }
+
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+  @media (max-width: 600px) {
+    .column {
+      width: 100%;
+    }
+
+    .haveanaccount, .imgDiv  {
+      display: none;
+    }
+
+    .appimage {
+      height: 80%;
+      width: 100%;
+    }
+  }
+
+  @media (min-width: 601px) and (max-width:1024px) {
+    .column {
+      width: 100%;
+    }
+
+    .haveanaccount{
+      display: none;
+    }
+  }

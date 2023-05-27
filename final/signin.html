@@ -1,209 +1,33 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
- <title>Sign up page</title> 
-<style>
-  * {
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: Arial, Helvetica, sans-serif;
-  }
-  
-  /* Style the header */
-  .header {
-      background-color: #1f497d;
-      padding: 20px;
-      color: rgb(248,248,248);
-      font-size: 30px;
-  }
-  
-  #signinbutton {
-      float: right;
-      padding: 2px 15px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      background-color: rgb(4, 128, 0);
-      color: white;
-  
-  }
-  
-  #signinbutton:hover{
-      background: #43A047;
-  }
-  
-  #createaccountbutton {
-      padding: 12px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      background-color: #43A047;
-      color: white;
-      font-size: 18px;
-      margin-bottom: 0;   
-  }
-  
-  #createaccountbutton:hover{
-      background:green ;
-  }
-  
-  hr.new1 {
-      border: 1.5px solid #43A047;
-      border-radius: 2px;
-      margin-top: 4px;
-      margin-bottom: 18px;
-    }
-  
-  .header a{
-      color:rgb(230,230,230) ;
-  }
-  
-  .column {
-    float: left;
-    width: 50%;
-    padding: 10px;
-    height: 600px; /* Should be removed. Only for demonstration */
-  }
-  
-  .login-page {
-      width: 90%;
-      padding:0 0 0;
-      margin: auto;
-  }
-  
-  .form {
-      position: relative;
-      z-index: 1;
-      background: white;
-      max-width: 90%;
-      margin: 0 auto 100px;
-      padding: 45px;
-      
-  }
-  
-  .form input {
-      font-family: "Robonto",sans-serif;
-      outline: 1;
-      background: #f2f2f2;
-      width: 100%;
-      border: 0;
-      margin: 0 0 15px;
-      padding: 15px;
-      box-sizing: border-box;
-      font-size: 14px;
-  }
-  
-  .btn {
-      font-family: "Robonto",sans-serif;
-      text-transform: uppercase;
-      outline: 0;
-      background: #4CAF50;
-          width: 100%;
-          border: 0;
-          padding: 15px;
-          color: #FFFFFF;
-          font-size: 14px;
-          cursor: pointer;
-          margin-bottom: 15px;
-  }
-  
-  .btn :hover, .form button:active{
-      background: #43A047;
-  }
-  
-  .form .message a{
-      text-decoration: none;
-  }
-  
-  .form .message a:hover{
-      font-weight: bold;
-  }
-  
-  .form .login-form{
-      display: none;
-  }
-  
-  /* Clear floats after the columns */
-  .row:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-  
-  /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-  @media (max-width: 600px) {
-      .column {
-        width: 100%;
-      }
-  
-      .haveanaccount {
-          display: none;
-      }
-  
-      .appimage {
-          height:80%;
-          width: 100%;
-      }
-  }
-  
-  @media (min-width: 601px) and (max-width:767px) {
-      .column {
-          width: 100%;
-        }
-  
-        .haveanaccount {
-          display: none;
-      }
-  
-        .appimage {
-            height:90%;
-            width: 80%;
-            margin-left: 15%;
-        }
-  }
-  
-  @media (min-width: 768px) and (max-width:991px) {
-      .column {
-          width: 100%;
-        }
-  
-        .haveanaccount {
-          display: none;
-      }
-    
-        .appimage {
-            height:90%;
-            width: 75%;
-            margin-left: 15%;
-        }
-  }
-</style>
+  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+  <link rel="stylesheet" href="signin.css">
+  <title>Sign Up</title>
 </head>
+
 <body>
 
   <div class="header">
-    
-    <a href="index.html" style="margin-left: 5px;">App logo</a>
-    <a id="signinbutton" href="#">Sign in</a>
-    <span class="haveanaccount" style="float: right;">Already have an account? &nbsp; &nbsp; &nbsp;</span>
-  
+
+    <a id="logo" href="index.html">Logo</a>
+    <div>
+      <p class="haveanaccount">Don't have an account?</p>
+      <a id="signinbutton" href="signup.html">Sign Up</a>
+
+    </div>
+
   </div>
-
-<div class="row">
-  <div class="column" style="background-color:white;">
-
-    <div class="login-page">
+  <section class="viewSection">
+    <div class="column" style="background-color:white;">
       <div class="form">
-        
+
         <!-- <form class="register-form">
           <a id="createaccountbutton" href="#"> Create an account</a>
           <hr class="new1">
@@ -219,17 +43,16 @@
         </form> -->
 
         <form action="signup.php" method="post" class="login-form">
-          <a id="createaccountbutton" href="#"> Create an account</a>
+          <h3> Create an Account</h3>
           <hr class="new1">
           <input type="text" name="user-name" class="input-box" placeholder="User Name">
           <input type="email" name="user-email" class="input-box" placeholder="Email">
           <input type="password" name="user-pass" class="input-box" placeholder="Password">
           <input type="password" name="user-cnf" class="input-box" placeholder="Confirm Password">
           <input type="submit" name="signup-btn" class="btn" value="Signup" id="createaccountbutton">
-          <p class="message" style="text-align: center;">
-            Already registered? &nbsp; <a href="#">Login</a>
+          <p class="message"> Already registered? <a>Login</a>
           </p>
-      </form>
+        </form>
 
         <!-- <form class="login-form">
           <a id="createaccountbutton" href="#">Sign in</a>
@@ -244,36 +67,35 @@
         </form> -->
 
         <form action="login.php" method="post" class="register-form">
-          <a id="createaccountbutton" href="#">Sign in</a>
+          <h3>Sign in</h3>
           <hr class="new1">
           <input type="text" name="email" class="input-box" placeholder="Email">
           <input type="password" name="user-pass" class="input-box" placeholder="Password">
           <input type="submit" name="login-btn" class="btn" value="Login" id="createaccountbutton">
-          <p class="message" style="text-align: center;">
-            Not registered? <a href="#">Register</a>
+          <p class="message">
+            Not registered? <a>Register</a>
           </p>
-      </form>
+        </form>
 
       </div>
+
+      <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+
+      <script>
+        $('.message a').click(function () {
+          $('form').animate({ height: "toggle", opacity: "toggle" }, "slow");
+        });
+      </script>
+
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
 
-    <script>
-      $('.message a').click(function(){
-        $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
-      });
-    </script>
-
-  </div>
+    <div class="column imgDiv">
+      <img src="gmailhomepageimagenew.png" />
+    </div>
 
 
-  <div class="column">
-    <p style="margin-bottom: 25px;"></p>
-    <img class="appimage" src="gmailhomepageimagenew.png" height="100%" width="93%"/>
-  </div>
-</div>
-
-
+  </section>
 </body>
+
 </html>

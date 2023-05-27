@@ -55,16 +55,19 @@ $events = $req->fetchAll();
 
 <div class="header">
 
-<a href="landingpage.php" style="margin-left: 5px;">App logo</a>
+    <a id="logo" href="landingpage.php" >Logo</a>
+    
+    <div id="header_icons">
+    <div id="usertype"><?php echo $_SESSION['username'] ?><a href="#"><i class="far fa-address-card"></i></a></div>
+    
+    <div id="logout"><a href="logout.php"><i class="fas fa-sign-out-alt"></i></a></div>
+    </div>
+ </div>
 
-<div id="logout">Logout<a href="logout.php"><i class="fas fa-sign-out-alt" style="margin-left: 15px;"></i></a></div>
 
-<div id="usertype"><?php echo $_SESSION['username'] ?><a href="#"><i class="far fa-address-card" style="margin-left: 15px;"></i></a></div>
-</div>
 
-<div class="row">
-
-<div class="sidenav" id="sidenav">    
+<section id="view">
+<!-- <div class="sidenav" id="sidenav">    
 
 
 <button class="dropdown-btn"><i class='far fa-folder-open' style="margin-right: 20px;"></i>Create 
@@ -73,7 +76,7 @@ $events = $req->fetchAll();
 <div class="dropdown-container">
 
 <button class="dropdown-btn">Project 
-    <!-- <i class="fa fa-caret-down"></i> -->
+    <i class="fa fa-caret-down"></i>
 </button>
    <div class="dropdown-container">
   <button class="open-formbutton" onclick="openForm()">Create new Project</button>
@@ -94,7 +97,7 @@ $events = $req->fetchAll();
 </select>
 <textarea for="projectdesc" class="projectdescription" name="projectdesc" placeholder="Enter Project Description" style="height:200px"></textarea>
 
-<!-- <button type="submit" class="btn" name="projectup-btn">Submit</button> -->
+
 <input type="submit" name="projectup-btn" class="btn" value="Submit">
 <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
 </form>
@@ -111,15 +114,11 @@ document.getElementById("myForm").style.display = "none";
 document.getElementById("main").style.display = "block";
 }
 </script>
-    <!-- <a href="#">B.Tech Project</a>
-    <a href="#">M.Tech Project</a>
-    <a href="#">PhD Project</a>
-    <a href="#">Sponsored Project</a>
-    <a href="#">Intern Project</a> -->
+   
   </div>
 
   <button class="dropdown-btn">Tasks 
-  <!-- <i class="fa fa-caret-down"></i> -->
+
   </button>
   <div class="dropdown-container">
     <button class="open-formbutton" onclick="openForm2()">Create new Task</button>
@@ -154,7 +153,7 @@ document.getElementById("main").style.display = "block";
   </div>
 
 <button class="dropdown-btn">Calendar Entries 
-<!-- <i class="fa fa-caret-down"></i>-->
+
 </button>
 <div class="dropdown-container">
 <button class="open-formbutton"><a href="calendarindex.php">New Calendar Entry</a></button>
@@ -163,17 +162,6 @@ document.getElementById("main").style.display = "block";
 
 <button class="open-button">Create new Calendar Entry</button>  
 <hr class="new1">
-<!-- <input for="calendarentryname" type="text" placeholder="Title" name="calendarentryname" required>
-<select for="calendarentrytype" id="projecttype" name="calendarentrytype" style="margin-bottom:20px;">
-<option value="meetings">Meetings</option>
-<option value="deadlines">Deadlines</option>
-<option value="reminders">Reminders</option>
-</select>
-<label style="font-size:15.5px;">Date: &nbsp &nbsp </label>
-<input for="calendarentrylastdate" type="date" name="calendarentrylastdate" required>
-<textarea for="calendarentrydesc" class="projectdescription" name="calendarentrydesc" placeholder="Description" style="height:200px"></textarea> 
-<input type="submit" name="projectup-btn" class="btn" value="Submit">
-<button type="button" class="btn cancel" onclick="closeForm3()">Close</button> -->
 </form>
 </div>
 
@@ -191,26 +179,12 @@ document.getElementById("main").style.display = "block";
 </div>
 
 <button class="dropdown-btn">Inventories 
-<!-- <i class="fa fa-caret-down"></i>-->
+<i class="fa fa-caret-down"></i>
 </button>
 <div class="dropdown-container">
 <button class="open-formbutton" onclick="openForm4()">New Inventory</button>
     <div class="form-popup" id="myForm4">
-<!-- <form action="createcalendarentries.php" class="form-container" method="post">
-<button class="open-button">Create new Calendar Entry</button>  
-<hr class="new1">
-<input for="calendarentryname" type="text" placeholder="Title" name="calendarentryname" required>
-<select for="calendarentrytype" id="projecttype" name="calendarentrytype" style="margin-bottom:20px;">
-<option value="meetings">Meetings</option>
-<option value="deadlines">Deadlines</option>
-<option value="reminders">Reminders</option>
-</select>
-<label style="font-size:15.5px;">Date: &nbsp &nbsp </label>
-<input for="calendarentrylastdate" type="date" name="calendarentrylastdate" required>
-<textarea for="calendarentrydesc" class="projectdescription" name="calendarentrydesc" placeholder="Description" style="height:200px"></textarea> 
-<input type="submit" name="projectup-btn" class="btn" value="Submit">
-<button type="button" class="btn cancel" onclick="closeForm3()">Close</button>
-</form> -->
+
 <form action="createinventory.php" method="POST" class="form-container">  
 <button class="open-button">Create new Inventory</button>  
 <hr class="new1">
@@ -260,16 +234,16 @@ document.getElementById("main").style.display = "block";
 </button>
 <div class="dropdown-container">
 <a href="assignproject.php" style="color:white;">Role 
- <!-- <i class="fa fa-caret-down"></i> -->
+ <i class="fa fa-caret-down"></i>
   </a>
 
 
   <a href="assigntasktable.php" style="color:white;">Task
- <!-- <i class="fa fa-caret-down"></i> -->
+ <i class="fa fa-caret-down"></i>
   </a>
 
   <a href="assigninventorytable.php" style="color:white;">Inventory 
- <!-- <i class="fa fa-caret-down"></i> -->
+ <i class="fa fa-caret-down"></i>
   </a>
 
 </div>
@@ -280,7 +254,7 @@ document.getElementById("main").style.display = "block";
 </button>
 <div class="dropdown-container">
 <a href="fixmeetingtable.php" style="color:white;">Meeting
- <!-- <i class="fa fa-caret-down"></i> -->
+ <i class="fa fa-caret-down"></i>
   </a>
 </div>
 
@@ -300,7 +274,6 @@ document.getElementById("main").style.display = "block";
 <br>
 <textarea for="resourcedesc" class="projectdescription" name="resourcedesc" placeholder="Enter Resource Description (optional)" style="height:200px"></textarea>
 
-<!-- <button type="submit" class="btn" name="projectup-btn">Submit</button> -->
 <input type="submit" name="projectup-btn" class="btn" value="Share">
 <button type="button" class="btn cancel" onclick="closeshareform()">Close</button>
 </form>
@@ -323,11 +296,11 @@ document.getElementById("main").style.display = "block";
 </button>
 <div class="dropdown-container">
 <a href="assignproject.php" style="color:white;">Project 
- <!-- <i class="fa fa-caret-down"></i> -->
+ <i class="fa fa-caret-down"></i>
   </a>
 
   <a href="assignproject.php" style="color:white;">Assigned Tasks 
- <!-- <i class="fa fa-caret-down"></i> -->
+ <i class="fa fa-caret-down"></i>
   </a>
 
 </div>
@@ -338,7 +311,7 @@ document.getElementById("main").style.display = "block";
 </button>
 <div class="dropdown-container">
 <a href="chatindex.php" style="color:white;">Chat Box</a>
-<!-- <a href="discussion.php" style="color:white;">Discussion Thread</a> -->
+
 </div>
 
 
@@ -351,20 +324,24 @@ document.getElementById("main").style.display = "block";
 
 
 </div>
+ -->
 
+
+<div id="main_part">
 <div class="main" id="main">
        
     <!-- Page Content -->
-    <div class="container">
+    <div class="container" style="width: 100%!important">
 
-<div class="row">
+
 	<div class="col-lg-12 text-center">
 		<p class="lead">Double tap to enter the task</p>
-		<div id="calendar" class="col-centered">
+		<div id="calendar" style="box-shadow: 0 0 5px 0 #ccc;
+  border-radius: 10px; padding: 2%" class="col-centered">
 		</div>
 	</div>
 	
-</div>
+
 <!-- /.row -->
 
 <!-- Modal -->
@@ -512,6 +489,7 @@ document.getElementById("main").style.display = "block";
   </div>
 </div>
 
+</div>
 </div>
 <!-- /.container -->
 
@@ -666,17 +644,9 @@ function edit(event){
         }
     };
 </script>
-
-
-
-</div>
-
-<div class="footer">
-    <p class="copyright">Copyright © App Name. All Rights Reserved.</p>
-</div>
     <!-- Navigation -->
-    
-
+</div>
+</section>
 </body>
 
 </html>

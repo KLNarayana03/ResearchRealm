@@ -4,76 +4,141 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+body::-webkit-scrollbar{
+  display: none;
 }
 
 /* Style the header */
 .header {
-    background-color: #1f497d;
-    padding: 20px;
-    color:white;
-    font-size: 30px;
+  background-color:rgba(55,125,237,255);
+  padding: 1.25vw 5vw;
+  color: #acd3f7;
+  font-size: 30px;
     position: -webkit-sticky; /* Safari */
     position: sticky;
     top:0;
     border-radius:2px ;
     z-index: 100;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .header a{
   color:white;
 }
+#logo{
+  text-decoration: none;
+  font-size: 30px;
+  color: white;
+  transition: 0.5s ease-in-out;
+  text-shadow: 0px 0px 5px #0070C0;
+}
+#logo:hover{
+  opacity: 50%;
+  color:#efefef;
+}
+
 
 #usertype {
   
-  float: right;
+  display: flex;
+  flex-direction: row;
   color: white;
-  margin-right: 3%;
+  margin-right: 2vw;
+  font-size: 2vw;
 }
-
+#usertype a{
+  margin: 0 0.5vw;
+  text-decoration: none;
+}
+#header_icons{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  
+}
 #logout {
-  float: right;
+  display: flex;
+  flex-direction: row;
   color: white;
-  margin-right: 1%;
+  font-size: 2vw;
 }
-
+#view{
+  display: table;
+  width: 100%;
+  height: 100vh;
+}
+#main_part{
+  display: table-cell;
+  vertical-align: top;
+  width: 80%;
+}
 .sidenav{
-  float: left;
   width: 18%;
-  padding: 10px;
-  height: auto; 
-  background: #4472C4;
+  height: 100%;
+  background-color:rgba(55,125,237,255);
+  display: table-cell;
+  vertical-align: top;
+  
 }
 
 .main{
   background-color: white;
   float: left;
-  width: 80%;
+  width: 100%;
   padding: 10px;
   height: auto; /* Should be removed. Only for demonstration */
 } 
 
 .maincolumn1{
-  margin-left: 2%;
-  margin-right: 2%;
+  margin: 2%;
   background-color: white;
+  box-shadow: 0 0 10px 0 #ccc;
+  border-radius: 5px;
   float: left;
+  display: flex;
+  flex-direction: column;
   width: 61%;
   padding: 10px;
   height: auto;
+  align-items: center;
 }
 
 .maincolumn2{
   float: right;
+  display: flex;
+  flex-direction: column;
   width: 32%;
-  margin-right: 3%;
+  margin-top: 2%;
   padding: 10px;
   height: auto; 
-  background: white;
+  align-items: center;
+  background-color: white;
+  box-shadow: 0 0 10px 0 #ccc;
+  border-radius: 5px;
 }
-
-.maincontent {
+.mainContentContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 75%;
+  padding: 2%;
+  margin: 2% 0;
+  background-color: white;
+  box-shadow: 0 0 10px 0 #ccc;
+  border-radius: 5px;
+}
+.mainContentContainer div{
   width: 80%;
-  margin-left: 3.5%;
+}
+.maincontent {
+  width: 80% !important;
+  text-align: center;
   line-height: 2;
 }
 
@@ -97,38 +162,59 @@ body {
   text-decoration: none;
   font-size: 20px;
   color: white;
-  display: block;
+  display: absolute;
   border: none;
+  margin-bottom: 2%;
   line-height: 2.5;
   background: none;
   width: 100%;
   text-align: left;
   cursor: pointer;
   outline: none;
+  transition: 0.3s ease-in-out;
 }
 
 /* On mouse-over */
-.sidenav a:hover, .dropdown-btn:hover {
+.sidenav a:hover{
   font-weight: bold;
+  
 }
-
-
+.dropdown-btn:hover{
+  font-weight: bold;
+   color: white;
+  box-shadow: 0 0 5px 0 white;
+}
 /* Add an active class to the active dropdown button */
 .active {
-  color: #002060;
+  color: green;
+  background-color: #acd3f7;
+} 
+.active:hover{
+  box-shadow: none;
+}
+.container{
+  box-shadow: 0 0 5px 0 #ccc;
+ border-radius: 10px;
+ padding: 2%;
+ margin: 2% 0 ;
+ transition: all 0.3s ease-in-out;
 }
 
 /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
 .dropdown-container {
   display: none;
   
-  width: 267px;
-  
-  padding-left: 15px;
+  margin-left: 2vw;
+  transition: 0.3s ease-in-out;
 }
 
-.dropdown-container a {
-  color: darkblue;
+.dropdown-container a, .dropdown-container button {
+  font-size: 15px;
+ 
+}
+.dropdown-container button:hover{
+  background-color:#acd3f7;
+  color: green;
 }
 
 /* Optional: Style the caret down icon */
@@ -139,22 +225,40 @@ body {
 }
 
 
+
 /* Clear floats after the columns */
 .row:after {
   content: "";
   display: table;
   clear: both;
 }
-
-.footer {
-  background-color: lightgrey;
-  padding: 10px;
-  height: 90px;
-}  
-.copyright {
-  margin-left:2.5%;
+.card-container{
+ width: 80%;
+ box-shadow: 0 0 5px 0 #ccc;
+ border-radius: 10px;
+ padding: 2%;
+ margin: 2% 0 ;
+ transition: all 0.3s ease-in-out;
+ text-align: center;
 }
-
+.card-container:hover{
+  box-shadow: 0 0 5px 0 black;
+}
+.card-header{
+  text-align: center;
+}
+.card-header a{
+  text-decoration: none;
+  border-radius: 5px;
+  color: #1f497d;
+  padding: 2%;
+  transition: all 0.3s ease-in-out;
+}
+.card-header a:hover{
+  background-color: #1f497d;
+  color: white;
+  box-shadow: 0 0 5px 0 #1f497d;
+}
 
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
 @media (max-width: 600px) {
@@ -238,25 +342,26 @@ color: white;
 padding: 12px;
 font-size: 18px;
 border: none;
-cursor: pointer;
 width: auto;
-position: fixed;
-top: 15vh;
+margin-bottom: 1%;
+top: 9vh;
 left: 38.5vw;
 }
 
 .open-formbutton {
-  background-color: #4472C4;
+  background-color: rgba(55,125,237,255);
+  color: white;
   margin-left: 15px;
-  color: #002060;
   padding: 12px;
-  font-size: 18px;
+  font-size: 10px;
   border: none;
   cursor: pointer;
   width: auto;
   }
-
-.open-formbutton:hover {
+  .open-formbutton:hover{
+    box-shadow: 0 0 2px 0 white;
+  }
+/* .open-formbutton:hover {
     background-color: #4472C4;
     margin-left: 15px;
     color: rgba(41, 59, 82, 0.8);
@@ -265,15 +370,15 @@ left: 38.5vw;
     border: none;
     cursor: pointer;
     width: auto;
-  }
+  } */
 
 .topbutton {
   background-color: #43A047;
+  box-shadow: 0 0 5px 0 #43A047;
   color: white;
   padding: 12px;
   font-size: 18px;
   border: none;
-  cursor: pointer;
   width: auto;
   margin-bottom: 6px;
 }
@@ -283,31 +388,36 @@ left: 38.5vw;
 .form-popup {
 display: none;
 z-index: 9;
-position: fixed;
+position: absolute;
 width: 600px;
-top: 21.6vh;
-left: 38vw;
 }
 
 /* Add styles to the form container */
 .form-container {
-padding: 10px;
+padding: 2%;
 background-color: white;
+border-radius: 10px;
 }
 
 /* Full-width input fields */
-.form-container input[type=text], .form-container input[type=password] {
+.form-container input[type=text], .form-container input[type=password], .form-container select {
 width: 100%;
 padding: 15px;
 margin: 5px 0 22px 0;
 border: none;
 background: #f1f1f1;
+border-radius: 5px;
+}
+.form-container option{
+  margin: 1% 0;
 }
 
 /* When the inputs get focus, do something */
-.form-container input[type=text]:focus, .form-container input[type=password]:focus {
-background-color: #ddd;
+.form-container input[type=text]:focus, .form-container input[type=password]:focus, .form-container select:hover {
+background-color: white;
+box-shadow: 0 0 5px 0 #0070C0;
 outline: none;
+border: none;
 }
 
 /* Set a style for the submit/login button */
@@ -316,6 +426,7 @@ background-color: #4CAF50;
 color: white;
 padding: 16px 20px;
 border: none;
+border-radius: 10px;
 cursor: pointer;
 width: 100%;
 margin-top: 18px;
@@ -341,6 +452,6 @@ background-color: rgba(255, 17, 0, 0.788);
 }
 
 /* Add some hover effects to buttons */
-.form-container .btn:hover, .open-button:hover {
-opacity: 0.9;
+.form-container .btn:hover,.cancel:hover {
+opacity: 0.8;
 }
